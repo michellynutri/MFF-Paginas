@@ -203,7 +203,7 @@ function VideoThumbnail() {
   )
 }
 
-// ─── Lesson Card (Cronograma) ─────────����───────────────────────────────────────
+// ─── Lesson Card (Cronograma) ─────────������───────────────────────────────────────
 
 interface LessonCardProps {
   lessonNumber: string
@@ -426,7 +426,7 @@ export default function CPL2Page() {
             Blindagem — 26 de março, às 20h.
           </p>
           <p className="mt-2 font-sans text-xs text-texto/60">
-            Michelly Ribeiro — Nutricionista clínica, 13 anos de experiência, especialista em metabolismo feminino e tratamentos com canetas emagrecedoras.
+            Michelly Silveira — Nutricionista clínica, 13 anos de experiência, especialista em metabolismo feminino e tratamentos com canetas emagrecedoras.
           </p>
         </div>
       </footer>
