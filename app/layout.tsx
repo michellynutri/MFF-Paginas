@@ -26,6 +26,7 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://michellysilveira.com.br'),
   title: 'Blindagem Metabólico — Evento Gratuito ao Vivo | 26 de Março',
   description:
     'Evento gratuito online com a nutricionista Michelly Silveira. Aprenda como a nutrição protege seu corpo durante o uso das canetas emagrecedoras e garante a manutenção do peso. 26 de março, 20h.',
