@@ -32,7 +32,9 @@ const protections = [
   },
 ];
 
-export function OManual() {
+type Props = { variant: string };
+
+export function OManual({ variant }: Props) {
   return (
     <section className="bg-verde-esc text-creme py-20 md:py-32 px-6 md:px-20 relative overflow-hidden">
       <div className="max-w-[1180px] mx-auto">
@@ -116,7 +118,9 @@ export function OManual() {
             </ol>
 
             <div className="mt-12">
-              <Cta dataCta="sos-bloco-4">QUERO O PROTOCOLO COMPLETO</Cta>
+              <Cta dataCta={`sos-bloco-4-${variant}`}>
+                QUERO O PROTOCOLO COMPLETO
+              </Cta>
             </div>
           </div>
         </div>

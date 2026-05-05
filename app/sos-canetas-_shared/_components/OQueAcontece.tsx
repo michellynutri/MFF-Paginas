@@ -26,7 +26,9 @@ const consequencias = [
   },
 ];
 
-export function OQueAcontece() {
+type Props = { variant: string };
+
+export function OQueAcontece({ variant }: Props) {
   return (
     <section className="bg-creme py-16 md:py-24 px-6 md:px-20 relative">
       <div className="max-w-[720px] mx-auto">
@@ -132,7 +134,9 @@ export function OQueAcontece() {
         </div>
 
         <div className="flex justify-center">
-          <Cta dataCta="sos-bloco-3">QUERO FAZER O TRATAMENTO CERTO</Cta>
+          <Cta dataCta={`sos-bloco-3-${variant}`}>
+            QUERO FAZER O TRATAMENTO CERTO
+          </Cta>
         </div>
       </div>
     </section>

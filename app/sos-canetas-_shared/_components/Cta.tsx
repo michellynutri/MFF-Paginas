@@ -1,3 +1,5 @@
+"use client";
+
 import { CHECKOUT_URL, OFFER_ANCHOR } from "./constants";
 
 type CtaVariant = "dourado" | "terracota" | "terracota-final";
@@ -24,6 +26,18 @@ const variantStyles: Record<CtaVariant, string> = {
     "bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota",
 };
 
+export function handleCheckoutClick(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  const url = new URL(CHECKOUT_URL);
+  const incoming = new URLSearchParams(window.location.search);
+  incoming.forEach((value, key) => url.searchParams.append(key, value));
+  const variantMatch = window.location.pathname.match(/\/sos-canetas-([a-g])/);
+  if (variantMatch) {
+    url.searchParams.set("variante", variantMatch[1]);
+  }
+  window.open(url.toString(), "_blank", "noopener,noreferrer");
+}
+
 export function Cta({
   children,
   variant = "dourado",
@@ -35,7 +49,11 @@ export function Cta({
   const isCheckout = to === "checkout";
   const href = isCheckout ? CHECKOUT_URL : OFFER_ANCHOR;
   const externalProps = isCheckout
-    ? { target: "_blank", rel: "noopener noreferrer" }
+    ? {
+        target: "_blank",
+        rel: "noopener noreferrer",
+        onClick: handleCheckoutClick,
+      }
     : undefined;
 
   return (

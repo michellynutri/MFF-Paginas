@@ -16,7 +16,9 @@ const itensCom = [
   "Cada real da medicação dando o máximo de retorno possível.",
 ];
 
-export function DoisCaminhos() {
+type Props = { variant: string };
+
+export function DoisCaminhos({ variant }: Props) {
   return (
     <section className="bg-sos-creme-soft py-16 md:py-24 px-6 md:px-20">
       <div className="max-w-[1180px] mx-auto">
@@ -94,7 +96,9 @@ export function DoisCaminhos() {
         </div>
 
         <div className="flex justify-center mt-12 md:mt-16">
-          <Cta dataCta="sos-bloco-2">QUERO POTENCIALIZAR MINHA CANETA</Cta>
+          <Cta dataCta={`sos-bloco-2-${variant}`}>
+            QUERO POTENCIALIZAR MINHA CANETA
+          </Cta>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { Cta } from "./Cta";
-import { CHECKOUT_URL } from "./constants";
+import { CheckoutPSLink } from "./CheckoutPSLink";
 
 type OfertaItem = {
   title: string;
@@ -120,7 +120,9 @@ function CheckIcon() {
   );
 }
 
-export function Oferta() {
+type Props = { variant: string };
+
+export function Oferta({ variant }: Props) {
   return (
     <>
       {/* 7.1 Zona Oferta */}
@@ -211,7 +213,7 @@ export function Oferta() {
           </div>
 
           <div className="flex flex-col items-center gap-3">
-            <Cta variant="terracota" to="checkout" dataCta="sos-oferta">
+            <Cta variant="terracota" to="checkout" dataCta={`sos-oferta-${variant}`}>
               SIM, QUERO TUDO ISSO POR R$ 47
             </Cta>
             <p className="font-sans text-[13px] text-marrom text-center">
@@ -280,7 +282,7 @@ export function Oferta() {
           </p>
 
           <div className="flex flex-col items-center gap-3">
-            <Cta variant="terracota-final" to="checkout" dataCta="sos-final">
+            <Cta variant="terracota-final" to="checkout" dataCta={`sos-final-${variant}`}>
               SIM, QUERO QUE O MEU RESULTADO FIQUE — R$ 47
             </Cta>
             <p className="font-sans text-[13px] text-marrom">
@@ -307,30 +309,7 @@ export function Oferta() {
             </p>
           </div>
 
-          <a
-            href={CHECKOUT_URL}
-            data-cta="sos-ps"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-8 text-sos-dourado-esc font-sans text-[15px] hover:underline"
-          >
-            Garantir meu acesso agora
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 12h14M14 7l5 5-5 5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+          <CheckoutPSLink dataCta={`sos-ps-${variant}`} />
         </div>
       </section>
 
