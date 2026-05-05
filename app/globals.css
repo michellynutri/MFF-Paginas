@@ -13,6 +13,19 @@
   --borda: #E8DDD0;
   --branco: #FFFFFF;
 
+  /* Tokens da página /sos-canetas — não usar em outras páginas */
+  --sos-creme-soft: #FBF6EC;
+  --sos-verde-medio: #5C6B47;
+  --sos-dourado: #B8975A;
+  --sos-dourado-esc: #9C7E45;
+  --sos-terracota: #C56B4A;
+  --sos-borda-dourada: rgba(184, 151, 90, 0.25);
+
+  --sos-shadow-cta: 0 8px 24px rgba(156, 126, 69, 0.28);
+  --sos-shadow-cta-hover: 0 12px 32px rgba(156, 126, 69, 0.35);
+  --sos-shadow-cta-warm: 0 10px 30px rgba(197, 107, 74, 0.32);
+  --sos-shadow-cta-warm-hover: 0 14px 38px rgba(197, 107, 74, 0.4);
+
   --background: var(--creme);
   --foreground: var(--texto);
   --card: var(--branco);
@@ -68,6 +81,13 @@
   --color-borda: var(--borda);
   --color-branco: var(--branco);
 
+  /* Cores da página /sos-canetas */
+  --color-sos-creme-soft: var(--sos-creme-soft);
+  --color-sos-verde-medio: var(--sos-verde-medio);
+  --color-sos-dourado: var(--sos-dourado);
+  --color-sos-dourado-esc: var(--sos-dourado-esc);
+  --color-sos-terracota: var(--sos-terracota);
+
   --shadow-card: 0 4px 24px rgba(98, 76, 50, 0.10);
   --shadow-btn: 0 2px 12px rgba(98, 76, 50, 0.25);
   --shadow-float: 0 -4px 16px rgba(0, 0, 0, 0.15);
@@ -108,6 +128,15 @@ html {
 .animate-delay-250 { animation-delay: 250ms; }
 .animate-delay-300 { animation-delay: 300ms; }
 .animate-delay-400 { animation-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* ---- Scroll-reveal (data-visible toggled by IntersectionObserver) ---- */
 .scroll-reveal {
