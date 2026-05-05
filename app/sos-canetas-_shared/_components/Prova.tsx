@@ -11,8 +11,14 @@ const imagensAntesDepois = [
 ];
 
 const videosAntesDepois = [
-  "/images/sos-canetas/before-after-4.mp4",
-  "/images/sos-canetas/before-after-5.mp4",
+  {
+    src: "/images/sos-canetas/before-after-4.mp4",
+    poster: "/images/sos-canetas/before-after-4-poster.jpg",
+  },
+  {
+    src: "/images/sos-canetas/before-after-5.mp4",
+    poster: "/images/sos-canetas/before-after-5-poster.jpg",
+  },
 ];
 
 // TODO: substituir por depoimentos reais antes do launch
@@ -52,7 +58,9 @@ const testimonials = [
   },
 ];
 
-export function Prova() {
+type Props = { variant: string };
+
+export function Prova({ variant }: Props) {
   return (
     <section className="bg-sos-creme-soft py-16 md:py-24 px-6 md:px-20">
       <div className="max-w-[1180px] mx-auto">
@@ -95,7 +103,7 @@ export function Prova() {
         {/* Linha 2 — 2 vídeos 16:9. Mobile: stack. Desktop: grid 2 cols. */}
         <div className="md:max-w-[1000px] mx-auto mt-12 md:mt-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {videosAntesDepois.map((src, i) => (
+            {videosAntesDepois.map((video, i) => (
               <div
                 key={i}
                 className="rounded-2xl overflow-hidden shadow-card"
@@ -105,9 +113,10 @@ export function Prova() {
                     controls
                     preload="metadata"
                     playsInline
+                    poster={video.poster}
                     className="w-full h-full object-cover"
                   >
-                    <source src={src} type="video/mp4" />
+                    <source src={video.src} type="video/mp4" />
                   </video>
                 </div>
               </div>
@@ -166,7 +175,9 @@ export function Prova() {
         </div>
 
         <div className="flex justify-center mt-12 md:mt-16">
-          <Cta dataCta="sos-bloco-6">QUERO ESSES RESULTADOS TAMBÉM</Cta>
+          <Cta dataCta={`sos-bloco-6-${variant}`}>
+            QUERO ESSES RESULTADOS TAMBÉM
+          </Cta>
         </div>
       </div>
     </section>

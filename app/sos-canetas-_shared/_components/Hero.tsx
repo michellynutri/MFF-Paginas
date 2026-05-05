@@ -2,7 +2,13 @@ import Image from "next/image";
 import { Cta } from "./Cta";
 import { Leaf } from "./Leaf";
 
-export function Hero() {
+type HeroProps = {
+  variant: string;
+  headline: React.ReactNode;
+  subhead: string;
+};
+
+export function Hero({ variant, headline, subhead }: HeroProps) {
   return (
     <section className="bg-creme relative overflow-hidden py-6 md:py-10 px-6 md:px-20">
       <div className="max-w-[1180px] mx-auto">
@@ -35,15 +41,11 @@ export function Hero() {
             </p>
 
             <h1 className="font-serif text-[38px] md:text-[68px] leading-[1.05] md:leading-none font-medium text-texto mb-6 md:mb-8">
-              A caneta está funcionando.{" "}
-              <em className="italic">O que você come agora</em> decide se o
-              resultado fica — ou some quando ela acabar.
+              {headline}
             </h1>
 
             <p className="font-sans text-[17px] md:text-[22px] leading-[1.6] text-marrom mb-8 max-w-[560px]">
-              Sistema de 7 proteções nutricionais para os primeiros meses de
-              tratamento — para sua caneta emagrecer mais, manter o corpo firme
-              no caminho, e o peso não voltar quando ela parar.
+              {subhead}
             </p>
 
             <div className="flex items-center gap-2 font-sans text-[13px] text-marrom mb-6">
@@ -63,7 +65,9 @@ export function Hero() {
               <span>Comece agora por R$ 47 · Garantia de 7 dias</span>
             </div>
 
-            <Cta dataCta="sos-hero">QUERO QUE O MEU RESULTADO FIQUE</Cta>
+            <Cta dataCta={`sos-hero-${variant}`}>
+              QUERO QUE O MEU RESULTADO FIQUE
+            </Cta>
           </div>
 
           {/* Coluna foto */}

@@ -8,7 +8,9 @@ const metricas = [
   { number: "5+", label: "pós-graduações e especializações" },
 ];
 
-export function QuemEMichelly() {
+type Props = { variant: string };
+
+export function QuemEMichelly({ variant }: Props) {
   return (
     <section className="bg-creme py-16 md:py-24 px-6 md:px-20 relative overflow-hidden">
       <Leaf
@@ -51,8 +53,8 @@ export function QuemEMichelly() {
                 Michelly Silveira Fanelli
               </div>
               <div className="font-sans text-[13px] md:text-[14px] text-marrom mt-1">
-                Nutricionista Clínica · CRN [Nº] · Especialista em Saúde da
-                Mulher
+                Nutricionista Clínica · CRN-3 36739 · Especialista em Saúde
+                da Mulher
               </div>
             </div>
 
@@ -101,7 +103,9 @@ export function QuemEMichelly() {
             </div>
 
             <div className="mt-10">
-              <Cta dataCta="sos-bloco-5">QUERO O PROTOCOLO DA MICHELLY</Cta>
+              <Cta dataCta={`sos-bloco-5-${variant}`}>
+                QUERO O PROTOCOLO DA MICHELLY
+              </Cta>
             </div>
           </div>
         </div>
