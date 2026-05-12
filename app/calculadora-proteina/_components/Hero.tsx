@@ -35,10 +35,6 @@ export function Hero() {
         </div>
 
         <div className="max-w-[820px] animate-fade-up">
-          <p className="font-sans text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.18em] text-sos-dourado-esc mb-5">
-            Ferramenta gratuita para mulheres em tratamento com GLP-1
-          </p>
-
           <h1 className="font-serif text-[34px] md:text-[60px] leading-[1.07] md:leading-[1.02] font-medium text-texto mb-6 md:mb-7">
             Quanta proteína você precisa{" "}
             <em className="italic">para proteger o seu corpo</em> durante a

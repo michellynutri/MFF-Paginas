@@ -12,6 +12,46 @@ function formatGrams(value: number) {
   });
 }
 
+function roundTo5(n: number) {
+  return Math.max(0, Math.round(n / 5) * 5);
+}
+
+type MealOption = { titulo: string; texto: string };
+
+function buildMealOptions(target: number): MealOption[] {
+  const iogurteBaseP = 6.8; // 170 ml iogurte natural integral ≈ 6,8 g
+  const vegBaseP = 2; // prato de vegetais ≈ 2 g
+  const paoBaseP = 3; // 1 fatia pão integral ≈ 3 g
+  const ovosBaseP = 12; // 2 ovos inteiros ≈ 12 g
+
+  return [
+    {
+      titulo: "Iogurte + whey",
+      texto: `170 ml de iogurte natural integral + ${roundTo5(
+        (target - iogurteBaseP) / 0.8,
+      )} g de whey protein`,
+    },
+    {
+      titulo: "Prato + carne magra",
+      texto: `Prato de vegetais com ${roundTo5(
+        (target - vegBaseP) / 0.31,
+      )} g de frango, peixe ou carne vermelha magra`,
+    },
+    {
+      titulo: "Pão + proteína",
+      texto: `1 fatia de pão integral com ${roundTo5(
+        (target - paoBaseP) / 0.3,
+      )} g de frango ou atum`,
+    },
+    {
+      titulo: "Ovos + cottage",
+      texto: `2 ovos inteiros + ${roundTo5(
+        (target - ovosBaseP) / 0.11,
+      )} g de queijo cottage ou ricota fresca`,
+    },
+  ];
+}
+
 export function Calculadora() {
   const [peso, setPeso] = useState<string>("");
   const [refeicoes, setRefeicoes] = useState<number>(4);
@@ -173,47 +213,30 @@ export function Calculadora() {
                 </p>
               </div>
 
-              {/* Equivalências */}
+              {/* Opções de refeição */}
               <div className="border-t border-sos-borda-dourada pt-8 mb-2">
-                <p className="font-sans text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.16em] text-sos-dourado-esc mb-5">
-                  Equivalências aproximadas por refeição
+                <p className="font-sans text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.16em] text-sos-dourado-esc mb-2">
+                  Opções de refeição
                 </p>
-                <ul className="grid sm:grid-cols-2 gap-3 md:gap-4">
-                  {[
-                    {
-                      label: "Frango grelhado",
-                      valor: porRefeicao / 0.31,
-                      unidade: "g",
-                    },
-                    {
-                      label: "Ovo inteiro",
-                      valor: porRefeicao / 6,
-                      unidade: "unid.",
-                    },
-                    {
-                      label: "Whey protein",
-                      valor: porRefeicao / 22,
-                      unidade: "scoop(s)",
-                    },
-                    {
-                      label: "Iogurte natural integral",
-                      valor: porRefeicao / 0.04,
-                      unidade: "g",
-                    },
-                  ].map((item) => (
+                <p className="font-sans text-[13px] md:text-[14px] text-marrom mb-5">
+                  Cada combinação abaixo totaliza cerca de{" "}
+                  <span className="font-semibold text-texto">
+                    {formatGrams(porRefeicao)} g de proteína
+                  </span>{" "}
+                  — sua meta por refeição.
+                </p>
+                <ul className="grid gap-3 md:gap-4">
+                  {buildMealOptions(porRefeicao).map((item) => (
                     <li
-                      key={item.label}
-                      className="flex items-baseline justify-between gap-3 bg-creme rounded-xl border border-sos-borda-dourada/40 px-4 py-3"
+                      key={item.titulo}
+                      className="bg-creme rounded-xl border border-sos-borda-dourada/40 px-4 md:px-5 py-4"
                     >
-                      <span className="font-sans text-[13px] md:text-[14px] text-marrom">
-                        {item.label}
-                      </span>
-                      <span className="font-serif text-[20px] md:text-[22px] font-medium text-texto whitespace-nowrap">
-                        {formatGrams(item.valor)}{" "}
-                        <span className="font-sans text-[12px] md:text-[13px] font-normal text-marrom">
-                          {item.unidade}
-                        </span>
-                      </span>
+                      <div className="font-sans text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.14em] text-sos-dourado-esc mb-1.5">
+                        {item.titulo}
+                      </div>
+                      <div className="font-serif text-[17px] md:text-[19px] text-texto leading-snug">
+                        {item.texto}
+                      </div>
                     </li>
                   ))}
                 </ul>
