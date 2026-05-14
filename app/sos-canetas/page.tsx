@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-const VARIANTS = ["a", "b", "c", "d", "e", "f", "g"] as const;
+const VARIANTS = ["a", "f"] as const;
 
 export default async function SosCanetasRedirector({
   searchParams,
