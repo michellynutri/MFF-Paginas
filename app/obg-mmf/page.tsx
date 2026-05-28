@@ -19,6 +19,17 @@ const GREENN_BUTTON_HTML = `<button
   class="inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide transition-all duration-200 ease-out hover:translate-y-[-2px] focus-visible:outline-2 focus-visible:outline-offset-4 bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota"
 >QUERO APROVEITAR AGORA</button>`;
 
+// Segundo botão (oferta com 30% off, revelado pela barra inferior aos 14:30
+// de vídeo). Upsell 5875 cadastrado no painel da Greenn já com 30% off.
+const GREENN_BUTTON_30OFF_HTML = `<button
+  data-greenn-one-click="false"
+  data-greenn-upsell="5875"
+  data-greenn-split="1"
+  data-loading="false"
+  onclick="startLoading(this)"
+  class="shrink-0 inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide bg-sos-terracota text-creme px-5 md:px-8 py-3 md:py-3.5 text-[13px] md:text-[15px] shadow-[0_8px_22px_rgba(197,107,74,0.4)] hover:shadow-[0_12px_28px_rgba(197,107,74,0.5)] transition-all duration-200 hover:translate-y-[-1px]"
+>QUERO COM 30% OFF</button>`;
+
 export default function ObgMmfPage() {
   return (
     <main className="bg-creme relative overflow-hidden min-h-screen flex flex-col">
@@ -91,6 +102,35 @@ export default function ObgMmfPage() {
         </div>
       </section>
 
+      {/* Barra inferior fixa — 2ª oferta (30% off). Oculta por padrão;
+          revelada quando o vídeo passa de 14:30 (ver script abaixo). */}
+      <aside
+        id="obg-mmf-second-offer"
+        data-revealed="false"
+        aria-hidden="true"
+        className="fixed bottom-0 left-0 right-0 z-50 translate-y-full opacity-0 pointer-events-none transition-all duration-500 ease-out data-[revealed=true]:translate-y-0 data-[revealed=true]:opacity-100 data-[revealed=true]:pointer-events-auto bg-verde-esc text-creme shadow-[0_-10px_30px_rgba(0,0,0,0.18)]"
+      >
+        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-3 md:py-4 flex items-center justify-between gap-3 md:gap-6">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="shrink-0 rounded-full bg-sos-terracota text-creme font-sans font-bold text-[11px] md:text-[12px] px-2.5 py-1 tracking-wide">
+              -30% OFF
+            </span>
+            <div className="min-w-0">
+              <div className="font-sans font-semibold text-[13px] md:text-[15px] leading-tight truncate">
+                Oferta exclusiva por tempo limitado
+              </div>
+              <div className="font-sans text-[11px] md:text-[13px] text-creme/70 leading-tight truncate">
+                Aproveite o desconto antes de fechar essa página
+              </div>
+            </div>
+          </div>
+          <div
+            className="shrink-0"
+            dangerouslySetInnerHTML={{ __html: GREENN_BUTTON_30OFF_HTML }}
+          />
+        </div>
+      </aside>
+
       {/* VSL — player Vturb (Converteai). Define o custom element
           <vturb-smartplayer> e faz upgrade do elemento já no DOM. */}
       <Script
@@ -98,6 +138,55 @@ export default function ObgMmfPage() {
         src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6a1845f4b7169516c91dba45/v4/player.js"
         strategy="afterInteractive"
       />
+
+      {/* Revela a barra inferior quando o vídeo passa de 14:30. Faz polling
+          do tempo do player Vturb (Shadow DOM) com fallbacks. */}
+      <Script id="obg-mmf-reveal-second-offer" strategy="afterInteractive">
+        {`(function(){
+  var TARGET = 870; // 14:30 em segundos (de vídeo assistido)
+  var PLAYER_ID = "vid-6a1845f4b7169516c91dba45";
+  var BAR_ID = "obg-mmf-second-offer";
+  var revealed = false;
+
+  function getCurrentTime(){
+    var el = document.getElementById(PLAYER_ID);
+    if (!el) return null;
+    // 1) propriedade direta no custom element
+    if (typeof el.currentTime === "number") return el.currentTime;
+    // 2) método getCurrentTime()
+    if (typeof el.getCurrentTime === "function") {
+      try { var t = el.getCurrentTime(); if (typeof t === "number") return t; } catch(e){}
+    }
+    // 3) <video> dentro do shadowRoot
+    try {
+      var sr = el.shadowRoot;
+      if (sr) {
+        var v = sr.querySelector("video");
+        if (v && typeof v.currentTime === "number") return v.currentTime;
+      }
+    } catch(e){}
+    // 4) <video> em light DOM (fallback)
+    var v2 = el.querySelector ? el.querySelector("video") : null;
+    if (v2 && typeof v2.currentTime === "number") return v2.currentTime;
+    return null;
+  }
+
+  function reveal(){
+    if (revealed) return;
+    var bar = document.getElementById(BAR_ID);
+    if (!bar) return;
+    bar.setAttribute("data-revealed", "true");
+    bar.setAttribute("aria-hidden", "false");
+    revealed = true;
+  }
+
+  var iv = setInterval(function(){
+    if (revealed) { clearInterval(iv); return; }
+    var t = getCurrentTime();
+    if (typeof t === "number" && t >= TARGET) { reveal(); clearInterval(iv); }
+  }, 1000);
+})();`}
+      </Script>
 
       {/* Script de compra (modal) da Greenn — define window.startLoading e
           carrega o upsell.js que vincula o comportamento ao botão acima. */}
