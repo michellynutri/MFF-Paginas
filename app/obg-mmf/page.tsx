@@ -44,26 +44,32 @@ export default function ObgMmfPage() {
         rotation={-25}
       />
 
-      {/* Faixa de alerta no topo — chama atenção pra "espere antes de ir" */}
-      <div className="relative z-20 bg-sos-terracota text-creme shadow-[0_4px_16px_rgba(197,107,74,0.35)]">
-        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-3 md:py-3.5 flex items-center justify-center gap-2.5 md:gap-3 text-center">
-          <span className="inline-flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full bg-creme/20 shrink-0 animate-pulse">
+      {/* Faixa de alerta no topo — vermelho puro + triângulo de aviso pulsante,
+          texto bold black em branco. Romper a harmonia é intencional aqui:
+          a missão é gritar "não saia ainda". */}
+      <div className="relative z-20 bg-[#DC2626] text-white shadow-[0_6px_22px_rgba(220,38,38,0.5)]">
+        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-4 md:py-5 flex items-center justify-center gap-3 md:gap-4 text-center">
+          <span className="inline-flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full bg-white/20 shrink-0 animate-pulse">
             <svg
               viewBox="0 0 24 24"
-              width="14"
-              height="14"
+              width="20"
+              height="20"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.4"
-              className="md:w-4 md:h-4"
+              strokeLinejoin="round"
+              className="md:w-6 md:h-6"
               aria-hidden="true"
             >
-              <circle cx="12" cy="12" r="9.5" />
-              <path d="M12 7.5v5.5" strokeLinecap="round" />
-              <circle cx="12" cy="16.5" r="0.9" fill="currentColor" />
+              <path d="M12 2.5 22 20.5 2 20.5 Z" />
+              <path d="M12 9.5v5" strokeLinecap="round" />
+              <circle cx="12" cy="17.5" r="1" fill="currentColor" stroke="none" />
             </svg>
           </span>
-          <span className="font-sans font-bold text-[14px] md:text-[17px] tracking-[0.01em] leading-tight">
+          <span className="font-sans font-black text-[16px] md:text-[22px] leading-tight tracking-tight">
+            <span className="uppercase tracking-[0.14em] mr-1 md:mr-2">
+              Atenção:
+            </span>
             Deixa eu te contar uma coisa antes de você ir.
           </span>
         </div>
