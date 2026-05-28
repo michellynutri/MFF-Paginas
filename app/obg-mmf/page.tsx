@@ -44,15 +44,35 @@ export default function ObgMmfPage() {
         rotation={-25}
       />
 
+      {/* Faixa de alerta no topo — chama atenção pra "espere antes de ir" */}
+      <div className="relative z-20 bg-sos-terracota text-creme shadow-[0_4px_16px_rgba(197,107,74,0.35)]">
+        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-3 md:py-3.5 flex items-center justify-center gap-2.5 md:gap-3 text-center">
+          <span className="inline-flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full bg-creme/20 shrink-0 animate-pulse">
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+              className="md:w-4 md:h-4"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9.5" />
+              <path d="M12 7.5v5.5" strokeLinecap="round" />
+              <circle cx="12" cy="16.5" r="0.9" fill="currentColor" />
+            </svg>
+          </span>
+          <span className="font-sans font-bold text-[14px] md:text-[17px] tracking-[0.01em] leading-tight">
+            Deixa eu te contar uma coisa antes de você ir.
+          </span>
+        </div>
+      </div>
+
       <section className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-20 py-12 md:py-16">
         <div className="w-full max-w-[1180px] mx-auto">
           {/* Bloco único: copy + VSL + botão, centralizado */}
           <div className="max-w-[760px] mx-auto text-center animate-fade-up">
-            {/* TAG (topo da página) */}
-            <p className="font-sans text-[13px] md:text-[15px] font-semibold tracking-[0.02em] text-sos-dourado-esc mb-5">
-              Deixa eu te contar uma coisa antes de você ir.
-            </p>
-
             {/* HEADLINE */}
             <h1 className="font-serif text-[30px] md:text-[48px] leading-[1.12] md:leading-[1.08] font-medium text-texto mb-5 md:mb-6">
               Enquanto a balança desce, o seu corpo está tomando decisões{" "}
