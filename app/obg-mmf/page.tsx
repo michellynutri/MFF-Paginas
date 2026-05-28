@@ -48,7 +48,7 @@ export default function ObgMmfPage() {
           texto bold black em branco. Romper a harmonia é intencional aqui:
           a missão é gritar "não saia ainda". */}
       <div className="relative z-20 bg-[#DC2626] text-white shadow-[0_6px_22px_rgba(220,38,38,0.5)]">
-        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-4 md:py-5 flex items-center justify-center gap-3 md:gap-4 text-center">
+        <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-4 text-left md:text-center">
           <span className="inline-flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full bg-white/20 shrink-0 animate-pulse">
             <svg
               viewBox="0 0 24 24"
