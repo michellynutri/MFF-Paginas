@@ -44,7 +44,7 @@ export default function ObgMmfPage() {
         rotation={-25}
       />
 
-      <section className="relative z-10 flex-1 flex items-center px-6 md:px-20 py-12 md:py-16">
+      <section className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-20 py-12 md:py-16">
         <div className="w-full max-w-[1180px] mx-auto">
           {/* Bloco único: copy + VSL + botão, centralizado */}
           <div className="max-w-[760px] mx-auto text-center animate-fade-up">
