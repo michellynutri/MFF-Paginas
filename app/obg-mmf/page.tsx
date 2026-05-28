@@ -106,17 +106,20 @@ export default function ObgMmfPage() {
             />
           </div>
 
-          {/* Botão de compra Greenn (estilizado em terracota) */}
+          {/* CTA principal — bloqueado até 13:00 de vídeo assistido. O
+              estado "bloqueado" e o "revelado" ocupam o mesmo espaço
+              (overlay + flow) e alternam via data-revealed no group. */}
           <div
-            className="flex justify-center"
-            dangerouslySetInnerHTML={{ __html: GREENN_BUTTON_HTML }}
-          />
-
-          {/* Microline */}
-          <div className="mt-4 flex items-center justify-center gap-2 font-sans text-[13px] text-marrom">
+            id="obg-mmf-main-cta"
+            data-revealed="false"
+            aria-live="polite"
+            className="group relative"
+          >
+            {/* Estado bloqueado — sobreposto via absolute, esconde ao revelar */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-marrom/80 transition-opacity duration-500 group-data-[revealed=true]:opacity-0 group-data-[revealed=true]:pointer-events-none">
               <svg
-                width="14"
-                height="14"
+                width="22"
+                height="22"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -127,8 +130,38 @@ export default function ObgMmfPage() {
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" />
               </svg>
-              <span>Pagamento 100% seguro · Oferta exclusiva desta página</span>
+              <p className="font-sans text-[13px] md:text-[14px] max-w-[420px] text-center">
+                Continue assistindo. O botão será liberado em instantes.
+              </p>
             </div>
+
+            {/* Estado revelado — botão + microline; oculto até o gatilho */}
+            <div className="opacity-0 pointer-events-none transition-opacity duration-500 group-data-[revealed=true]:opacity-100 group-data-[revealed=true]:pointer-events-auto">
+              {/* Botão de compra Greenn (estilizado em terracota) */}
+              <div
+                className="flex justify-center"
+                dangerouslySetInnerHTML={{ __html: GREENN_BUTTON_HTML }}
+              />
+
+              {/* Microline */}
+              <div className="mt-4 flex items-center justify-center gap-2 font-sans text-[13px] text-marrom">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  className="text-sos-dourado-esc"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" />
+                </svg>
+                <span>Pagamento 100% seguro · Oferta exclusiva desta página</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -169,25 +202,25 @@ export default function ObgMmfPage() {
         strategy="afterInteractive"
       />
 
-      {/* Revela a barra inferior quando o vídeo passa de 14:30. Faz polling
-          do tempo do player Vturb (Shadow DOM) com fallbacks. */}
-      <Script id="obg-mmf-reveal-second-offer" strategy="afterInteractive">
+      {/* Polling do tempo do player Vturb (Shadow DOM) com fallbacks.
+          Libera o CTA principal aos 13:00 e revela a barra inferior aos
+          14:30. Para o intervalo assim que todos os alvos foram revelados. */}
+      <Script id="obg-mmf-reveal-triggers" strategy="afterInteractive">
         {`(function(){
-  var TARGET = 870; // 14:30 em segundos (de vídeo assistido)
   var PLAYER_ID = "vid-6a1845f4b7169516c91dba45";
-  var BAR_ID = "obg-mmf-second-offer";
-  var revealed = false;
+  var TARGETS = [
+    { id: "obg-mmf-main-cta", at: 780 },     // 13:00 — botão principal
+    { id: "obg-mmf-second-offer", at: 870 }, // 14:30 — barra 30% off
+  ];
+  var done = {};
 
   function getCurrentTime(){
     var el = document.getElementById(PLAYER_ID);
     if (!el) return null;
-    // 1) propriedade direta no custom element
     if (typeof el.currentTime === "number") return el.currentTime;
-    // 2) método getCurrentTime()
     if (typeof el.getCurrentTime === "function") {
       try { var t = el.getCurrentTime(); if (typeof t === "number") return t; } catch(e){}
     }
-    // 3) <video> dentro do shadowRoot
     try {
       var sr = el.shadowRoot;
       if (sr) {
@@ -195,25 +228,32 @@ export default function ObgMmfPage() {
         if (v && typeof v.currentTime === "number") return v.currentTime;
       }
     } catch(e){}
-    // 4) <video> em light DOM (fallback)
     var v2 = el.querySelector ? el.querySelector("video") : null;
     if (v2 && typeof v2.currentTime === "number") return v2.currentTime;
     return null;
   }
 
-  function reveal(){
-    if (revealed) return;
-    var bar = document.getElementById(BAR_ID);
-    if (!bar) return;
-    bar.setAttribute("data-revealed", "true");
-    bar.setAttribute("aria-hidden", "false");
-    revealed = true;
+  function reveal(id){
+    if (done[id]) return;
+    var node = document.getElementById(id);
+    if (!node) return;
+    node.setAttribute("data-revealed", "true");
+    node.setAttribute("aria-hidden", "false");
+    done[id] = true;
   }
 
   var iv = setInterval(function(){
-    if (revealed) { clearInterval(iv); return; }
     var t = getCurrentTime();
-    if (typeof t === "number" && t >= TARGET) { reveal(); clearInterval(iv); }
+    if (typeof t === "number") {
+      for (var i = 0; i < TARGETS.length; i++) {
+        if (t >= TARGETS[i].at) reveal(TARGETS[i].id);
+      }
+    }
+    var allDone = true;
+    for (var j = 0; j < TARGETS.length; j++) {
+      if (!done[TARGETS[j].id]) { allDone = false; break; }
+    }
+    if (allDone) clearInterval(iv);
   }, 1000);
 })();`}
       </Script>
