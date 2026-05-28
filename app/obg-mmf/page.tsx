@@ -106,36 +106,15 @@ export default function ObgMmfPage() {
             />
           </div>
 
-          {/* CTA principal — bloqueado até 13:00 de vídeo assistido. O
-              estado "bloqueado" e o "revelado" ocupam o mesmo espaço
-              (overlay + flow) e alternam via data-revealed no group. */}
+          {/* CTA principal — invisível até 13:00 de vídeo assistido. O
+              wrapper reserva a altura do botão (opacity-0 mantém layout),
+              evitando shift quando revelado via data-revealed. */}
           <div
             id="obg-mmf-main-cta"
             data-revealed="false"
             aria-live="polite"
-            className="group relative"
+            className="group"
           >
-            {/* Estado bloqueado — sobreposto via absolute, esconde ao revelar */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-marrom/80 transition-opacity duration-500 group-data-[revealed=true]:opacity-0 group-data-[revealed=true]:pointer-events-none">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                className="text-sos-dourado-esc"
-                aria-hidden="true"
-              >
-                <rect x="3" y="11" width="18" height="11" rx="2" />
-                <path d="M7 11V7a5 5 0 0110 0v4" strokeLinecap="round" />
-              </svg>
-              <p className="font-sans text-[13px] md:text-[14px] max-w-[420px] text-center">
-                Continue assistindo. O botão será liberado em instantes.
-              </p>
-            </div>
-
-            {/* Estado revelado — botão + microline; oculto até o gatilho */}
             <div className="opacity-0 pointer-events-none transition-opacity duration-500 group-data-[revealed=true]:opacity-100 group-data-[revealed=true]:pointer-events-auto">
               {/* Botão de compra Greenn (estilizado em terracota) */}
               <div
