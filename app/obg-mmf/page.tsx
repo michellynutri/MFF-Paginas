@@ -76,39 +76,44 @@ export default function ObgMmfPage() {
       </div>
 
       <section className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-20 py-12 md:py-16">
-        <div className="w-full max-w-[1180px] mx-auto">
-          {/* Bloco único: copy + VSL + botão, centralizado */}
-          <div className="max-w-[760px] mx-auto text-center animate-fade-up">
-            {/* HEADLINE */}
-            <h1 className="font-serif text-[30px] md:text-[48px] leading-[1.12] md:leading-[1.08] font-medium text-texto mb-5 md:mb-6">
-              Enquanto a balança desce, o seu corpo está tomando decisões{" "}
-              <em className="italic">que você não consegue ver.</em>
-            </h1>
+        {/* Wrapper único de 760px centralizado pela section via flex
+            (não depende de mx-auto, que estava computando margin:0
+            por algum conflito de cascade-layer entre o reset do
+            preflight Tailwind e a regra .mx-auto). */}
+        <div className="w-full max-w-[760px] text-center animate-fade-up">
+          {/* HEADLINE */}
+          <h1 className="font-serif text-[30px] md:text-[48px] leading-[1.12] md:leading-[1.08] font-medium text-texto mb-5 md:mb-6">
+            Enquanto a balança desce, o seu corpo está tomando decisões{" "}
+            <em className="italic">que você não consegue ver.</em>
+          </h1>
 
-            {/* SUBHEADLINE */}
-            <p className="font-sans text-[17px] md:text-[20px] leading-[1.6] text-marrom mb-8 md:mb-10 max-w-[620px] mx-auto">
+          {/* SUBHEADLINE — envolvido em flex justify-center pra centralizar
+              o bloco de 620px dentro do wrapper de 760px sem mx-auto. */}
+          <div className="flex justify-center mb-8 md:mb-10">
+            <p className="font-sans text-[17px] md:text-[20px] leading-[1.6] text-marrom max-w-[620px]">
               São essas decisões que vão determinar se você vai sair do tratamento
               com o corpo que quer — ou voltar ao ponto zero. Assiste esse vídeo
               antes de fechar essa página. Eu te explico tudo.
             </p>
+          </div>
 
-            {/* VSL — Vturb / Converteai (player carregado via <Script> abaixo) */}
-            <div className="relative mx-auto mb-8 md:mb-10 max-w-[760px] rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(42,36,24,0.18)]">
-              {/* @ts-expect-error — custom element do Vturb */}
-              <vturb-smartplayer
-                id="vid-6a1845f4b7169516c91dba45"
-                style={{ display: "block", margin: "0 auto", width: "100%" }}
-              />
-            </div>
-
-            {/* Botão de compra Greenn (estilizado em terracota) */}
-            <div
-              className="flex justify-center"
-              dangerouslySetInnerHTML={{ __html: GREENN_BUTTON_HTML }}
+          {/* VSL — Vturb / Converteai. Já preenche os 760px do wrapper. */}
+          <div className="relative mb-8 md:mb-10 rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(42,36,24,0.18)]">
+            {/* @ts-expect-error — custom element do Vturb */}
+            <vturb-smartplayer
+              id="vid-6a1845f4b7169516c91dba45"
+              style={{ display: "block", width: "100%" }}
             />
+          </div>
 
-            {/* Microline */}
-            <div className="mt-4 flex items-center justify-center gap-2 font-sans text-[13px] text-marrom">
+          {/* Botão de compra Greenn (estilizado em terracota) */}
+          <div
+            className="flex justify-center"
+            dangerouslySetInnerHTML={{ __html: GREENN_BUTTON_HTML }}
+          />
+
+          {/* Microline */}
+          <div className="mt-4 flex items-center justify-center gap-2 font-sans text-[13px] text-marrom">
               <svg
                 width="14"
                 height="14"
@@ -124,7 +129,6 @@ export default function ObgMmfPage() {
               </svg>
               <span>Pagamento 100% seguro · Oferta exclusiva desta página</span>
             </div>
-          </div>
         </div>
       </section>
 
