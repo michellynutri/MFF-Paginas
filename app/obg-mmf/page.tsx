@@ -47,7 +47,7 @@ export default function ObgMmfPage() {
       {/* Faixa de alerta no topo — vermelho puro + triângulo de aviso pulsante,
           texto bold black em branco. Romper a harmonia é intencional aqui:
           a missão é gritar "não saia ainda". */}
-      <div className="relative z-20 bg-[#DC2626] text-white shadow-[0_6px_22px_rgba(220,38,38,0.5)]">
+      <div className="relative z-20 bg-[#A83E22] text-white shadow-[0_6px_22px_rgba(168,62,34,0.5)]">
         <div className="max-w-[1180px] mx-auto px-4 md:px-8 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-4 text-left md:text-center">
           <span className="inline-flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full bg-white/20 shrink-0 animate-pulse">
             <svg
@@ -68,9 +68,9 @@ export default function ObgMmfPage() {
           </span>
           <span className="font-sans font-black text-[16px] md:text-[22px] leading-tight tracking-tight">
             <span className="uppercase tracking-[0.14em] mr-1 md:mr-2">
-              Atenção:
+              Comunicado importante
             </span>
-            Deixa eu te contar uma coisa antes de você ir.
+            — leia antes de continuar.
           </span>
         </div>
       </div>
@@ -83,17 +83,18 @@ export default function ObgMmfPage() {
         <div className="w-full max-w-[760px] text-center animate-fade-up">
           {/* HEADLINE */}
           <h1 className="font-serif text-[30px] md:text-[48px] leading-[1.12] md:leading-[1.08] font-medium text-texto mb-5 md:mb-6">
-            Enquanto a balança desce, o seu corpo está tomando decisões{" "}
-            <em className="italic">que você não consegue ver.</em>
+            Para garantir o seu resultado com o S.O.S. Canetas, você precisa{" "}
+            <em className="italic">assistir esse vídeo agora.</em>
           </h1>
 
           {/* SUBHEADLINE — envolvido em flex justify-center pra centralizar
               o bloco de 620px dentro do wrapper de 760px sem mx-auto. */}
           <div className="flex justify-center mb-8 md:mb-10">
             <p className="font-sans text-[17px] md:text-[20px] leading-[1.6] text-marrom max-w-[620px]">
-              São essas decisões que vão determinar se você vai sair do tratamento
-              com o corpo que quer — ou voltar ao ponto zero. Assiste esse vídeo
-              antes de fechar essa página. Eu te explico tudo.
+              O seu tratamento passa por 3 fases. O S.O.S. cobre a primeira. Eu
+              gravei esse vídeo para mostrar o que protege o resultado nas outras
+              duas — e por que ignorar isso é o erro que faz a maioria das
+              mulheres perder tudo quando a caneta para.
             </p>
           </div>
 
@@ -104,6 +105,27 @@ export default function ObgMmfPage() {
               id="vid-6a1845f4b7169516c91dba45"
               style={{ display: "block", width: "100%" }}
             />
+          </div>
+
+          {/* AVISO — reforço de escassez logo abaixo do vídeo. Bloco âmbar
+              sólido (presente premium) com barra de acento + ícone pulsante:
+              salta do creme por saturação, sem soar alarme. */}
+          <div className="flex justify-center mb-8 md:mb-10">
+            <p className="inline-flex items-start gap-3 rounded-xl border-l-4 border-sos-terracota bg-gradient-to-r from-sos-dourado to-sos-dourado-esc px-5 md:px-6 py-4 font-sans text-[15px] md:text-[17px] leading-[1.5] text-creme max-w-[620px] shadow-[0_10px_30px_rgba(156,126,69,0.35)]">
+              <span
+                aria-hidden="true"
+                className="shrink-0 text-[20px] md:text-[22px] animate-pulse"
+              >
+                🎁
+              </span>
+              <span>
+                <strong className="font-bold uppercase tracking-wide">
+                  Aviso:
+                </strong>{" "}
+                Esse conteúdo é um presente e o vídeo não estará disponível se
+                você sair dessa página.
+              </span>
+            </p>
           </div>
 
           {/* CTA principal — invisível até 13:00 de vídeo assistido. O
