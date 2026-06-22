@@ -120,9 +120,9 @@ function CheckIcon() {
   );
 }
 
-type Props = { variant: string };
+type Props = { variant: string; checkoutUrl?: string };
 
-export function Oferta({ variant }: Props) {
+export function Oferta({ variant, checkoutUrl }: Props) {
   return (
     <>
       {/* 7.1 Zona Oferta */}
@@ -213,7 +213,12 @@ export function Oferta({ variant }: Props) {
           </div>
 
           <div className="flex flex-col items-center gap-3">
-            <Cta variant="terracota" to="checkout" dataCta={`sos-oferta-${variant}`}>
+            <Cta
+              variant="terracota"
+              to="checkout"
+              dataCta={`sos-oferta-${variant}`}
+              checkoutUrl={checkoutUrl}
+            >
               SIM, QUERO TUDO ISSO POR R$ 47
             </Cta>
             <p className="font-sans text-[13px] text-marrom text-center">
@@ -282,7 +287,12 @@ export function Oferta({ variant }: Props) {
           </p>
 
           <div className="flex flex-col items-center gap-3">
-            <Cta variant="terracota-final" to="checkout" dataCta={`sos-final-${variant}`}>
+            <Cta
+              variant="terracota-final"
+              to="checkout"
+              dataCta={`sos-final-${variant}`}
+              checkoutUrl={checkoutUrl}
+            >
               SIM, QUERO QUE O MEU RESULTADO FIQUE — R$ 47
             </Cta>
             <p className="font-sans text-[13px] text-marrom">
@@ -309,7 +319,7 @@ export function Oferta({ variant }: Props) {
             </p>
           </div>
 
-          <CheckoutPSLink dataCta={`sos-ps-${variant}`} />
+          <CheckoutPSLink dataCta={`sos-ps-${variant}`} checkoutUrl={checkoutUrl} />
         </div>
       </section>
 

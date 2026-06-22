@@ -5,16 +5,18 @@ import { handleCheckoutClick } from "./Cta";
 
 type Props = {
   dataCta: string;
+  checkoutUrl?: string;
 };
 
-export function CheckoutPSLink({ dataCta }: Props) {
+export function CheckoutPSLink({ dataCta, checkoutUrl }: Props) {
+  const resolvedCheckout = checkoutUrl ?? CHECKOUT_URL;
   return (
     <a
-      href={CHECKOUT_URL}
+      href={resolvedCheckout}
       data-cta={dataCta}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleCheckoutClick}
+      onClick={(e) => handleCheckoutClick(e, resolvedCheckout)}
       className="inline-flex items-center gap-2 mt-8 text-sos-dourado-esc font-sans text-[15px] hover:underline"
     >
       Garantir meu acesso agora

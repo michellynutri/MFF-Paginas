@@ -12,6 +12,7 @@ type CtaProps = {
   dataCta: string;
   className?: string;
   ariaLabel?: string;
+  checkoutUrl?: string;
 };
 
 const baseStyles =
@@ -26,12 +27,15 @@ const variantStyles: Record<CtaVariant, string> = {
     "bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota",
 };
 
-export function handleCheckoutClick(e: React.MouseEvent<HTMLAnchorElement>) {
+export function handleCheckoutClick(
+  e: React.MouseEvent<HTMLAnchorElement>,
+  checkoutUrl: string = CHECKOUT_URL,
+) {
   e.preventDefault();
-  const url = new URL(CHECKOUT_URL);
+  const url = new URL(checkoutUrl);
   const incoming = new URLSearchParams(window.location.search);
   incoming.forEach((value, key) => url.searchParams.append(key, value));
-  const variantMatch = window.location.pathname.match(/\/sos-canetas-([a-g])/);
+  const variantMatch = window.location.pathname.match(/\/sos-canetas-([a-h])/);
   if (variantMatch) {
     url.searchParams.set("variante", variantMatch[1]);
   }
@@ -45,14 +49,17 @@ export function Cta({
   dataCta,
   className = "",
   ariaLabel,
+  checkoutUrl,
 }: CtaProps) {
   const isCheckout = to === "checkout";
-  const href = isCheckout ? CHECKOUT_URL : OFFER_ANCHOR;
+  const resolvedCheckout = checkoutUrl ?? CHECKOUT_URL;
+  const href = isCheckout ? resolvedCheckout : OFFER_ANCHOR;
   const externalProps = isCheckout
     ? {
         target: "_blank",
         rel: "noopener noreferrer",
-        onClick: handleCheckoutClick,
+        onClick: (e: React.MouseEvent<HTMLAnchorElement>) =>
+          handleCheckoutClick(e, resolvedCheckout),
       }
     : undefined;
 
