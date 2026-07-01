@@ -35,7 +35,7 @@ export function handleCheckoutClick(
   const url = new URL(checkoutUrl);
   const incoming = new URLSearchParams(window.location.search);
   incoming.forEach((value, key) => url.searchParams.append(key, value));
-  const variantMatch = window.location.pathname.match(/\/sos-canetas-([a-h])/);
+  const variantMatch = window.location.pathname.match(/\/sos-canetas-([a-z]+)/);
   if (variantMatch) {
     url.searchParams.set("variante", variantMatch[1]);
   }
