@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
@@ -65,35 +66,28 @@ export function HeroVsl({ variant }: HeroVslProps) {
           </p>
         </div>
 
-        {/* PLAYER VSL */}
-        <div className="max-w-[860px] mx-auto">
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
-            {/*
-              PLACEHOLDER VSL — inserir aqui o embed do player de vídeo de vendas.
-              Exemplos:
-                • VTurb / Panda Video: colar o <div> + <script> do painel.
-                  Use next/script (strategy="afterInteractive") ou
-                  dangerouslySetInnerHTML dentro de um Client Component.
-                • YouTube/Vimeo: <iframe className="absolute inset-0 w-full h-full" ... />
-              Mantenha o container com aspect-video (16:9) para não quebrar o layout.
-            */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-verde-esc to-sos-verde-medio">
-              <div className="w-[76px] h-[76px] rounded-full bg-sos-dourado/95 flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="text-creme ml-1"
-                  aria-hidden="true"
-                >
-                  <polygon points="7 4 20 12 7 20" />
-                </svg>
-              </div>
-              <span className="font-sans text-[13px] uppercase tracking-[0.16em] text-creme/70">
-                Vídeo de vendas
-              </span>
-            </div>
+        {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16, por isso o
+            container é limitado a 400px em vez do 860px das outras seções. */}
+        <div className="max-w-[400px] mx-auto">
+          <div className="relative rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
+            {/* @ts-expect-error — custom element do Vturb */}
+            <vturb-smartplayer
+              id="vid-6a4ff72c245f4ba270b2409b"
+              style={{ display: "block", margin: "0 auto", width: "100%" }}
+            >
+              {/* Reserva a altura do vídeo (177.78% = 9:16) até o script
+                  fazer o upgrade do elemento e remover o placeholder. */}
+              <div
+                className="vturb-player-placeholder"
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  padding: "177.77777777777777% 0 0",
+                  zIndex: 0,
+                  backgroundColor: "black",
+                }}
+              />
+            </vturb-smartplayer>
           </div>
         </div>
 
@@ -121,6 +115,14 @@ export function HeroVsl({ variant }: HeroVslProps) {
           </div>
         </div>
       </div>
+
+      {/* Define o custom element <vturb-smartplayer> e faz upgrade do
+          elemento já presente no DOM. */}
+      <Script
+        id="vturb-vid-6a4ff72c245f4ba270b2409b"
+        src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6a4ff72c245f4ba270b2409b/v4/player.js"
+        strategy="afterInteractive"
+      />
     </section>
   );
 }

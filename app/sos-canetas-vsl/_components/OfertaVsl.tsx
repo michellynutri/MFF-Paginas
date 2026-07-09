@@ -267,11 +267,11 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
                 R$
               </span>
               <span className="font-serif text-[64px] md:text-[96px] font-medium leading-none">
-                197
+                97
               </span>
             </div>
             <div className="font-sans text-[13px] md:text-[14px] text-marrom mt-2">
-              À vista ou em até 12x de R$ 20
+              À vista ou em até 12x de R$ 9,97
             </div>
           </div>
 
@@ -290,7 +290,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
           </div>
 
           <p className="font-sans text-[15px] md:text-[16px] text-texto leading-[1.7] text-center max-w-[560px] mx-auto mt-10">
-            R$ 197 é menos da metade de um único mês de caneta. E pode ser a
+            R$ 97 é uma pequena fração de um único mês de caneta. E pode ser a
             diferença entre o peso ir embora de vez — ou voltar tudo quando você
             parar.
           </p>
@@ -374,7 +374,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
               dataCta={`sos-final-${variant}`}
               checkoutUrl={checkoutUrl}
             >
-              SIM, QUERO QUE O MEU RESULTADO FIQUE — R$ 197
+              SIM, QUERO QUE O MEU RESULTADO FIQUE — R$ 97
             </Cta>
             <p className="font-sans text-[13px] text-marrom">
               Acesso imediato · Garantia de 7 dias · Sem risco
@@ -390,7 +390,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
               Você chegou até aqui porque o que está em jogo importa de verdade.
               Você sabe que a caneta está funcionando. Você sabe que não quer
               perder isso. E agora sabe que o que você come enquanto usa a
-              caneta é o que decide se dessa vez vai ser diferente. Por R$ 197 —
+              caneta é o que decide se dessa vez vai ser diferente. Por R$ 97 —
               uma fração do que você investe por mês na caneta — você garante que
               cada real gasto no tratamento está construindo um resultado que não
               vai voltar.
