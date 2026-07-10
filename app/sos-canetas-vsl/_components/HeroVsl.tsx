@@ -91,8 +91,8 @@ export function HeroVsl({ variant }: HeroVslProps) {
           </div>
         </div>
 
-        {/* CTA + garantia */}
-        <div className="max-w-[860px] mx-auto text-center mt-9 md:mt-10">
+        {/* CTA + garantia — oculto até o vídeo atingir 10:08 (608s) */}
+        <div className="vsl-oculto max-w-[860px] mx-auto text-center mt-9 md:mt-10">
           <Cta dataCta={`sos-hero-${variant}`}>
             QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
           </Cta>
@@ -116,6 +116,10 @@ export function HeroVsl({ variant }: HeroVslProps) {
         </div>
       </div>
 
+      {/* Esconde tudo que fica abaixo do vídeo (CTA do hero + todas as seções
+          seguintes) até o player revelar via displayHiddenElements. */}
+      <style>{`.vsl-oculto{display:none!important}`}</style>
+
       {/* Define o custom element <vturb-smartplayer> e faz upgrade do
           elemento já presente no DOM. */}
       <Script
@@ -123,6 +127,23 @@ export function HeroVsl({ variant }: HeroVslProps) {
         src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6a4ff72c245f4ba270b2409b/v4/player.js"
         strategy="afterInteractive"
       />
+
+      {/* Delay de 10:08 (608s): revela os elementos .vsl-oculto quando o vídeo
+          atinge esse ponto. persist mantém revelado para quem já assistiu. */}
+      <Script id="vsl-delay-608" strategy="afterInteractive">
+        {`
+          (function () {
+            var delaySeconds = 608; // 10:08 = 10*60 + 8
+            var player = document.querySelector("vturb-smartplayer");
+            if (!player) return;
+            player.addEventListener("player:ready", function () {
+              player.displayHiddenElements(delaySeconds, [".vsl-oculto"], {
+                persist: true,
+              });
+            });
+          })();
+        `}
+      </Script>
     </section>
   );
 }

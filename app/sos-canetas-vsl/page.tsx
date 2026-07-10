@@ -32,12 +32,16 @@ export default function Page() {
   return (
     <main className="bg-creme">
       <HeroVsl variant={VARIANT} />
-      <DoisCaminhos variant={VARIANT} />
-      <OQueAcontece variant={VARIANT} />
-      <OManual variant={VARIANT} />
-      <QuemEMichelly variant={VARIANT} />
-      <Prova variant={VARIANT} />
-      <OfertaVsl variant={VARIANT} checkoutUrl={CHECKOUT_URL_VSL} />
+      {/* Tudo abaixo do vídeo só aparece após o vídeo atingir 10:08 (608s).
+          O player revela via displayHiddenElements (ver HeroVsl). */}
+      <div className="vsl-oculto">
+        <DoisCaminhos variant={VARIANT} />
+        <OQueAcontece variant={VARIANT} />
+        <OManual variant={VARIANT} />
+        <QuemEMichelly variant={VARIANT} />
+        <Prova variant={VARIANT} />
+        <OfertaVsl variant={VARIANT} checkoutUrl={CHECKOUT_URL_VSL} />
+      </div>
     </main>
   );
 }
