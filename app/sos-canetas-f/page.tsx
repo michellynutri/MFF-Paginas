@@ -6,6 +6,7 @@ import { OManual } from "../sos-canetas-_shared/_components/OManual";
 import { QuemEMichelly } from "../sos-canetas-_shared/_components/QuemEMichelly";
 import { Prova } from "../sos-canetas-_shared/_components/Prova";
 import { Oferta } from "../sos-canetas-_shared/_components/Oferta";
+import { CHECKOUT_URL_AF } from "../sos-canetas-_shared/_components/constants";
 
 const VARIANT = "f";
 
@@ -39,7 +40,7 @@ export default function Page() {
       <OManual variant={VARIANT} />
       <QuemEMichelly variant={VARIANT} />
       <Prova variant={VARIANT} />
-      <Oferta variant={VARIANT} />
+      <Oferta variant={VARIANT} checkoutUrl={CHECKOUT_URL_AF} />
     </main>
   );
 }
