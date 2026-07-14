@@ -2,7 +2,7 @@ export const CHECKOUT_URL = "https://payfast.greenn.com.br/kjs6gkt/offer/XPZ4EA?
 // Checkout exclusivo da variante -h (Pagtrust).
 export const CHECKOUT_URL_H = "https://checkout.pagtrust.com.br/ck5868f88e?funnel=fn116a30bf";
 // Checkout da página VSL (oferta R$ 97 ou 12x R$ 9,97 — Greenn).
-export const CHECKOUT_URL_VSL = "https://payfast.greenn.com.br/redirect/299064";
+export const CHECKOUT_URL_VSL = "https://payfast.greenn.com.br/redirect/299928";
 // Checkout das variantes -a e -f (Greenn).
 export const CHECKOUT_URL_AF = "https://payfast.greenn.com.br/redirect/286034";
 export const OFFER_ANCHOR = "#oferta";
