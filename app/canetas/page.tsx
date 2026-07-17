@@ -1,7 +1,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { SOS_COOKIE } from "@/lib/ab-canetas";
+import {
+  SOS_COOKIE,
+  isSosVariant,
+  randomSosVariant,
+} from "@/lib/ab-canetas";
 
 export const dynamic = "force-dynamic";
 
@@ -12,25 +16,19 @@ export const metadata: Metadata = {
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-// Roteamento da campanha PAGA da /sos-canetas.
-// Regra de convivência com a campanha da VSL:
-//  - Quem já viu a página da VSL (cookie = "vsl", carimbado pelo middleware
-//    quando entrou pela outra campanha) cai SÓ na VSL.
-//  - Quem nunca viu a VSL entra no sorteio A/F normal.
-const PAID_VARIANTS = ["a", "f"] as const;
-
-export default async function SosCanetasRedirector({
+// Link da bio + ManyChat. Se a pessoa já viu uma variante do funil (cookie
+// gravado pelo middleware), devolve a MESMA página — a última que ela viu.
+// Se não tem cookie (orgânico / novo dispositivo), sorteia entre a/f/vsl; o
+// middleware então carimba a variante sorteada, travando a pessoa a partir daí.
+export default async function CanetasRedirector({
   searchParams,
 }: {
   searchParams: Promise<SearchParams>;
 }) {
   const resolved = await searchParams;
   const cookieStore = await cookies();
-  const seenVsl = cookieStore.get(SOS_COOKIE)?.value === "vsl";
-
-  const variant = seenVsl
-    ? "vsl"
-    : PAID_VARIANTS[Math.floor(Math.random() * PAID_VARIANTS.length)];
+  const seen = cookieStore.get(SOS_COOKIE)?.value;
+  const variant = isSosVariant(seen) ? seen : randomSosVariant();
 
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(resolved)) {
