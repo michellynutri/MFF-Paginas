@@ -22,13 +22,20 @@ export function randomSosVariant(): SosVariant {
 
 // --- Teste 33/33/33 dentro da variante "vsl" -------------------------------
 // /sos-canetas-vsl não renderiza mais página nenhuma: é só um sorteador que
-// manda a pessoa pra /sos-canetas-vsl-v01, -v02 ou -v03 (v03 = página
-// original). O middleware carimba qual saiu no cookie abaixo, e o sorteador
-// respeita esse cookie nas visitas seguintes — assim ninguém troca de VSL no
-// meio do teste (e o /canetas, que promete devolver "a MESMA página", cumpre
-// a promessa até a versão).
+// divide o tráfego entre as versões listadas abaixo (v03 = página original).
+// O middleware carimba qual saiu no cookie abaixo, e o sorteador respeita
+// esse cookie nas visitas seguintes — assim ninguém troca de VSL no meio do
+// teste (e o /canetas, que promete devolver "a MESMA página", cumpre a
+// promessa até a versão).
+//
+// Tirar/pôr versão aqui é o que liga e desliga cada uma: quem tiver no cookie
+// uma versão que saiu da lista cai de novo no sorteio na visita seguinte.
+// Mexeu aqui, mexa também no matcher do middleware.
+// Rodada 2 (07/08/2026): v02 saiu por ter performado pior; entrou a v04.
+// A página da v02 continua de pé em /sos-canetas-vsl-v02, só não recebe mais
+// tráfego do sorteio.
 
-export const SOS_VSL_VERSIONS = ["v01", "v02", "v03"] as const;
+export const SOS_VSL_VERSIONS = ["v01", "v03", "v04"] as const;
 export type SosVslVersion = (typeof SOS_VSL_VERSIONS)[number];
 
 export const SOS_VSL_COOKIE = "sos_canetas_vsl_versao";

@@ -63,7 +63,7 @@ export const config = {
     "/sos-canetas-f",
     "/sos-canetas-vsl",
     "/sos-canetas-vsl-v01",
-    "/sos-canetas-vsl-v02",
     "/sos-canetas-vsl-v03",
+    "/sos-canetas-vsl-v04",
   ],
 }

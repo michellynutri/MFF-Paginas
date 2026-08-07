@@ -8,11 +8,8 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
-// Fora do sorteio desde 07/08/2026 (rodada 2): performou pior entre as três.
-// A página segue de pé e acessível pela URL direta — pra reativar, devolver
-// "v02" a SOS_VSL_VERSIONS (lib/ab-canetas.ts) e a rota ao matcher do
-// middleware.
-const VARIANT = "vsl-v02";
+// No sorteio desde 07/08/2026 (rodada 2), no lugar da v02.
+const VARIANT = "vsl-v04";
 
 export const metadata: Metadata = {
   title:
