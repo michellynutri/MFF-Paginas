@@ -26,6 +26,23 @@
   --sos-shadow-cta-warm: 0 10px 30px rgba(197, 107, 74, 0.32);
   --sos-shadow-cta-warm-hover: 0 14px 38px rgba(197, 107, 74, 0.4);
 
+  /* Tokens da página /canetas-do-jeito-certo — identidade "Sessão Noturna",
+     proposital e integralmente separada da /sos-canetas (creme + dourado) pra
+     que ninguém leia um produto como versão do outro. Não usar fora da rota. */
+  --cjc-noite: #141A17;
+  --cjc-noite-esc: #0E1311;
+  --cjc-superficie: #1E2723;
+  --cjc-superficie-alta: #263129;
+  --cjc-texto: #F2F5F1;
+  --cjc-texto-suave: #B7C4BC;
+  --cjc-texto-fraco: #8A9A91;
+  --cjc-menta: #7FE3A8;
+  --cjc-menta-esc: #4FBF83;
+  --cjc-ambar: #E0A952;
+  --cjc-argila: #D08163;
+  --cjc-linha: rgba(127, 227, 168, 0.18);
+  --cjc-linha-suave: rgba(242, 245, 241, 0.1);
+
   --background: var(--creme);
   --foreground: var(--texto);
   --card: var(--branco);
@@ -87,6 +104,25 @@
   --color-sos-dourado: var(--sos-dourado);
   --color-sos-dourado-esc: var(--sos-dourado-esc);
   --color-sos-terracota: var(--sos-terracota);
+
+  /* Cores da página /canetas-do-jeito-certo */
+  --color-cjc-noite: var(--cjc-noite);
+  --color-cjc-noite-esc: var(--cjc-noite-esc);
+  --color-cjc-superficie: var(--cjc-superficie);
+  --color-cjc-superficie-alta: var(--cjc-superficie-alta);
+  --color-cjc-texto: var(--cjc-texto);
+  --color-cjc-texto-suave: var(--cjc-texto-suave);
+  --color-cjc-texto-fraco: var(--cjc-texto-fraco);
+  --color-cjc-menta: var(--cjc-menta);
+  --color-cjc-menta-esc: var(--cjc-menta-esc);
+  --color-cjc-ambar: var(--cjc-ambar);
+  --color-cjc-argila: var(--cjc-argila);
+  --color-cjc-linha: var(--cjc-linha);
+  --color-cjc-linha-suave: var(--cjc-linha-suave);
+
+  /* Fraunces é carregada pela própria rota (app/canetas-do-jeito-certo/
+     _components/fonts.ts) pra não pesar o preload das outras páginas. */
+  --font-cjc-display: var(--font-fraunces);
 
   --shadow-card: 0 4px 24px rgba(98, 76, 50, 0.10);
   --shadow-btn: 0 2px 12px rgba(98, 76, 50, 0.25);
