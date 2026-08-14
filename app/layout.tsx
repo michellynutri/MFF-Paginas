@@ -134,6 +134,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     return el.href;
   };
   document.querySelectorAll('a').forEach(el => {
+    // mailto:, tel: e afins não têm origin: new URL() devolve origin "null" e o
+    // href sairia daqui como "nullsuporte@...". Só http(s) recebe UTM.
+    if (el.protocol !== 'http:' && el.protocol !== 'https:') return;
     const elURL = new URL(el.href);
     if (!elURL.hash) el.href = updateLinks(el, elURL);
   });

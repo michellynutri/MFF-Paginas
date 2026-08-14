@@ -8,6 +8,7 @@ import { TrendingDown, AlertTriangle, RotateCcw, Leaf, Shield, Repeat, X } from 
 import { CaptureForm } from "@/components/capture-form"
 import { FloatingCTA } from "@/components/floating-cta"
 import { Logo } from "@/components/logo"
+import { RodapeInstitucional } from "@/components/rodape-institucional"
 
 interface PageContentProps {
   headline: string
@@ -355,14 +356,11 @@ export default function PageContent({ headline, subheadline }: PageContentProps)
       </section>
 
       {/* ── FOOTER ─────────────────────────────────────────────���─────────── */}
-      <footer className="bg-marrom py-8 text-center">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-3 px-5">
+      <RodapeInstitucional tema="marrom">
+        <div className="flex justify-center">
           <Logo white small />
-          <p className="font-sans text-[13px] text-white/50">
-            &copy; 2026 Michelly Silveira | Todos os direitos reservados
-          </p>
         </div>
-      </footer>
+      </RodapeInstitucional>
 
       {/* ── Floating CTA (mobile) ─────────────────────────────────────────── */}
       <FloatingCTA />

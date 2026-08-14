@@ -1,5 +1,6 @@
 import { Cta } from "./Cta";
 import { CheckoutPSLink } from "./CheckoutPSLink";
+import { RodapeInstitucional } from "@/components/rodape-institucional";
 
 type OfertaItem = {
   title: string;
@@ -324,24 +325,11 @@ export function Oferta({ variant, checkoutUrl }: Props) {
       </section>
 
       {/* 7.4 Footer */}
-      <footer className="bg-verde-esc text-creme/70 py-10 px-6 text-center">
-        <p className="font-sans text-[13px] leading-[1.7]">
-          Manual S.O.S. Canetas © 2026 · Michelly Silveira Fanelli
+      <RodapeInstitucional tema="verde">
+        <p className="font-sans text-[13px] leading-[1.7] text-creme/80">
+          Manual S.O.S. Canetas
         </p>
-        <p className="font-sans text-[13px] mt-1">
-          <a href="#" className="hover:text-creme transition-colors">
-            Política de Privacidade
-          </a>
-          {" · "}
-          <a href="#" className="hover:text-creme transition-colors">
-            Termos de Uso
-          </a>
-          {" · "}
-          <a href="#" className="hover:text-creme transition-colors">
-            Contato
-          </a>
-        </p>
-      </footer>
+      </RodapeInstitucional>
     </>
   );
 }

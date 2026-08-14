@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Leaf } from "../sos-canetas-_shared/_components/Leaf";
+import { RodapeInstitucional } from "@/components/rodape-institucional";
 
 export const metadata: Metadata = {
   title: "Obrigada — Oferta especial | Michelly Silveira",
@@ -178,6 +179,12 @@ export default function ObgMmfBPage() {
         </div>
       </section>
 
+      {/* Rodapé institucional — sai do ar junto com o CTA: esta é uma página
+          com delay, e nada abaixo do vídeo aparece antes dos 13:00. */}
+      <div id="obg-mmf-b-footer" data-revealed="false" className="hidden data-[revealed=true]:block">
+        <RodapeInstitucional tema="verde" />
+      </div>
+
       {/* VSL — player Vturb (Converteai). Define o custom element
           <vturb-smartplayer> e faz upgrade do elemento já no DOM. */}
       <Script
@@ -194,6 +201,7 @@ export default function ObgMmfBPage() {
   var PLAYER_ID = "vid-6a1845f4b7169516c91dba45";
   var TARGETS = [
     { id: "obg-mmf-b-main-cta", at: 780 }, // 13:00 — botão principal
+    { id: "obg-mmf-b-footer", at: 780 },   // 13:00 — rodapé institucional
   ];
   var done = {};
 

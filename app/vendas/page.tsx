@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { RodapeInstitucional } from "@/components/rodape-institucional"
 
 // v4 - rebuild forcado
 export default function Home() {
@@ -1156,10 +1157,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <p>© 2026 Michelly Silveira Fanelli · Nutricionista CRN · Método Metabólico Feminino</p>
-        <p>Este produto não substitui acompanhamento médico ou nutricional individualizado. Resultado pode variar.</p>
-      </footer>
+      <RodapeInstitucional tema="marrom" />
 
       {/* Script de rastreamento UTM */}
       <script
@@ -1218,6 +1216,9 @@ export default function Home() {
                 };
 
                 document.querySelectorAll('a').forEach(el => {
+                    // mailto:, tel: e afins não têm origin: new URL() devolve
+                    // origin "null" e o href sairia como "nullsuporte@...".
+                    if (el.protocol !== 'http:' && el.protocol !== 'https:') return;
                     const elURL = new URL(el.href);
                     if (!elURL.hash) {
                         el.href = updateLinks(el, elURL);

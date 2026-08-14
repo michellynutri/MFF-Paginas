@@ -1,5 +1,6 @@
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
 import { CheckoutPSLink } from "../../sos-canetas-_shared/_components/CheckoutPSLink";
+import { RodapeInstitucional } from "@/components/rodape-institucional";
 
 type OfertaItem = {
   title: string;
@@ -401,26 +402,13 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
         </div>
       </section>
 
-      {/* 7.4 Footer */}
-      <footer className="bg-verde-esc text-creme/70 py-10 px-6 text-center">
-        <p className="font-sans text-[13px] leading-[1.7]">
-          Copyright © 2026 — Manual S.O.S. Canetas / Michelly Silveira Fanelli.
-          Todos os direitos reservados.
+      {/* 7.4 Footer — vive dentro do .vsl-oculto da página, então só aparece
+          quando o player libera o restante do conteúdo (10:08). */}
+      <RodapeInstitucional tema="verde">
+        <p className="font-sans text-[13px] leading-[1.7] text-creme/80">
+          Manual S.O.S. Canetas — todos os direitos reservados.
         </p>
-        <p className="font-sans text-[13px] mt-1">
-          <a href="#" className="hover:text-creme transition-colors">
-            Política de Privacidade
-          </a>
-          {" · "}
-          <a href="#" className="hover:text-creme transition-colors">
-            Termos de Uso
-          </a>
-          {" · "}
-          <a href="#" className="hover:text-creme transition-colors">
-            Contato
-          </a>
-        </p>
-      </footer>
+      </RodapeInstitucional>
     </>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "./_components/Hero";
 import { Calculadora } from "./_components/Calculadora";
 import { ComoFunciona } from "./_components/ComoFunciona";
+import { RodapeInstitucional } from "@/components/rodape-institucional";
 
 export const metadata: Metadata = {
   title:
@@ -27,6 +28,7 @@ export default function CalculadoraProteinaPage() {
       <Hero />
       <Calculadora />
       <ComoFunciona />
+      <RodapeInstitucional tema="creme" />
     </main>
   );
 }

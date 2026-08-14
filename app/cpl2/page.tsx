@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Logo } from "@/components/logo"
+import { RodapeInstitucional } from "@/components/rodape-institucional"
 import { Play, Lock, MessageCircle, Calendar } from "lucide-react"
 
 // ─── Countdown Hook ───────────────────────────────────────────────────────────
@@ -420,16 +421,14 @@ export default function CPL2Page() {
       </section>
 
       {/* ── BLOCO 5: RODAPÉ ────────────────────────────────────────────────── */}
-      <footer className="border-t border-borda bg-creme px-5 py-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="font-sans text-sm font-semibold text-marrom">
-            Blindagem — 26 de março, às 20h.
-          </p>
-          <p className="mt-2 font-sans text-xs text-texto/60">
-            Michelly Silveira — Nutricionista clínica, 13 anos de experiência, especialista em metabolismo feminino e tratamentos com canetas emagrecedoras.
-          </p>
-        </div>
-      </footer>
+      <RodapeInstitucional tema="creme">
+        <p className="font-sans text-sm font-semibold text-marrom">
+          Blindagem — 26 de março, às 20h.
+        </p>
+        <p className="mt-2 font-sans text-xs text-texto/60">
+          Michelly Silveira — Nutricionista clínica, 13 anos de experiência, especialista em metabolismo feminino e tratamentos com canetas emagrecedoras.
+        </p>
+      </RodapeInstitucional>
     </main>
   )
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { CheckCircle, Mail, MessageCircle, Calendar, ArrowRight } from "lucide-react"
 import { Logo } from "@/components/logo"
+import { RodapeInstitucional } from "@/components/rodape-institucional"
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -182,14 +183,11 @@ export default function ObrigadoBlindagem() {
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="bg-marrom py-8">
-        <div className="mx-auto max-w-5xl px-5 text-center">
+      <RodapeInstitucional tema="marrom">
+        <div className="flex justify-center">
           <Logo white />
-          <p className="mt-4 font-sans text-xs text-white/50">
-            &copy; {new Date().getFullYear()} Blindagem. Todos os direitos reservados.
-          </p>
         </div>
-      </footer>
+      </RodapeInstitucional>
 
     </main>
   )

@@ -2,6 +2,7 @@ import { X, Check } from "lucide-react"
 import { CaptureForm } from "@/components/capture-form"
 import { FloatingCTA } from "@/components/floating-cta"
 import { Logo } from "@/components/logo"
+import { RodapeInstitucional } from "@/components/rodape-institucional"
 
 interface PageContentV2Props {
   headline: string
@@ -178,17 +179,14 @@ export default function PageContentV2({ headline, subheadline }: PageContentV2Pr
       </section>
 
       {/* ── RODAPÉ ────────────────────────────────────────────────────────── */}
-      <footer className="bg-marrom py-8">
-        <div className="mx-auto max-w-6xl px-5 text-center">
+      <RodapeInstitucional tema="marrom">
+        <div className="flex justify-center">
           <Logo white small />
-          <p className="mt-3 font-sans text-xs leading-relaxed text-white/60">
-            Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.
-          </p>
-          <p className="mt-2 font-sans text-xs text-white/50">
-            &copy; {new Date().getFullYear()} Blindagem. Todos os direitos reservados.
-          </p>
         </div>
-      </footer>
+        <p className="mt-3 font-sans text-xs leading-relaxed text-white/60">
+          Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.
+        </p>
+      </RodapeInstitucional>
 
       {/* ── FLOATING CTA ──────────────────────────────────────────────────── */}
       <FloatingCTA />

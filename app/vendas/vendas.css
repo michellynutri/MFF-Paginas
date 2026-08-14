@@ -20,7 +20,10 @@
   --shadow: 0 8px 32px rgba(0, 0, 0, .12);
 }
 
-*, *::before, *::after {
+/* O rodapé institucional é um componente React estilizado por utilitários do
+   Tailwind. As regras desta folha são unlayered e venceriam qualquer utilitário
+   (cascade layers), então o subárvore do rodapé fica de fora do reset. */
+*:not(.rodape-institucional, .rodape-institucional *), *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -1789,16 +1792,6 @@ details[open] .fico {
 
 #ps strong {
   color: var(--mint);
-}
-
-/* ═══ FOOTER ═══ */
-footer {
-  background: var(--brown-d);
-  color: rgba(255, 255, 255, .38);
-  text-align: center;
-  padding: 26px 20px;
-  font-size: 12px;
-  line-height: 1.8;
 }
 
 /* ═══ REVEAL ═══ */
