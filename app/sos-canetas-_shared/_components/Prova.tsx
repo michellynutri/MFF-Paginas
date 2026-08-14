@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Cta } from "./Cta";
 import { Leaf } from "./Leaf";
 
-// TODO: substituir pelas fotos/vídeos reais antes do launch (com termo de uso)
 // Cada item já é uma composição antes+depois em um único arquivo.
 const imagensAntesDepois = [
   "/images/sos-canetas/before-after-1.jpg",
@@ -21,7 +20,6 @@ const videosAntesDepois = [
   },
 ];
 
-// TODO: substituir por depoimentos reais antes do launch
 const testimonials = [
   {
     quote: "O intestino destrancou depois da segunda semana.",

@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
-// TODO: substituir pelas fotos/vídeos reais antes do launch (com termo de uso)
 const imagensAntesDepois = [
   "/images/sos-canetas/before-after-1.jpg",
   "/images/sos-canetas/before-after-2.jpg",
@@ -20,7 +19,6 @@ const videosAntesDepois = [
   },
 ];
 
-// TODO: substituir por depoimentos reais antes do launch.
 // Ordem prioriza a Grande Ideia: dose reduzida e medo de parar resolvido.
 const testimonials = [
   {
