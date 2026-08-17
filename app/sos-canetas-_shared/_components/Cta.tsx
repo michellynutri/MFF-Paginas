@@ -36,8 +36,8 @@ export function handleCheckoutClick(
   const incoming = new URLSearchParams(window.location.search);
   incoming.forEach((value, key) => url.searchParams.append(key, value));
   // Aceita dígitos e hífen pra capturar as versões da VSL ("vsl-v01") inteiras
-  // — só com [a-z]+ o checkout receberia "vsl" nas três e o teste 33/33/33
-  // ficaria cego. Nas variantes de letra única o resultado não muda.
+  // — só com [a-z]+ o checkout receberia "vsl" em todas e o teste entre as
+  // versões ficaria cego. Nas variantes de letra única o resultado não muda.
   const variantMatch = window.location.pathname.match(
     /\/sos-canetas-([a-z0-9-]+)/,
   );

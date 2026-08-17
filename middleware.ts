@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith(prefix)) {
     const seen = pathname.slice(prefix.length)
 
-    // Versões do teste 33/33/33 da VSL (/sos-canetas-vsl-v01|v02|v03).
+    // Versões do teste 50/50 da VSL (/sos-canetas-vsl-v01|v03).
     // Carimba duas coisas: a variante "vsl" (pro resto do funil continuar
     // enxergando essa pessoa como da campanha da VSL) e qual versão saiu no
     // sorteio, pra ela cair sempre na mesma daqui pra frente.
@@ -64,6 +64,5 @@ export const config = {
     "/sos-canetas-vsl",
     "/sos-canetas-vsl-v01",
     "/sos-canetas-vsl-v03",
-    "/sos-canetas-vsl-v04",
   ],
 }
