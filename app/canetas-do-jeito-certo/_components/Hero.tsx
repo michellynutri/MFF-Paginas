@@ -25,16 +25,19 @@ export function Hero({ sessao }: Props) {
               resultado depois de parar com as canetas
             </p>
 
-            <h1 className="font-cjc-display text-[36px] md:text-[62px] leading-[1.08] md:leading-[1.02] font-semibold text-cjc-texto mb-6 md:mb-8">
-              Te ensinaram a começar a caneta, mas ninguém te ensinou a{" "}
-              <em className="italic text-cjc-menta">sair dela.</em>
+            <h1 className="font-cjc-display text-[32px] md:text-[52px] leading-[1.12] md:leading-[1.06] font-semibold text-cjc-texto mb-6 md:mb-8">
+              Aprenda a usar a caneta do jeito certo e extraia o máximo dela:{" "}
+              <em className="italic text-cjc-menta">
+                mais resultado agora, e o corpo que continua seu depois.
+              </em>
             </h1>
 
             <p className="font-sans text-[16px] md:text-[19px] leading-[1.65] text-cjc-texto-suave mb-8 max-w-[560px]">
-              O peso está caindo. A dúvida que fica é o que acontece no dia em
-              que a medicação sair da sua rotina. Numa sessão ao vivo, você vai
-              aprender a fazer o tratamento inteiro do jeito certo e a preparar
-              a sua saída desde agora, para que o resultado continue sendo seu.
+              Você já investe na caneta todo mês. Nesta masterclass ao vivo, a
+              nutricionista Michelly Silveira te mostra como emagrecer mais sem
+              subir a dose, atravessar cada fase sem ser pega de surpresa e sair
+              do tratamento dona do seu resultado — do jeito certo, feito pro
+              corpo da mulher.
             </p>
 
             <p className="font-sans text-[15px] md:text-[16px] text-cjc-texto-suave mb-6">
