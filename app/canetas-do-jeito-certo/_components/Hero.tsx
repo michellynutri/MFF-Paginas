@@ -24,30 +24,29 @@ export function Hero({ sessao }: Props) {
               como candidato a LCP — o hero inteiro só entrava na conta 500 ms
               depois de já estar pintado. */}
           <div>
-            <p className="font-sans text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.16em] text-cjc-menta mb-5 leading-[1.5]">
-              Para todas as mulheres que querem emagrecer mais rápido e manter o
-              resultado depois de parar com as canetas
-            </p>
+            {/* Formato e data antes da headline: a página tem um cronômetro
+                logo abaixo, e relógio só faz sentido pra quem já sabe que
+                existe um evento com hora marcada. */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
+              <span className="inline-flex items-center rounded-full border border-cjc-menta/30 bg-cjc-menta/[0.08] px-3.5 py-1.5 font-sans text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.16em] text-cjc-menta">
+                Sessão ao vivo
+              </span>
+              <span className="font-sans text-[14px] md:text-[15px] text-cjc-texto-suave">
+                {sessao.diaLongoTitulo}, às 20h
+              </span>
+            </div>
 
             <h1 className="font-cjc-display text-[32px] md:text-[52px] leading-[1.12] md:leading-[1.06] font-semibold text-cjc-texto mb-6 md:mb-8">
-              Aprenda a usar a caneta do jeito certo e extraia o máximo dela:{" "}
-              <em className="italic text-cjc-menta">
-                mais resultado agora, e o corpo que continua seu depois.
-              </em>
+              <em className="italic text-cjc-menta">Blindagem Metabólica</em>: o
+              que faz a mesma dose de caneta queimar mais gordura.
             </h1>
 
             <p className="font-sans text-[16px] md:text-[19px] leading-[1.65] text-cjc-texto-suave mb-8 max-w-[560px]">
-              Você já investe na caneta todo mês. Nesta masterclass ao vivo, a
-              nutricionista Michelly Silveira te mostra como emagrecer mais sem
-              subir a dose, atravessar cada fase sem ser pega de surpresa e sair
-              do tratamento dona do seu resultado — do jeito certo, feito pro
-              corpo da mulher.
-            </p>
-
-            <p className="font-sans text-[15px] md:text-[16px] text-cjc-texto-suave mb-6">
-              Ao vivo na{" "}
+              O Sistema Completo que a Dra. Michelly usa nas pacientes da
+              clínica: emagrecer com segurança, sem perder músculo no caminho —
+              e{" "}
               <strong className="font-semibold text-cjc-texto">
-                {sessao.diaLongo}, às 20h
+                sem o peso voltar com tudo quando você parar.
               </strong>
             </p>
 
@@ -88,7 +87,7 @@ export function Hero({ sessao }: Props) {
               />
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="font-cjc-display text-[19px] md:text-[21px] font-semibold text-cjc-texto leading-tight">
-                  Michelly Silveira Fanelli
+                  Dra. Michelly Silveira Fanelli
                 </div>
                 <div className="font-sans text-[12px] text-cjc-texto-suave mt-1">
                   Nutricionista Clínica · CRN-3 36739 · Especialista em Saúde da
