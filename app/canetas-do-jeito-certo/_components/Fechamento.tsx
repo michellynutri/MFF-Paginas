@@ -33,7 +33,9 @@ export function Fechamento({ sessao }: Props) {
           <p>
             A sessão acontece ao vivo na{" "}
             <span className="text-cjc-texto">{sessao.diaLongo}</span>, às 20h, e
-            a sua vaga custa {PRECO} em vez dos {PRECO_DE} de sempre.
+            a sua vaga custa{" "}
+            <strong className="font-semibold text-cjc-texto">{PRECO}</strong>{" "}
+            — por tudo o que vale {PRECO_DE}.
           </p>
         </div>
 
