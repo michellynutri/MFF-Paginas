@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Cta } from "./Cta";
-import { PRECO } from "./constants";
+import { PRECO, PRECO_DE } from "./constants";
 
 /**
  * Barra de conversão fixa no rodapé, só no mobile. Aparece depois que a pessoa
@@ -28,7 +28,12 @@ export function BarraFixa() {
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
           <div className="font-sans text-[14px] font-semibold text-cjc-texto">
-            Ingresso {PRECO}
+            Ingresso <span className="sr-only">de</span>
+            <span className="font-normal line-through text-cjc-texto-fraco">
+              {PRECO_DE}
+            </span>{" "}
+            <span className="sr-only">por</span>
+            <span className="text-cjc-menta">{PRECO}</span>
           </div>
         </div>
         <Cta

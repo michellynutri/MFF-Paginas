@@ -1,8 +1,11 @@
 import { Cta } from "./Cta";
 import { Glow } from "./Glow";
-import { PRECO } from "./constants";
+import { PRECO, PRECO_DE } from "./constants";
+import type { Sessao } from "./sessao";
 
-export function Oferta() {
+type Props = { sessao: Sessao };
+
+export function Oferta({ sessao }: Props) {
   return (
     <section
       id="ingresso"
@@ -17,8 +20,21 @@ export function Oferta() {
             <em className="italic text-cjc-menta">Canetas do Jeito Certo</em>
           </h2>
 
-          <div className="font-cjc-display text-[56px] md:text-[76px] leading-none font-semibold text-cjc-menta mb-9">
-            {PRECO}
+          <p className="font-sans text-[14px] md:text-[15px] text-cjc-texto-suave mb-7">
+            Ao vivo na{" "}
+            <strong className="font-semibold text-cjc-texto">
+              {sessao.diaLongo}, às 20h
+            </strong>
+          </p>
+
+          <div className="mb-9">
+            <div className="font-sans text-[15px] md:text-[16px] text-cjc-texto-fraco">
+              De{" "}
+              <span className="line-through">{PRECO_DE}</span> por
+            </div>
+            <div className="font-cjc-display text-[56px] md:text-[76px] leading-none font-semibold text-cjc-menta mt-1">
+              {PRECO}
+            </div>
           </div>
 
           <Cta

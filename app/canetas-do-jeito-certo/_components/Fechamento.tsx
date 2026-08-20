@@ -1,6 +1,6 @@
 import { Cta } from "./Cta";
 import { Glow } from "./Glow";
-import { PRECO } from "./constants";
+import { PRECO, PRECO_DE } from "./constants";
 import type { Sessao } from "./sessao";
 
 type Props = { sessao: Sessao };
@@ -33,7 +33,7 @@ export function Fechamento({ sessao }: Props) {
           <p>
             A sessão acontece ao vivo na{" "}
             <span className="text-cjc-texto">{sessao.diaLongo}</span>, às 20h, e
-            a sua vaga custa {PRECO}.
+            a sua vaga custa {PRECO} em vez dos {PRECO_DE} de sempre.
           </p>
         </div>
 

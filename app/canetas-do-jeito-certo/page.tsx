@@ -83,7 +83,7 @@ export default function Page() {
       <TresPassos />
       <Origem />
       <Prova />
-      <Oferta />
+      <Oferta sessao={sessao} />
       <ProvaOferta />
       <Fechamento sessao={sessao} />
       <Rodape />

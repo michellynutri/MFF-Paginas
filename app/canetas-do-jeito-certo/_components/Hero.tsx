@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Cta } from "./Cta";
 import { Cronometro } from "./Cronometro";
 import { Glow } from "./Glow";
-import { PRECO } from "./constants";
+import { PRECO, PRECO_DE } from "./constants";
 import type { Sessao } from "./sessao";
 
 type Props = { sessao: Sessao };
@@ -37,9 +37,20 @@ export function Hero({ sessao }: Props) {
               a sua saída desde agora, para que o resultado continue sendo seu.
             </p>
 
+            <p className="font-sans text-[15px] md:text-[16px] text-cjc-texto-suave mb-6">
+              Ao vivo na{" "}
+              <strong className="font-semibold text-cjc-texto">
+                {sessao.diaLongo}, às 20h
+              </strong>
+            </p>
+
             <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-8">
               <span className="font-sans text-[14px] text-cjc-texto">
-                Ingresso{" "}
+                Ingresso <span className="sr-only">de</span>
+                <span className="line-through text-cjc-texto-fraco">
+                  {PRECO_DE}
+                </span>{" "}
+                <span className="sr-only">por</span>
                 <strong className="font-semibold text-cjc-menta">
                   {PRECO}
                 </strong>

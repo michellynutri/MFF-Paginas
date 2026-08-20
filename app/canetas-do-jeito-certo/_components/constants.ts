@@ -6,4 +6,7 @@ export const OFFER_ANCHOR = "#ingresso";
 
 export const PRECO = "R$ 27";
 
+// Valor cheio do ingresso, exibido riscado ao lado do PRECO como ancoragem.
+export const PRECO_DE = "R$ 97";
+
 export const DURACAO = "2 horas";
