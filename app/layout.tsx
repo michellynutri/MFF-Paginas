@@ -4,18 +4,25 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
 
+// preload: false nas duas fontes abaixo — elas só são usadas por parte das
+// rotas, mas o preload ia no <head> de TODAS: eram ~85 KB disputando banda com
+// o hero em páginas que nem chegam a usá-las. Com o CSS inline (next.config),
+// o navegador descobre a fonte ao ler o HTML, quase tão cedo quanto o preload.
 const stixTwoText = STIX_Two_Text({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
   display: 'swap',
+  preload: false,
 })
 
+// A fonte de corpo de todo o site — esta sim vale o preload em toda rota.
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-sans',
+  display: 'swap',
 })
 
 const playfairDisplay = Playfair_Display({
@@ -23,6 +30,7 @@ const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-playfair',
   display: 'swap',
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -46,10 +54,24 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Google Tag Manager */}
+        {/* Handshake antecipado com quem o GTM chama logo em seguida: sem isto
+            o DNS + TLS de cada origem entra no meio do carregamento. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="preconnect" href="https://stape.metodometabolicofeminino.com.br" />
+        <link
+          rel="preconnect"
+          href="https://capi-automation.s3.us-east-2.amazonaws.com"
+          crossOrigin=""
+        />
+
+        {/* Google Tag Manager — afterInteractive, e não beforeInteractive: o
+            GTM roda de qualquer jeito antes de qualquer clique, mas em
+            beforeInteractive ele segurava a hidratação do React (~10 s de
+            tarefas longas no celular) e empurrava o LCP junto. */}
         <Script
           id="gtm-script"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

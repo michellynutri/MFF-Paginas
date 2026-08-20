@@ -3,7 +3,7 @@ import { Cta } from "./Cta";
 import { Cronometro } from "./Cronometro";
 import { Glow } from "./Glow";
 import { PRECO, PRECO_DE } from "./constants";
-import type { Sessao } from "./sessao";
+import { partesRestantes, type Sessao } from "./sessao";
 
 type Props = { sessao: Sessao };
 
@@ -19,7 +19,11 @@ export function Hero({ sessao }: Props) {
 
       <div className="max-w-[1180px] mx-auto relative">
         <div className="grid md:grid-cols-[54%_46%] gap-12 md:gap-14 items-center">
-          <div className="animate-fade-up">
+          {/* Sem animação de entrada aqui de propósito: .animate-fade-up
+              começa em opacity:0, e o Chrome não considera elemento invisível
+              como candidato a LCP — o hero inteiro só entrava na conta 500 ms
+              depois de já estar pintado. */}
+          <div>
             <p className="font-sans text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.16em] text-cjc-menta mb-5 leading-[1.5]">
               Para todas as mulheres que querem emagrecer mais rápido e manter o
               resultado depois de parar com as canetas
@@ -62,7 +66,7 @@ export function Hero({ sessao }: Props) {
                 className="w-px h-4 bg-cjc-linha-suave hidden sm:block"
                 aria-hidden="true"
               />
-              <Cronometro />
+              <Cronometro inicial={partesRestantes(sessao.alvoISO)} />
             </div>
 
             <Cta dataCta="cjc-hero">QUERO MINHA VAGA NA SESSÃO</Cta>

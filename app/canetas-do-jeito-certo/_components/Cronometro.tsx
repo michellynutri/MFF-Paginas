@@ -1,39 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { proximaQuinta } from "./sessao";
+import { partesRestantes, proximaQuinta } from "./sessao";
 
 type Props = {
+  /**
+   * Contagem já calculada no servidor. Vem por prop (e não de um Date.now()
+   * daqui) porque o primeiro render do cliente precisa bater byte a byte com
+   * o HTML — senão o React reclama da hidratação.
+   */
+  inicial: readonly string[];
   /** "linha" = inline no hero · "bloco" = caixas grandes na oferta */
   formato?: "linha" | "bloco";
   className?: string;
 };
 
-const VAZIO = ["--", "--", "--", "--"] as const;
-
-function partes(restanteMs: number) {
-  const s = Math.floor(restanteMs / 1000);
-  return [
-    String(Math.floor(s / 86400)).padStart(2, "0"),
-    String(Math.floor((s % 86400) / 3600)).padStart(2, "0"),
-    String(Math.floor((s % 3600) / 60)).padStart(2, "0"),
-    String(s % 60).padStart(2, "0"),
-  ];
-}
-
 const rotulos = ["dias", "horas", "min", "seg"];
 
-export function Cronometro({ formato = "linha", className = "" }: Props) {
-  // Começa vazio de propósito: o servidor e o navegador renderiam segundos
-  // diferentes e o React reclamaria da hidratação. As caixas já ocupam o
-  // espaço final, então não há salto de layout quando os números entram.
-  const [valores, setValores] = useState<readonly string[]>(VAZIO);
+export function Cronometro({
+  inicial,
+  formato = "linha",
+  className = "",
+}: Props) {
+  // Os números já vêm prontos no HTML: este é o elemento de LCP do hero no
+  // mobile, e esperar a hidratação pra pintá-lo custava segundos.
+  const [valores, setValores] = useState<readonly string[]>(inicial);
 
   useEffect(() => {
     // Recalcula o alvo a cada tick: quando a sessão de quinta passa das 20h,
     // o cronômetro vira sozinho pra edição da semana seguinte.
-    const tick = () =>
-      setValores(partes(Math.max(0, proximaQuinta().getTime() - Date.now())));
+    const tick = () => setValores(partesRestantes(proximaQuinta()));
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);

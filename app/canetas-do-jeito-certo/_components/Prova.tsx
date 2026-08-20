@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ListaDepoimentos } from "./ListaDepoimentos";
 import { DEPOIMENTOS_PROVA } from "./depoimentos";
 import { PRINT_PROVA } from "./prints";
+import { VideoDepoimento } from "./VideoDepoimento";
 
 // Vídeos de depoimento, os mesmos da /sos-canetas. Apontam pra pasta de lá em
 // vez de duplicar 19 MB de mp4 no repo.
@@ -9,10 +10,12 @@ const videos = [
   {
     src: "/images/sos-canetas/before-after-4.mp4",
     poster: "/images/sos-canetas/before-after-4-poster.jpg",
+    alt: "antes e depois de uma paciente da Michelly",
   },
   {
     src: "/images/sos-canetas/before-after-5.mp4",
     poster: "/images/sos-canetas/before-after-5-poster.jpg",
+    alt: "relato de uma paciente sobre o tratamento",
   },
 ];
 
@@ -34,15 +37,7 @@ export function Prova() {
               className="rounded-2xl overflow-hidden border border-cjc-linha-suave bg-cjc-superficie"
             >
               <div className="relative aspect-video">
-                <video
-                  controls
-                  preload="none"
-                  playsInline
-                  poster={v.poster}
-                  className="w-full h-full object-cover"
-                >
-                  <source src={v.src} type="video/mp4" />
-                </video>
+                <VideoDepoimento src={v.src} poster={v.poster} alt={v.alt} />
               </div>
             </li>
           ))}

@@ -75,6 +75,25 @@ export function proximaQuinta(agora: Date = new Date()): Date {
   return alvo;
 }
 
+/**
+ * ["07", "05", "10", "18"] — dias, horas, minutos e segundos até o alvo.
+ * Fica aqui, e não dentro do <Cronometro>, porque o servidor também precisa
+ * dela: é o que permite mandar o cronômetro já preenchido no HTML.
+ */
+export function partesRestantes(
+  alvo: Date | string,
+  agora: Date = new Date(),
+): string[] {
+  const alvoMs = (typeof alvo === "string" ? new Date(alvo) : alvo).getTime();
+  const s = Math.floor(Math.max(0, alvoMs - agora.getTime()) / 1000);
+  return [
+    String(Math.floor(s / 86400)).padStart(2, "0"),
+    String(Math.floor((s % 86400) / 3600)).padStart(2, "0"),
+    String(Math.floor((s % 3600) / 60)).padStart(2, "0"),
+    String(s % 60).padStart(2, "0"),
+  ];
+}
+
 export function proximaSessao(agora: Date = new Date()): Sessao {
   const alvo = proximaQuinta(agora);
   const diaLongo = fmtLongo.format(alvo);
