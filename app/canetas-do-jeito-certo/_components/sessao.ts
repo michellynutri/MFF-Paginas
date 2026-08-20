@@ -10,6 +10,13 @@
 const DIA_SEMANA_UTC = 4; // quinta-feira
 const HORA_UTC = 23; // 20h em Brasília
 
+// Quintas em que não vai ter sessão. Enquanto o alvo cair numa delas, data e
+// cronômetro pulam pra semana seguinte. Formato "AAAA-MM-DD" no dia de
+// Brasília — que aqui é o mesmo dia em UTC, já que 20h daqui é 23h lá.
+const PULADAS = ["2026-08-20"];
+
+const diaUTC = (d: Date) => d.toISOString().slice(0, 10);
+
 const fmtLongo = new Intl.DateTimeFormat("pt-BR", {
   timeZone: "America/Sao_Paulo",
   weekday: "long",
@@ -60,6 +67,9 @@ export function proximaQuinta(agora: Date = new Date()): Date {
   );
   // Quinta depois das 20h: a edição desta semana já rolou, joga pra próxima.
   if (alvo.getTime() <= agora.getTime()) {
+    alvo.setUTCDate(alvo.getUTCDate() + 7);
+  }
+  while (PULADAS.includes(diaUTC(alvo))) {
     alvo.setUTCDate(alvo.getUTCDate() + 7);
   }
   return alvo;
