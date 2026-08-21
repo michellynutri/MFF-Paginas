@@ -11,8 +11,9 @@ export function Mecanismo() {
 
       <div className="max-w-[880px] mx-auto relative">
         <p className="font-cjc-display text-[30px] md:text-[44px] leading-[1.15] md:leading-[1.1] font-semibold text-cjc-texto mb-10 md:mb-12">
-          <span className="text-cjc-ambar">40% das mulheres</span> recuperam o
-          peso perdido por não fazer um plano de tratamento correto.
+          Mulheres que param a caneta recuperam{" "}
+          <span className="text-cjc-ambar">até 70% do peso perdido</span>{" "}
+          quando não há um plano de tratamento correto.
         </p>
 
         <div className="font-sans text-[16px] md:text-[18px] leading-[1.75] text-cjc-texto-suave space-y-6 border-l-2 border-cjc-linha pl-6 md:pl-8">
