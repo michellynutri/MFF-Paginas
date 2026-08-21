@@ -73,11 +73,18 @@ export function Hero({ sessao }: Props) {
 
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.5)] ring-1 ring-cjc-linha">
+              {/* preload + fetchPriority juntos de propósito: `priority`
+                  (deprecado no Next 16) só emite loading=eager e o
+                  <link rel=preload> — não emite fetchpriority=high, nem na tag
+                  nem no preload. Sem isso o Chrome mantém a imagem em
+                  prioridade baixa até o layout fechar, e ela entra na fila
+                  atrás dos 189 KB de CSS inline e dos chunks. */}
               <Image
                 src="/images/canetas-do-jeito-certo/michelly-hero.jpg"
                 alt="Michelly Silveira, nutricionista clínica especialista em saúde da mulher"
                 fill
-                priority
+                preload
+                fetchPriority="high"
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 46vw"
               />

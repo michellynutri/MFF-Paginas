@@ -16,9 +16,13 @@ import { Fechamento } from "./_components/Fechamento";
 import { Rodape } from "./_components/Rodape";
 import { BarraFixa } from "./_components/BarraFixa";
 
-// A página mostra a data da próxima sessão, que vira toda quinta às 20h.
-// Sem isto o HTML congelaria na data do build.
-export const dynamic = "force-dynamic";
+// A página mostra a data da próxima sessão, que vira toda quinta às 20h, então
+// o HTML não pode congelar na data do build. ISR de 60 s resolve isso sem abrir
+// mão do cache: com force-dynamic a resposta vinha `no-store` e todo acesso ia
+// até iad1 (x-vercel-cache: MISS, ~390 ms de TTFB). Agora sai do edge de São
+// Paulo. A data erra no máximo 1 minuto na virada da semana, e o cronômetro se
+// corrige sozinho no primeiro tick do cliente.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title:

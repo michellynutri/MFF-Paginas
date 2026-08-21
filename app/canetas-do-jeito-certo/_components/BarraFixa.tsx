@@ -23,7 +23,10 @@ export function BarraFixa() {
       className={`md:hidden fixed bottom-0 inset-x-0 z-50 border-t border-cjc-linha bg-cjc-noite-esc/95 backdrop-blur-sm px-4 py-3 transition-transform duration-300 ${
         visivel ? "translate-y-0" : "translate-y-full"
       }`}
-      aria-hidden={!visivel}
+      // inert, e não aria-hidden: a barra escondida continua com um <a>
+      // focável dentro, e aria-hidden sobre elemento focável é violação
+      // de acessibilidade (axe: aria-hidden-focus). inert tira os dois.
+      inert={!visivel}
     >
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1">
