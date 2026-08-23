@@ -1,8 +1,8 @@
-import { Cta } from "./Cta";
-import { Glow } from "./Glow";
-import { DURACAO, PRECO, PRECO_DE } from "./constants";
-import { ITENS_OFERTA, brl, recapOferta } from "./stack";
-import type { Sessao } from "./sessao";
+import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
+import { Glow } from "../../canetas-do-jeito-certo-_shared/_components/Glow";
+import { DURACAO, PRECO } from "../../canetas-do-jeito-certo-_shared/_components/constants";
+import { ITENS_OFERTA, PRECO_DE, brl, recapOferta } from "./stack";
+import type { Sessao } from "../../canetas-do-jeito-certo-_shared/_components/sessao";
 
 type Props = { sessao: Sessao };
 
@@ -10,10 +10,7 @@ export function Oferta({ sessao }: Props) {
   const recap = recapOferta(sessao, DURACAO);
 
   return (
-    <section
-      id="ingresso"
-      className="relative overflow-hidden bg-cjc-noite-esc py-16 md:py-24 px-6 md:px-20 scroll-mt-6"
-    >
+    <section className="relative overflow-hidden bg-cjc-noite-esc py-16 md:py-24 px-6 md:px-20">
       <Glow className="top-[-140px] left-1/2 -translate-x-1/2 w-[560px] h-[460px]" />
 
       <div className="max-w-[820px] mx-auto relative">
@@ -100,7 +97,10 @@ export function Oferta({ sessao }: Props) {
           ))}
         </ol>
 
-        <div className="max-w-[620px] mx-auto rounded-3xl border border-cjc-menta/25 bg-cjc-superficie p-7 md:p-11 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        <div
+          id="ingresso"
+          className="max-w-[620px] mx-auto rounded-3xl border border-cjc-menta/25 bg-cjc-superficie p-7 md:p-11 shadow-[0_30px_80px_rgba(0,0,0,0.45)] scroll-mt-8 md:scroll-mt-14"
+        >
           <p className="font-sans text-[12px] font-semibold uppercase tracking-[0.16em] text-cjc-menta mb-6 text-center">
             Tudo o que entra na sua vaga
           </p>

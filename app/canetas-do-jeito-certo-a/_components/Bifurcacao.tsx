@@ -1,4 +1,4 @@
-import { Cta } from "./Cta";
+import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
 
 const semProtocolo = [
   "A fome volta com força total, e nada foi preparado para esse momento.",

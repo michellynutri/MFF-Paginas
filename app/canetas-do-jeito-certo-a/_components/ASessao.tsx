@@ -1,6 +1,6 @@
-import { Glow } from "./Glow";
-import { DURACAO } from "./constants";
-import type { Sessao } from "./sessao";
+import { Glow } from "../../canetas-do-jeito-certo-_shared/_components/Glow";
+import { DURACAO } from "../../canetas-do-jeito-certo-_shared/_components/constants";
+import type { Sessao } from "../../canetas-do-jeito-certo-_shared/_components/sessao";
 
 type Props = { sessao: Sessao };
 

@@ -1,4 +1,4 @@
-import { Cta } from "./Cta";
+import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
 
 // Descrições vêm palavra por palavra do parágrafo do Bloco 6 da copy.
 const fases = [

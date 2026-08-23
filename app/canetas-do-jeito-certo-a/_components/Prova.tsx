@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { ListaDepoimentos } from "./ListaDepoimentos";
-import { DEPOIMENTOS_PROVA } from "./depoimentos";
-import { PRINT_PROVA } from "./prints";
-import { VideoDepoimento } from "./VideoDepoimento";
+import { ListaDepoimentos } from "../../canetas-do-jeito-certo-_shared/_components/ListaDepoimentos";
+import { DEPOIMENTOS_PROVA } from "../../canetas-do-jeito-certo-_shared/_components/depoimentos";
+import { PRINT_PROVA } from "../../canetas-do-jeito-certo-_shared/_components/prints";
+import { VideoDepoimento } from "../../canetas-do-jeito-certo-_shared/_components/VideoDepoimento";
 
 // Vídeos de depoimento, os mesmos da /sos-canetas. Apontam pra pasta de lá em
 // vez de duplicar 19 MB de mp4 no repo.

@@ -50,3 +50,36 @@ export function isSosVslVersion(
 export function randomSosVslVersion(): SosVslVersion {
   return SOS_VSL_VERSIONS[Math.floor(Math.random() * SOS_VSL_VERSIONS.length)];
 }
+
+// --- Teste 50/50 da /canetas-do-jeito-certo --------------------------------
+// Mesma mecânica do teste da VSL, uma página diferente: a rota
+// /canetas-do-jeito-certo não renderiza mais nada, é só o sorteador que divide
+// o tráfego entre as variantes abaixo. A página que morava lá virou a "a",
+// sem uma vírgula mudada — é o controle do teste.
+//
+// O middleware carimba a variante sorteada no cookie abaixo, e o sorteador
+// respeita esse cookie nas visitas seguintes: ninguém troca de página no meio
+// do teste (a pessoa que voltar pelo link da bio ou por um retargeting vê a
+// mesma coisa que viu antes, e o número da conversão não se contamina).
+//
+// Tirar/pôr variante aqui é o que liga e desliga cada uma: quem tiver no
+// cookie uma variante que saiu da lista cai de novo no sorteio na visita
+// seguinte. Mexeu aqui, mexa também no matcher do middleware.
+//
+// Rodada 1 (23/08/2026): "a" (página original) contra "b" (copy v2 — entrada
+// por desejo, mecanismo em bloco único, âncora de R$ 358 e FAQ).
+
+export const CJC_VARIANTS = ["a", "b"] as const;
+export type CjcVariant = (typeof CJC_VARIANTS)[number];
+
+export const CJC_COOKIE = "cjc_variante";
+
+export function isCjcVariant(
+  value: string | undefined | null,
+): value is CjcVariant {
+  return !!value && (CJC_VARIANTS as readonly string[]).includes(value);
+}
+
+export function randomCjcVariant(): CjcVariant {
+  return CJC_VARIANTS[Math.floor(Math.random() * CJC_VARIANTS.length)];
+}

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ListaDepoimentos } from "./ListaDepoimentos";
-import { DEPOIMENTOS_OFERTA } from "./depoimentos";
-import { PRINT_OFERTA } from "./prints";
+import { ListaDepoimentos } from "../../canetas-do-jeito-certo-_shared/_components/ListaDepoimentos";
+import { DEPOIMENTOS_OFERTA } from "../../canetas-do-jeito-certo-_shared/_components/depoimentos";
+import { PRINT_OFERTA } from "../../canetas-do-jeito-certo-_shared/_components/prints";
 
 /**
  * Segundo grupo de depoimentos, entre a oferta e o fechamento.

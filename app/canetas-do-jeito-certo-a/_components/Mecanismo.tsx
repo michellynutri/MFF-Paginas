@@ -1,4 +1,4 @@
-import { Glow } from "./Glow";
+import { Glow } from "../../canetas-do-jeito-certo-_shared/_components/Glow";
 
 export function Mecanismo() {
   return (

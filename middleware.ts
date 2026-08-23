@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import {
+  CJC_COOKIE,
   SOS_COOKIE,
   SOS_COOKIE_MAX_AGE,
   SOS_VSL_COOKIE,
+  isCjcVariant,
   isSosVariant,
   isSosVslVersion,
 } from "@/lib/ab-canetas"
@@ -53,6 +55,20 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Memória do teste 50/50 da Canetas do Jeito Certo. Mesma ideia do bloco
+  // acima: ao abrir uma variante (de qualquer origem — sorteio, link direto,
+  // retargeting), carimba qual foi. O sorteador da /canetas-do-jeito-certo lê
+  // esse cookie e devolve a pessoa sempre pra mesma página.
+  const prefixoCjc = "/canetas-do-jeito-certo-"
+  if (pathname.startsWith(prefixoCjc)) {
+    const variante = pathname.slice(prefixoCjc.length)
+    if (isCjcVariant(variante)) {
+      const response = NextResponse.next()
+      carimbar(response, request, CJC_COOKIE, variante)
+      return response
+    }
+  }
+
   return NextResponse.next()
 }
 
@@ -64,5 +80,7 @@ export const config = {
     "/sos-canetas-vsl",
     "/sos-canetas-vsl-v01",
     "/sos-canetas-vsl-v03",
+    "/canetas-do-jeito-certo-a",
+    "/canetas-do-jeito-certo-b",
   ],
 }

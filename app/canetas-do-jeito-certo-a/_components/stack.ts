@@ -1,4 +1,4 @@
-import type { Sessao } from "./sessao";
+import type { Sessao } from "../../canetas-do-jeito-certo-_shared/_components/sessao";
 
 // Stack da oferta. Cada item traz o que entrega e quanto vale sozinho, e a
 // soma dos valores é a âncora exibida na página inteira — `PRECO_DE` sai
@@ -59,6 +59,15 @@ export const brl = (valor: number) => `R$ ${valor}`;
 export const VALOR_TOTAL = brl(
   ITENS_OFERTA.reduce((soma, item) => soma + item.valor, 0),
 );
+
+/**
+ * O valor cheio exibido riscado ao lado do preço, na página inteira. Sai da
+ * soma acima de propósito: o número que o hero anuncia é o mesmo que a seção
+ * da oferta destrincha item a item. Mora no stack da variante, e não no
+ * `constants` compartilhado, porque a variante B tem outro stack e outra
+ * âncora — o A/B não pode misturar os dois.
+ */
+export const PRECO_DE = VALOR_TOTAL;
 
 /** O recap depende da data da sessão, que muda toda semana. */
 export const recapOferta = (sessao: Sessao, duracao: string) => [

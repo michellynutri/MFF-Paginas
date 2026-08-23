@@ -1,5 +1,5 @@
-import { Cta } from "./Cta";
-import { PRECO } from "./constants";
+import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
+import { PRECO } from "../../canetas-do-jeito-certo-_shared/_components/constants";
 
 const passos = [
   {

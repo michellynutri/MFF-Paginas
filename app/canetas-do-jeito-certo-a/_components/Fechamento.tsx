@@ -1,7 +1,8 @@
-import { Cta } from "./Cta";
-import { Glow } from "./Glow";
-import { PRECO, PRECO_DE } from "./constants";
-import type { Sessao } from "./sessao";
+import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
+import { Glow } from "../../canetas-do-jeito-certo-_shared/_components/Glow";
+import { PRECO } from "../../canetas-do-jeito-certo-_shared/_components/constants";
+import { PRECO_DE } from "./stack";
+import type { Sessao } from "../../canetas-do-jeito-certo-_shared/_components/sessao";
 
 type Props = { sessao: Sessao };
 
