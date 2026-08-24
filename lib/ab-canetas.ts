@@ -71,10 +71,19 @@ export function randomSosVslVersion(): SosVslVersion {
 // Rodada 2 (23/08/2026): entra a "c" (copy v4 — sequência de venda longa em
 // 17 seções, fundo branco). O tráfego passa a se dividir em três, o que dá
 // um terço do volume para cada e estica o tempo até o resultado ter sinal.
-// Para voltar a um teste de dois, tirar daqui a variante que ficar de fora —
-// a página dela continua de pé, só para de receber tráfego.
+// Rodada 3 (24/08/2026): a, b e c saem do sorteio — nenhuma das três converteu
+// o suficiente pra justificar continuar dividindo volume com elas. Entra a "d"
+// (copy v5, eixo prático: promete um entregável em vez de um diagnóstico, e o
+// currículo do workshop é o centro da página) recebendo 100% do tráfego.
+// Não é um A/B: é uma troca de página. Enquanto esta lista tiver um item só,
+// o sorteador vira redirecionador e o resultado da "d" não tem controle
+// concorrente — a comparação possível é contra o histórico das outras três.
+// Para voltar a testar duas, basta pôr a concorrente de volta na lista (a "c"
+// é a comparação natural: mesma paleta, eixo oposto). As páginas da a, b e c
+// continuam de pé nas rotas delas, só não recebem mais tráfego do sorteio, e
+// quem tiver uma delas no cookie cai de novo no sorteio na visita seguinte.
 
-export const CJC_VARIANTS = ["a", "b", "c"] as const;
+export const CJC_VARIANTS = ["d"] as const;
 export type CjcVariant = (typeof CJC_VARIANTS)[number];
 
 export const CJC_COOKIE = "cjc_variante";

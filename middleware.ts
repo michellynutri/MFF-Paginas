@@ -83,5 +83,6 @@ export const config = {
     "/canetas-do-jeito-certo-a",
     "/canetas-do-jeito-certo-b",
     "/canetas-do-jeito-certo-c",
+    "/canetas-do-jeito-certo-d",
   ],
 }
