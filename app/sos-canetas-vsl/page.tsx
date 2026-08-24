@@ -16,12 +16,16 @@ export const metadata: Metadata = {
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-// Teste 50/50 da VSL. Esta rota não tem mais página: é só o sorteador.
-// A página que morava aqui virou a /sos-canetas-vsl-v03.
+// Sorteador da VSL. Esta rota não tem mais página: só decide pra qual versão
+// mandar. A página que morava aqui virou a /sos-canetas-vsl-v03.
 //  - Quem já caiu numa versão (cookie carimbado pelo middleware) volta pra
 //    mesma — trocar de VSL no meio do teste sujaria o resultado e confundiria
 //    quem já começou a assistir.
-//  - Quem chega novo entra no sorteio de metade pra cada.
+//  - Quem chega novo entra no sorteio entre as versões de SOS_VSL_VERSIONS.
+// Desde 24/08/2026 essa lista tem uma versão só (a v03), então na prática o
+// sorteador virou um redirecionador e não há teste rodando aqui. Quem tiver no
+// cookie uma versão que saiu da lista é re-sorteado e cai na v03. Voltar a
+// testar é pôr outra versão em SOS_VSL_VERSIONS (e no matcher do middleware).
 // O link divulgado continua sendo /sos-canetas-vsl; as UTMs da campanha são
 // repassadas inteiras e a versão sorteada vai em ?variante=vsl-vXX.
 export default async function SosCanetasVslRedirector({
