@@ -68,8 +68,13 @@ export function randomSosVslVersion(): SosVslVersion {
 //
 // Rodada 1 (23/08/2026): "a" (página original) contra "b" (copy v2 — entrada
 // por desejo, mecanismo em bloco único, âncora de R$ 358 e FAQ).
+// Rodada 2 (23/08/2026): entra a "c" (copy v4 — sequência de venda longa em
+// 17 seções, fundo branco). O tráfego passa a se dividir em três, o que dá
+// um terço do volume para cada e estica o tempo até o resultado ter sinal.
+// Para voltar a um teste de dois, tirar daqui a variante que ficar de fora —
+// a página dela continua de pé, só para de receber tráfego.
 
-export const CJC_VARIANTS = ["a", "b"] as const;
+export const CJC_VARIANTS = ["a", "b", "c"] as const;
 export type CjcVariant = (typeof CJC_VARIANTS)[number];
 
 export const CJC_COOKIE = "cjc_variante";

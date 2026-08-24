@@ -43,6 +43,25 @@
   --cjc-linha: rgba(127, 227, 168, 0.18);
   --cjc-linha-suave: rgba(242, 245, 241, 0.1);
 
+  /* Mesma identidade, virada para fundo branco — a variante C do teste A/B.
+     Não é a paleta "Sessão Noturna" clareada: sobre branco, a menta #7FE3A8
+     tem 1,7:1 de contraste e some. Os acentos aqui são as mesmas famílias
+     (verde, âmbar, argila) descidas até passarem em AA para texto, enquanto
+     a menta original segue viva nos fundos de destaque e nos halos, onde
+     contraste de texto não se aplica. */
+  --cjc-dia: #FFFFFF;
+  --cjc-dia-superficie: #F6F9F6;
+  --cjc-dia-superficie-alta: #EDF3EE;
+  --cjc-dia-texto: #10201A;
+  --cjc-dia-texto-suave: #44554D;
+  --cjc-dia-texto-fraco: #66766D;
+  --cjc-dia-menta: #0E7A4A;
+  --cjc-dia-menta-esc: #0A5D38;
+  --cjc-dia-ambar: #8A5A12;
+  --cjc-dia-argila: #A4432A;
+  --cjc-dia-linha: rgba(14, 122, 74, 0.22);
+  --cjc-dia-linha-suave: rgba(16, 32, 26, 0.1);
+
   --background: var(--creme);
   --foreground: var(--texto);
   --card: var(--branco);
@@ -119,6 +138,20 @@
   --color-cjc-argila: var(--cjc-argila);
   --color-cjc-linha: var(--cjc-linha);
   --color-cjc-linha-suave: var(--cjc-linha-suave);
+
+  /* Paleta clara da variante C */
+  --color-cjc-dia: var(--cjc-dia);
+  --color-cjc-dia-superficie: var(--cjc-dia-superficie);
+  --color-cjc-dia-superficie-alta: var(--cjc-dia-superficie-alta);
+  --color-cjc-dia-texto: var(--cjc-dia-texto);
+  --color-cjc-dia-texto-suave: var(--cjc-dia-texto-suave);
+  --color-cjc-dia-texto-fraco: var(--cjc-dia-texto-fraco);
+  --color-cjc-dia-menta: var(--cjc-dia-menta);
+  --color-cjc-dia-menta-esc: var(--cjc-dia-menta-esc);
+  --color-cjc-dia-ambar: var(--cjc-dia-ambar);
+  --color-cjc-dia-argila: var(--cjc-dia-argila);
+  --color-cjc-dia-linha: var(--cjc-dia-linha);
+  --color-cjc-dia-linha-suave: var(--cjc-dia-linha-suave);
 
   /* Fraunces é carregada pela própria rota (app/canetas-do-jeito-certo/
      _components/fonts.ts) pra não pesar o preload das outras páginas. */

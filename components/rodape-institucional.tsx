@@ -20,7 +20,7 @@ import {
  * dentro dela sem parecer enxerto. `children` entra acima do bloco legal, para
  * as páginas que já tinham logo ou linha de marca no rodapé.
  */
-type Tema = "verde" | "marrom" | "creme" | "noite";
+type Tema = "verde" | "marrom" | "creme" | "noite" | "branco";
 
 type RodapeInstitucionalProps = {
   tema?: Tema;
@@ -59,6 +59,16 @@ const TEMAS: Record<
     forte: "text-cjc-texto-suave",
     link: "text-cjc-texto-fraco hover:text-cjc-menta",
     regua: "border-cjc-linha-suave",
+  },
+  // Fundo branco da variante C da /canetas-do-jeito-certo. Separado do "creme"
+  // porque lá o fundo é bege (#FCF5EB) e aqui a página é branca de ponta a
+  // ponta — um rodapé creme viraria uma faixa bege no fim.
+  branco: {
+    footer: "bg-white border-t border-cjc-dia-linha-suave",
+    texto: "text-cjc-dia-texto-fraco",
+    forte: "text-cjc-dia-texto",
+    link: "text-cjc-dia-texto-suave hover:text-cjc-dia-menta",
+    regua: "border-cjc-dia-linha-suave",
   },
 };
 

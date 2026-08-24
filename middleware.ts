@@ -82,5 +82,6 @@ export const config = {
     "/sos-canetas-vsl-v03",
     "/canetas-do-jeito-certo-a",
     "/canetas-do-jeito-certo-b",
+    "/canetas-do-jeito-certo-c",
   ],
 }
