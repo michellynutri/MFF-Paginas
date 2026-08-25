@@ -26,22 +26,29 @@ export function HeroVsl({ variant }: HeroVslProps) {
           altura que sobra: ver .vsl-player no <style> abaixo. */}
       <div className="relative min-h-[100svh] flex flex-col max-w-[1180px] mx-auto px-5 md:px-20 py-4 md:py-8 animate-fade-up">
         {/* Frase 1 = headline (peso máximo). Frase 2 = direcional, corpo
-            menor, com negrito nas palavras-chave. */}
-        <h1 className="shrink-0 font-serif font-semibold text-texto text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.14] md:leading-[1.1] max-w-[820px] mx-auto">
-          A caneta está funcionando, mas ninguém te contou o que acontece com
-          esse resultado <em className="italic">quando você parar</em>.
+            menor, com negrito nas palavras-chave. Frase 3 = comando de play,
+            colada no player. */}
+        <h1 className="shrink-0 font-serif font-semibold text-texto text-center text-[clamp(24px,6.3vw,30px)] md:text-[46px] leading-[1.14] md:leading-[1.1] max-w-[820px] mx-auto">
+          Tem como emagrecer mais rápido com a caneta{" "}
+          <em className="italic">sem subir nem um miligrama da dose</em>.
         </h1>
 
         <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
-          Assista a aula para conhecer as{" "}
+          São{" "}
+          <strong className="font-semibold text-texto">7 proteções</strong> que
+          agem no seu corpo enquanto a medicação faz o trabalho dela. A Dra.
+          Michelly Fanelli mostra o{" "}
           <strong className="font-semibold text-texto">
-            7 Proteções Metabólicas
+            protocolo completo
           </strong>{" "}
-          e aplique o protocolo que garante que{" "}
+          em poucos minutos de vídeo abaixo.
+        </p>
+
+        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] mx-auto mt-2 md:mt-3.5">
           <strong className="font-semibold text-texto">
-            o peso não volta
-          </strong>
-          .
+            Aperte o play para assistir
+          </strong>{" "}
+          <span aria-hidden="true">👇</span>
         </p>
 
         {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16. */}
@@ -66,11 +73,6 @@ export function HeroVsl({ variant }: HeroVslProps) {
             </vturb-smartplayer>
           </div>
         </div>
-
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(12.5px,3.4vw,15px)] md:text-[18px] leading-[1.45] max-w-[560px] md:max-w-[640px] mx-auto">
-          O protocolo que a maioria das mulheres que usam GLP-1 ainda não
-          conhece e que faz toda a diferença no resultado final.
-        </p>
       </div>
 
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o

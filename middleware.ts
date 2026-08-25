@@ -36,10 +36,11 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith(prefix)) {
     const seen = pathname.slice(prefix.length)
 
-    // Versões da VSL que estão em circulação (hoje só a /sos-canetas-vsl-v03 —
-    // ver SOS_VSL_VERSIONS). Carimba duas coisas: a variante "vsl" (pro resto
-    // do funil continuar enxergando essa pessoa como da campanha da VSL) e qual
-    // versão saiu no sorteio, pra ela cair sempre na mesma daqui pra frente.
+    // Versões da VSL que estão em circulação (hoje a /sos-canetas-vsl-v01 e a
+    // /sos-canetas-vsl-v03 — ver SOS_VSL_VERSIONS). Carimba duas coisas: a
+    // variante "vsl" (pro resto do funil continuar enxergando essa pessoa como
+    // da campanha da VSL) e qual versão saiu no sorteio, pra ela cair sempre na
+    // mesma daqui pra frente.
     const versaoVsl = seen.startsWith("vsl-") ? seen.slice(4) : null
     if (isSosVslVersion(versaoVsl)) {
       const response = NextResponse.next()
@@ -78,6 +79,7 @@ export const config = {
     "/sos-canetas-a",
     "/sos-canetas-f",
     "/sos-canetas-vsl",
+    "/sos-canetas-vsl-v01",
     "/sos-canetas-vsl-v03",
     "/canetas-do-jeito-certo-a",
     "/canetas-do-jeito-certo-b",

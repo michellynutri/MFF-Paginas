@@ -34,15 +34,16 @@ export function randomSosVariant(): SosVariant {
 // Rodada 2 (07/08/2026): v02 saiu por ter performado pior; entrou a v04.
 // Rodada 3 (17/08/2026): v04 saiu do sorteio; ficaram v01 e v03 em 50/50.
 // Rodada 4 (24/08/2026): a v01 sai; fica só a v03. Com uma versão só na lista,
-// o sorteador vira redirecionador — não há mais teste rodando aqui, e todo o
-// tráfego da campanha da VSL vai pra /sos-canetas-vsl-v03. Quem tiver v01 no
-// cookie é re-sorteado na visita seguinte e cai na v03.
-// As páginas da v01, da v02 e da v04 continuam de pé em /sos-canetas-vsl-v01,
-// /sos-canetas-vsl-v02 e /sos-canetas-vsl-v04, só não recebem mais tráfego do
-// sorteio. Pra voltar a testar, é só devolver uma delas à lista abaixo e ao
-// matcher do middleware.
+// o sorteador virou redirecionador e todo o tráfego foi pra v03.
+// Rodada 5 (25/08/2026): a v01 volta ao sorteio contra a v03, em 50/50, agora
+// com hero reescrito — headline nova ("sem subir nem um miligrama da dose"),
+// sub que apresenta as 7 proteções e comando de play colado no player. O que
+// está sendo testado é a dobra: o resto da página é o mesmo nas duas.
+// A v02 e a v04 continuam de pé em /sos-canetas-vsl-v02 e /sos-canetas-vsl-v04,
+// só não recebem tráfego do sorteio. Pra voltar a testar, é só devolver uma
+// delas à lista abaixo e ao matcher do middleware.
 
-export const SOS_VSL_VERSIONS = ["v03"] as const;
+export const SOS_VSL_VERSIONS = ["v01", "v03"] as const;
 export type SosVslVersion = (typeof SOS_VSL_VERSIONS)[number];
 
 export const SOS_VSL_COOKIE = "sos_canetas_vsl_versao";
