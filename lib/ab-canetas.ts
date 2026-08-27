@@ -22,7 +22,8 @@ export function randomSosVariant(): SosVariant {
 
 // --- Teste 50/50 dentro da variante "vsl" ----------------------------------
 // /sos-canetas-vsl não renderiza mais página nenhuma: é só um sorteador que
-// divide o tráfego entre as versões listadas abaixo (v03 = página original).
+// divide o tráfego entre as versões listadas abaixo (v03 = página original,
+// hoje a única no sorteio).
 // O middleware carimba qual saiu no cookie abaixo, e o sorteador respeita
 // esse cookie nas visitas seguintes — assim ninguém troca de VSL no meio do
 // teste (e o /canetas, que promete devolver "a MESMA página", cumpre a
@@ -39,11 +40,19 @@ export function randomSosVariant(): SosVariant {
 // com hero reescrito — headline nova ("sem subir nem um miligrama da dose"),
 // sub que apresenta as 7 proteções e comando de play colado no player. O que
 // está sendo testado é a dobra: o resto da página é o mesmo nas duas.
-// A v02 e a v04 continuam de pé em /sos-canetas-vsl-v02 e /sos-canetas-vsl-v04,
-// só não recebem tráfego do sorteio. Pra voltar a testar, é só devolver uma
-// delas à lista abaixo e ao matcher do middleware.
+// Rodada 6 (27/08/2026): a v03 sai do sorteio; fica só a v01. Com uma versão
+// só na lista, o sorteador virou redirecionador e todo o tráfego vai pra v01 —
+// não é mais um A/B, é uma troca de página, e o resultado da v01 se compara
+// contra o histórico da v03, não contra ela no mesmo tráfego.
+// Rodada 7 (27/08/2026): a v01 sai do roteamento no mesmo dia; a v03 volta e
+// fica sozinha na lista, recebendo 100% do tráfego. De novo não é A/B: é
+// voltar pra página que rodava antes.
+// A v01, a v02 e a v04 continuam de pé em /sos-canetas-vsl-v01,
+// /sos-canetas-vsl-v02 e /sos-canetas-vsl-v04, só não recebem tráfego do
+// sorteio. Pra voltar a testar, é só devolver uma delas à lista abaixo e ao
+// matcher do middleware.
 
-export const SOS_VSL_VERSIONS = ["v01", "v03"] as const;
+export const SOS_VSL_VERSIONS = ["v03"] as const;
 export type SosVslVersion = (typeof SOS_VSL_VERSIONS)[number];
 
 export const SOS_VSL_COOKIE = "sos_canetas_vsl_versao";
