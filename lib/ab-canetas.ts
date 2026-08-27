@@ -89,8 +89,12 @@ export function randomSosVslVersion(): SosVslVersion {
 // é a comparação natural: mesma paleta, eixo oposto). As páginas da a, b e c
 // continuam de pé nas rotas delas, só não recebem mais tráfego do sorteio, e
 // quem tiver uma delas no cookie cai de novo no sorteio na visita seguinte.
+// Rodada 4 (26/08/2026): a "a" (página original, o controle) volta ao sorteio
+// contra a "d", em 50/50. A "d" rodou dois dias sem concorrente, então o que
+// se compara agora é ela contra o controle no mesmo tráfego, e não contra o
+// histórico. A "b" e a "c" seguem de pé nas rotas delas, fora do sorteio.
 
-export const CJC_VARIANTS = ["d"] as const;
+export const CJC_VARIANTS = ["a", "d"] as const;
 export type CjcVariant = (typeof CJC_VARIANTS)[number];
 
 export const CJC_COOKIE = "cjc_variante";
