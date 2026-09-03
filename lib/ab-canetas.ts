@@ -47,18 +47,20 @@ export function randomSosVariant(): SosVariant {
 // Rodada 7 (27/08/2026): a v01 sai do roteamento no mesmo dia; a v03 volta e
 // fica sozinha na lista, recebendo 100% do tráfego. De novo não é A/B: é
 // voltar pra página que rodava antes.
-// Rodada 8 (03/09/2026): volta a ser um teste de três células, agora com a
-// v01, a v02 e a v04 na lista, um terço do tráfego pra cada (o sorteio é
-// uniforme sobre o array). Cada uma leva uma copy e um formato de dobra
-// diferentes: v01 = alerta/revelação em editorial alinhado à esquerda (sans),
-// v02 = o músculo invisível em fundo escuro com realce em cor, v04 = o dia de
-// parar na serif da marca com realce em cor. O resto da página é idêntico nas
-// três, então o que está em teste é só a dobra.
-// A v03 sai do sorteio nesta rodada e segue de pé em /sos-canetas-vsl-v03 —
-// pra usá-la como controle, é só devolver "v03" à lista abaixo e a rota ao
-// matcher do middleware (aí o tráfego vira um quarto pra cada).
+// Rodada 8 (03/09/2026): teste de quatro células, um quarto do tráfego pra
+// cada (o sorteio é uniforme sobre o array). Três copies novas, cada uma num
+// formato de dobra diferente, contra a página que já rodava:
+//   v01 = alerta/revelação em editorial alinhado à esquerda (sans bold)
+//   v02 = o músculo invisível em fundo escuro com realce em cor
+//   v04 = o dia de parar na serif da marca com realce em cor
+//   v03 = controle — a página original, sem uma vírgula mudada, e a única
+//         com histórico longo. Fica no sorteio pra que as três novas sejam
+//         medidas contra ela no mesmo tráfego e no mesmo período, e não
+//         contra o histórico dela.
+// O resto da página é idêntico nas quatro, então o que está em teste é só a
+// dobra.
 
-export const SOS_VSL_VERSIONS = ["v01", "v02", "v04"] as const;
+export const SOS_VSL_VERSIONS = ["v01", "v02", "v03", "v04"] as const;
 export type SosVslVersion = (typeof SOS_VSL_VERSIONS)[number];
 
 export const SOS_VSL_COOKIE = "sos_canetas_vsl_versao";
