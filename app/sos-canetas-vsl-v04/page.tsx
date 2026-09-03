@@ -8,10 +8,9 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
-// Entrou no sorteio em 07/08/2026 (rodada 2), no lugar da v02, e saiu em
-// 17/08/2026 (rodada 3). A página segue de pé e acessível pela URL direta —
-// pra reativar, devolver "v04" a SOS_VSL_VERSIONS (lib/ab-canetas.ts) e a
-// rota ao matcher do middleware.
+// Voltou ao sorteio em 03/09/2026 (rodada 8) com copy e formato novos: "o dia
+// de parar" na serif da marca, com o realce saindo do itálico e indo pra cor.
+// Tinha entrado na rodada 2 (07/08/2026) e saído na rodada 3 (17/08/2026).
 const VARIANT = "vsl-v04";
 
 export const metadata: Metadata = {

@@ -25,19 +25,23 @@ export function HeroVsl({ variant }: HeroVslProps) {
           precisar rolar até o player no mobile. O vídeo é dimensionado pela
           altura que sobra: ver .vsl-player no <style> abaixo. */}
       <div className="relative min-h-[100svh] flex flex-col max-w-[1180px] mx-auto px-5 md:px-20 py-4 md:py-8 animate-fade-up">
-        {/* Frase 1 = headline (peso máximo). Frase 2 = direcional, corpo
-            menor, com negrito nas palavras-chave. */}
+        {/* Rodada 4 (03/09/2026) — copy C (o dia de parar) no FORMATO DA
+            MARCA com um ajuste: a serif fica, mas o realce sai do itálico e
+            vai pra cor, como em 13 das 14 referências (Ice Berry, horno quema
+            grasa). É a variação mais próxima da v03, e serve de ponte com o
+            histórico dela. */}
         <h1 className="shrink-0 font-serif font-semibold text-texto text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.14] md:leading-[1.1] max-w-[820px] mx-auto">
-          Em menos de 7 minutos a Dra. Michelly Fanelli vai te mostrar como
-          emagrecer mais, mais rápido e{" "}
-          <em className="italic">sem aumentar a dose do GLP-1</em>.
+          Um dia você vai parar a caneta. O que você faz hoje decide se, nesse
+          dia,{" "}
+          <span className="text-sos-terracota">
+            o peso fica ou volta tudo de novo.
+          </span>
         </h1>
 
         <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
-          <strong className="font-semibold text-texto">
-            Toque no vídeo para assistir
-          </strong>{" "}
-          <span aria-hidden="true">👇</span>
+          Assista e entenda o que garante o resultado no seu corpo enquanto a
+          caneta ainda age, porque o que segura o peso não é a caneta, é o que
+          você constrói enquanto ela trabalha.
         </p>
 
         {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16. */}
@@ -63,10 +67,6 @@ export function HeroVsl({ variant }: HeroVslProps) {
           </div>
         </div>
 
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(12.5px,3.4vw,15px)] md:text-[18px] leading-[1.45] max-w-[560px] md:max-w-[640px] mx-auto">
-          O protocolo que a maioria das mulheres que usam GLP-1 ainda não
-          conhece e que faz toda a diferença no resultado final.
-        </p>
       </div>
 
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o

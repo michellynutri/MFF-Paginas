@@ -25,31 +25,23 @@ export function HeroVsl({ variant }: HeroVslProps) {
           precisar rolar até o player no mobile. O vídeo é dimensionado pela
           altura que sobra: ver .vsl-player no <style> abaixo. */}
       <div className="relative min-h-[100svh] flex flex-col max-w-[1180px] mx-auto px-5 md:px-20 py-4 md:py-8 animate-fade-up">
-        {/* Frase 1 = headline (peso máximo). Frase 2 = direcional, corpo
-            menor, com negrito nas palavras-chave. Frase 3 = comando de play,
-            colada no player. */}
-        <h1 className="shrink-0 font-serif font-semibold text-texto text-center text-[clamp(24px,6.3vw,30px)] md:text-[46px] leading-[1.14] md:leading-[1.1] max-w-[820px] mx-auto">
-          Tem como emagrecer mais rápido com a caneta{" "}
-          <em className="italic">sem subir nem um miligrama da dose</em>.
+        {/* Rodada 4 (03/09/2026) — copy A (alerta/revelação) em FORMATO
+            EDITORIAL: sans bold, alinhado à esquerda, sem realce de cor, como
+            nas referências de veículo (Dr. Oz e CBS). O sans bold com leading
+            1.08 é também o formato mais compacto dos três — é o que faz esta
+            headline, a mais longa das três, não engolir o player. */}
+        <h1 className="shrink-0 font-sans font-bold text-texto text-left text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.08] md:leading-[1.05] tracking-[-0.01em] max-w-[820px] mx-auto">
+          Começou a usar a caneta emagrecedora? Existe uma coisa acontecendo no
+          seu corpo, além do peso na balança, que ninguém te contou e é ela que
+          decide se daqui a alguns meses você fica firme ou engorda tudo de
+          novo.
         </h1>
 
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
-          São{" "}
-          <strong className="font-semibold text-texto">7 proteções</strong> que
-          agem no seu corpo enquanto a medicação faz o trabalho dela. A Dra.
-          Michelly Fanelli mostra o{" "}
-          <strong className="font-semibold text-texto">
-            protocolo completo
-          </strong>{" "}
-          em poucos minutos de vídeo abaixo.
+        <p className="shrink-0 font-sans text-marrom text-left text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[820px] mx-auto mt-2.5 md:mt-5">
+          Descubra neste vídeo o que fazer agora, enquanto a caneta age, para
+          não engordar tudo de novo no dia em que ela sair.
         </p>
 
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] mx-auto mt-2 md:mt-3.5">
-          <strong className="font-semibold text-texto">
-            Aperte o play para assistir
-          </strong>{" "}
-          <span aria-hidden="true">👇</span>
-        </p>
 
         {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16. */}
         <div className="vsl-stage my-3 md:my-5">

@@ -8,10 +8,10 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
-// Fora do sorteio desde 07/08/2026 (rodada 2): performou pior entre as três.
-// A página segue de pé e acessível pela URL direta — pra reativar, devolver
-// "v02" a SOS_VSL_VERSIONS (lib/ab-canetas.ts) e a rota ao matcher do
-// middleware.
+// Voltou ao sorteio em 03/09/2026 (rodada 8) com copy e formato novos: "o
+// músculo invisível" em fundo escuro, sans bold e realce em cor. Tinha saído
+// na rodada 2 (07/08/2026), quando performou pior entre as três com a copy
+// antiga.
 const VARIANT = "vsl-v02";
 
 export const metadata: Metadata = {

@@ -8,15 +8,15 @@ type HeroVslProps = {
 
 export function HeroVsl({ variant }: HeroVslProps) {
   return (
-    <section className="bg-creme relative overflow-hidden">
+    <section className="bg-texto relative overflow-hidden">
       <Leaf
         className="top-[20px] left-[-70px] w-[240px] h-[240px] md:w-[300px] md:h-[300px]"
-        opacity={0.1}
+        opacity={0.28}
         rotation={-15}
       />
       <Leaf
         className="top-[200px] right-[-70px] w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
-        opacity={0.1}
+        opacity={0.28}
         rotation={160}
       />
 
@@ -25,23 +25,21 @@ export function HeroVsl({ variant }: HeroVslProps) {
           precisar rolar até o player no mobile. O vídeo é dimensionado pela
           altura que sobra: ver .vsl-player no <style> abaixo. */}
       <div className="relative min-h-[100svh] flex flex-col max-w-[1180px] mx-auto px-5 md:px-20 py-4 md:py-8 animate-fade-up">
-        {/* Frase 1 = headline (peso máximo). Frase 2 = direcional, corpo
-            menor, com negrito nas palavras-chave. */}
-        <h1 className="shrink-0 font-serif font-semibold text-texto text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.14] md:leading-[1.1] max-w-[820px] mx-auto">
-          Parte do peso que você está perdendo agora{" "}
-          <em className="italic">não é gordura</em>.
+        {/* Rodada 4 (03/09/2026) — copy B (o músculo invisível) em FORMATO
+            ALERTA: fundo escuro, sans bold e a frase de virada em terracota,
+            como nas referências de fundo preto com destaque laranja (Horse
+            Gelatin e concursos). O realce cai só em "E não é gordura", que é
+            o gap da copy. */}
+        <h1 className="shrink-0 font-sans font-bold text-creme text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.12] md:leading-[1.08] tracking-[-0.01em] max-w-[820px] mx-auto">
+          A balança desce e você comemora, mas tem algo indo embora junto que
+          a caneta não te avisa.{" "}
+          <span className="text-sos-terracota">E não é gordura.</span>
         </h1>
 
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
-          Assista a aula para conhecer as{" "}
-          <strong className="font-semibold text-texto">
-            7 Proteções de Queima Seletiva
-          </strong>{" "}
-          e aplique o protocolo que garante que você{" "}
-          <strong className="font-semibold text-texto">
-            perde gordura e mantém o corpo firme
-          </strong>
-          .
+        <p className="shrink-0 font-sans text-creme/70 text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
+          Veja o que acontece no seu corpo enquanto você emagrece com a caneta
+          e o ajuste simples que faz você terminar firme, e não murcha, sem
+          reganhar o peso quando ela sair.
         </p>
 
         {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16. */}
@@ -67,10 +65,6 @@ export function HeroVsl({ variant }: HeroVslProps) {
           </div>
         </div>
 
-        <p className="shrink-0 font-sans text-marrom text-center text-[clamp(12.5px,3.4vw,15px)] md:text-[18px] leading-[1.45] max-w-[560px] md:max-w-[640px] mx-auto">
-          O protocolo que a maioria das mulheres que usam GLP-1 ainda não
-          conhece e que faz toda a diferença no resultado final.
-        </p>
       </div>
 
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o
@@ -80,7 +74,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
           QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
         </Cta>
 
-        <div className="flex items-center justify-center gap-2 font-sans text-[13px] text-marrom mt-6">
+        <div className="flex items-center justify-center gap-2 font-sans text-[13px] text-creme/70 mt-6">
           <svg
             width="14"
             height="14"
@@ -88,7 +82,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.8"
-            className="text-sos-dourado-esc"
+            className="text-sos-dourado"
             aria-hidden="true"
           >
             <rect x="3" y="11" width="18" height="11" rx="2" />

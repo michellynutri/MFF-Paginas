@@ -8,6 +8,11 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
+// Saiu do sorteio em 03/09/2026 (rodada 8), quando entraram a v01, a v02 e a
+// v04 com copy e formato novos. É a página original da VSL e a única com
+// histórico longo — segue de pé em /sos-canetas-vsl-v03. Pra usá-la como
+// controle, devolver "v03" a SOS_VSL_VERSIONS (lib/ab-canetas.ts) e a rota ao
+// matcher do middleware.
 const VARIANT = "vsl-v03";
 
 export const metadata: Metadata = {

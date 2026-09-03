@@ -8,6 +8,10 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
+// Voltou ao sorteio em 03/09/2026 (rodada 8) com copy e formato novos:
+// "alerta/revelação" em formato editorial, sans bold alinhado à esquerda.
+// Tinha recebido 100% do tráfego por algumas horas na rodada 6 (27/08/2026) e
+// saído na rodada 7, no mesmo dia.
 const VARIANT = "vsl-v01";
 
 export const metadata: Metadata = {
