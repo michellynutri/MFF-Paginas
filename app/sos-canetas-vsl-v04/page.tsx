@@ -8,9 +8,9 @@ import { Prova } from "../sos-canetas-vsl-_shared/_components/Prova";
 import { OfertaVsl } from "../sos-canetas-vsl-_shared/_components/OfertaVsl";
 import { CHECKOUT_URL_VSL } from "../sos-canetas-_shared/_components/constants";
 
-// Voltou ao sorteio em 03/09/2026 (rodada 8) com copy e formato novos: "o dia
-// de parar" na serif da marca, com o realce saindo do itálico e indo pra cor.
-// Tinha entrado na rodada 2 (07/08/2026) e saído na rodada 3 (17/08/2026).
+// Em 08/09/2026 trocou a copy do topo para o teste "erro silencioso", com
+// sobrancelha em formato de manchete. Antes disso rodou "o dia de parar"
+// (03/09/2026) e, na rodada 2 (07/08/2026 a 17/08/2026), a copy original.
 const VARIANT = "vsl-v04";
 
 export const metadata: Metadata = {
