@@ -470,7 +470,7 @@ export default function Home() {
                   <circle cx="12" cy="12" r="9" stroke="currentColor" />
                   <path d="M9 12l2 2 4-4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                +2.500 pacientes atendidas em consultório
+                +3.000 pacientes atendidas em consultório
               </div>
               <div className="mich-cred">
                 <svg width="15" height="15" fill="none" viewBox="0 0 24 24" strokeWidth="2">

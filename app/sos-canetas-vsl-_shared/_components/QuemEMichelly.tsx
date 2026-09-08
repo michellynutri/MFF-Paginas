@@ -4,7 +4,7 @@ import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
 const metricas = [
   { number: "13+", label: "anos de prática clínica em saúde da mulher" },
-  { number: "2.500+", label: "pacientes atendidas em consultório" },
+  { number: "3.000+", label: "pacientes atendidas em consultório" },
   { number: "5+", label: "pós-graduações e especializações" },
 ];
 

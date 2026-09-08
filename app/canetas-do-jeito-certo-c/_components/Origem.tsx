@@ -5,8 +5,8 @@ import Image from "next/image";
 // da copy v4, a pessoa só quer saber quem está falando depois de reconhecer o
 // problema na própria vida.
 //
-// TODO(michelly): os números repetem os da variante B (13 anos, +3.000
-// pacientes, 6 especializações) e continuam pendentes de confirmação.
+// Números iguais aos da variante B. 13 anos e +3.000 pacientes foram
+// conferidos com a Michelly em 08/09/2026; as 6 especializações, não.
 
 const metricas = [
   { numero: "13", label: "anos de prática clínica em saúde da mulher" },
@@ -52,7 +52,7 @@ export function Origem() {
               </p>
               <p className="text-cjc-dia-texto">
                 Eu levei tempo pra aceitar as canetas — fui contra por um bom
-                período. Mudei de ideia quando juntei mais de uma década de
+                período. Mudei de ideia quando juntei mais de 13 anos de
                 especialização em saúde hormonal feminina com o que aprendi
                 acompanhando essas mulheres na prática. Vi que, do jeito certo,
                 o resultado vinha melhor, mais firme, e ficava.

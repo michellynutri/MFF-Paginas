@@ -10,8 +10,8 @@ import Image from "next/image";
 // Metabólico Feminino. É o que mantém o workshop vendedor sem canibalizar a
 // oferta principal — não descrever aqui nenhum conteúdo de fase.
 //
-// TODO(michelly): os números (13 anos, +3.000 pacientes, 6 especializações)
-// repetem os das outras variantes e continuam pendentes de confirmação.
+// 13 anos e +3.000 pacientes foram conferidos com a Michelly em 08/09/2026 e
+// valem em todas as páginas. As 6 especializações seguem pendentes.
 
 const metricas = [
   { numero: "13", label: "anos de prática clínica" },

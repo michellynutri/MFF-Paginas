@@ -4,7 +4,7 @@ import { Leaf } from "./Leaf";
 
 const metricas = [
   { number: "13+", label: "anos de prática clínica em saúde da mulher" },
-  { number: "2.500+", label: "pacientes atendidas em consultório" },
+  { number: "3.000+", label: "pacientes atendidas em consultório" },
   { number: "5+", label: "pós-graduações e especializações" },
 ];
 
@@ -79,7 +79,7 @@ export function QuemEMichelly({ variant }: Props) {
               </p>
               <p>
                 Fui aos congressos. Estudei os protocolos. E juntei tudo isso
-                com mais de uma década de especialização em saúde hormonal
+                com mais de 13 anos de especialização em saúde hormonal
                 feminina, microbiota e ciclicidade. O resultado foi o Manual
                 S.O.S. Canetas.
               </p>

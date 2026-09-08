@@ -6,9 +6,9 @@ import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
 // dela própria sobre as canetas, que responde antes a objeção de "isso é contra
 // a caneta?" (a FAQ, no fim da página, responde de novo e direto).
 //
-// TODO(michelly): os números abaixo subiram em relação à variante A — lá são
-// 13+ anos, 2.500+ pacientes e 5+ especializações. Confirmar 3.000 e 6 antes
-// de a variante receber tráfego.
+// Números conferidos com a Michelly em 08/09/2026: 13 anos de clínica e
+// +3.000 pacientes valem em todas as páginas. Só as "6 especializações" seguem
+// pendentes — a variante A e a /sos-canetas ainda dizem 5+.
 const metricas = [
   { numero: "13", label: "anos de prática clínica em saúde da mulher" },
   { numero: "+3.000", label: "pacientes atendidas em consultório" },
@@ -72,7 +72,7 @@ export function Origem() {
               </p>
               <p>
                 Eu levei tempo pra aceitar as canetas — fui contra por um bom
-                período. Mudei de ideia quando juntei mais de uma década de
+                período. Mudei de ideia quando juntei mais de 13 anos de
                 especialização em saúde hormonal feminina com o que aprendi
                 acompanhando essas mulheres na prática. É exatamente isso que eu
                 vou te mostrar nessa sessão.

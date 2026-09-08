@@ -3,7 +3,7 @@ import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
 
 const metricas = [
   { numero: "13+", label: "anos de prática clínica em saúde da mulher" },
-  { numero: "2.500+", label: "pacientes atendidas em consultório" },
+  { numero: "3.000+", label: "pacientes atendidas em consultório" },
   { numero: "5+", label: "pós-graduações e especializações" },
 ];
 
@@ -57,7 +57,7 @@ export function Origem() {
                 decide se o resultado permanece nunca era planejada.
               </p>
               <p>
-                Juntei mais de uma década de especialização em saúde hormonal
+                Juntei mais de 13 anos de especialização em saúde hormonal
                 feminina, microbiota e ciclicidade com o que eu aprendi
                 acompanhando essas mulheres na prática. É isso que eu vou te
                 mostrar nessa sessão.
