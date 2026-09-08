@@ -6,14 +6,13 @@ import { Cta } from "../../canetas-do-jeito-certo-_shared/_components/Cta";
 // dela própria sobre as canetas, que responde antes a objeção de "isso é contra
 // a caneta?" (a FAQ, no fim da página, responde de novo e direto).
 //
-// Números conferidos com a Michelly em 08/09/2026: 13 anos de clínica e
-// +3.000 pacientes valem em todas as páginas. Só as "6 especializações" seguem
-// pendentes — a variante A e a /sos-canetas ainda dizem 5+.
+// Números conferidos com a Michelly em 08/09/2026: 13 anos de clínica,
+// +3.000 pacientes e 5 especializações valem em todas as páginas.
 const metricas = [
   { numero: "13", label: "anos de prática clínica em saúde da mulher" },
   { numero: "+3.000", label: "pacientes atendidas em consultório" },
   {
-    numero: "6",
+    numero: "5",
     label:
       "especializações em saúde hormonal feminina, microbiota e ciclicidade",
   },

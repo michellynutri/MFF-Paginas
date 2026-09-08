@@ -5,13 +5,13 @@ import Image from "next/image";
 // da copy v4, a pessoa só quer saber quem está falando depois de reconhecer o
 // problema na própria vida.
 //
-// Números iguais aos da variante B. 13 anos e +3.000 pacientes foram
-// conferidos com a Michelly em 08/09/2026; as 6 especializações, não.
+// Números iguais aos da variante B, todos conferidos com a Michelly em
+// 08/09/2026: 13 anos, +3.000 pacientes e 5 especializações.
 
 const metricas = [
   { numero: "13", label: "anos de prática clínica em saúde da mulher" },
   { numero: "+3.000", label: "pacientes atendidas" },
-  { numero: "6", label: "especializações em saúde hormonal feminina" },
+  { numero: "5", label: "especializações em saúde hormonal feminina" },
 ];
 
 export function Origem() {
