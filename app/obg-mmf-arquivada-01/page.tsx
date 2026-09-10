@@ -5,7 +5,7 @@ import { RodapeInstitucional } from "@/components/rodape-institucional";
 
 // ARQUIVADA em 2026-09-10: era a /obg-mmf (upsell Greenn com VSL longa, CTA aos 13:00
 // e barra de 30% off aos 14:30). Substituída pela nova /obg-mmf (layout "pedido em
-// processamento" + mini-VSL + downsell em /obg-mmf-c-down). Mantida só pra consulta.
+// processamento" + mini-VSL + downsell em /obg-mmf-down). Mantida só pra consulta.
 export const metadata: Metadata = {
   title: "Obrigada — Oferta especial | Michelly Silveira",
   robots: "noindex, follow",

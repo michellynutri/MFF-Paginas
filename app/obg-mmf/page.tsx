@@ -26,7 +26,7 @@ const GREENN_UPSELL_ID = "6552";
 // Destino do "Não, obrigada" = página de DOWNSELL (MMF 6 meses por R$ 247).
 // O upsell.js procura um <a id="not-buy-link">, anexa ?token=... ao href e
 // trata o clique — por isso o token da compra chega lá e o one-click continua.
-const DECLINE_URL = "/obg-mmf-c-down";
+const DECLINE_URL = "/obg-mmf-down";
 
 // Recuperação de Pix: checkout normal (cartão, até 12x) do MESMO produto/oferta
 // do upsell acima — produto g4vfzcf, oferta KMD7EU (R$ 497).
