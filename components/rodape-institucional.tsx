@@ -26,6 +26,8 @@ type RodapeInstitucionalProps = {
   tema?: Tema;
   children?: ReactNode;
   className?: string;
+  /** Sobrescreve o DISCLAIMER padrão (ex.: página que vende acompanhamento nutricional). */
+  disclaimer?: string;
 };
 
 const TEMAS: Record<
@@ -74,6 +76,7 @@ const TEMAS: Record<
 
 export function RodapeInstitucional({
   tema = "verde",
+  disclaimer = DISCLAIMER,
   children,
   className = "",
 }: RodapeInstitucionalProps) {
@@ -134,7 +137,7 @@ export function RodapeInstitucional({
         <p
           className={`font-sans text-[12px] leading-[1.7] mt-6 pt-6 border-t ${t.regua}`}
         >
-          {DISCLAIMER}
+          {disclaimer}
         </p>
       </div>
     </footer>
