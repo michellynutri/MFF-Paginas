@@ -3,6 +3,8 @@ import Script from "next/script";
 import { Leaf } from "../sos-canetas-_shared/_components/Leaf";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
 
+// ARQUIVADA em 2026-09-10: era a /obg-mmf-b (cópia da /obg-mmf com one-click da
+// Pagtrust no lugar da Greenn). Substituída pela nova /obg-mmf. Mantida só pra consulta.
 export const metadata: Metadata = {
   title: "Obrigada — Oferta especial | Michelly Silveira",
   robots: "noindex, follow",
@@ -18,7 +20,7 @@ const PAGTRUST_UPSELL_TOKEN = "F5x1pBI";
 const BTN_PRIMARY_CLASS =
   "inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide transition-all duration-200 ease-out hover:translate-y-[-2px] focus-visible:outline-2 focus-visible:outline-offset-4 bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota";
 
-export default function ObgMmfBPage() {
+export default function ObgMmfArquivada02Page() {
   return (
     <main className="bg-creme relative overflow-hidden min-h-screen flex flex-col">
       {/* Folhagem botânica — assinatura visual da identidade sos-canetas */}
