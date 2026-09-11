@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Script from "next/script";
 import { Leaf } from "../sos-canetas-_shared/_components/Leaf";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
@@ -35,6 +36,9 @@ const GREENN_BUTTON_30OFF_HTML = `<button
 >QUERO COM 30% OFF</button>`;
 
 export default function ObgMmfArquivada01Page() {
+  // ARQUIVADA: redireciona pra /obg-mmf. Os upsells 5872 (R$ 297) e 5875 (R$ 197) continuavam ativos por aqui — em 11/09/2026 saiu uma venda a R$ 297 por esse caminho.
+  // O código abaixo fica só como referência e não é servido.
+  redirect("/obg-mmf");
   return (
     <main className="bg-creme relative overflow-hidden min-h-screen flex flex-col">
       {/* Folhagem botânica — assinatura visual da identidade sos-canetas */}

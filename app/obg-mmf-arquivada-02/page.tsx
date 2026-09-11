@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Script from "next/script";
 import { Leaf } from "../sos-canetas-_shared/_components/Leaf";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
@@ -21,6 +22,9 @@ const BTN_PRIMARY_CLASS =
   "inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide transition-all duration-200 ease-out hover:translate-y-[-2px] focus-visible:outline-2 focus-visible:outline-offset-4 bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota";
 
 export default function ObgMmfArquivada02Page() {
+  // ARQUIVADA: redireciona pra /obg-mmf. Versão Pagtrust; os botões de compra continuavam funcionais.
+  // O código abaixo fica só como referência e não é servido.
+  redirect("/obg-mmf");
   return (
     <main className="bg-creme relative overflow-hidden min-h-screen flex flex-col">
       {/* Folhagem botânica — assinatura visual da identidade sos-canetas */}

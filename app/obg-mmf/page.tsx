@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
+import { greennUpsellScript } from "@/lib/greenn-upsell";
 
 export const metadata: Metadata = {
   title: "Processando sua compra | S.O.S Canetas | Michelly Silveira",
@@ -57,6 +58,7 @@ const GREENN_BUTTON_HTML = `<button
   data-greenn-one-click="false"
   data-greenn-upsell="${GREENN_UPSELL_ID}"
   data-greenn-split="1"
+  data-mff-checkout="${PIX_RECOVERY_CHECKOUT_URL}"
   data-loading="false"
   onclick="startLoading(this)"
   class="${BTN_PRIMARY_CLASS}"
@@ -271,6 +273,7 @@ export default function ObgMmfPage() {
                   <strong className="font-semibold">12x</strong>?
                 </p>
                 <a
+                  data-mff-checkout-link=""
                   href={PIX_RECOVERY_CHECKOUT_URL || "#"}
                   className="mt-3 inline-flex items-center justify-center rounded-full border-2 border-sos-dourado-esc px-6 py-3 text-[14px] md:text-[15px] font-semibold text-sos-dourado-esc hover:bg-sos-dourado-esc hover:text-creme transition-colors"
                 >
@@ -356,26 +359,10 @@ export default function ObgMmfPage() {
 })();`}
       </Script>
 
-      {/* Script de compra (modal) da Greenn — define window.startLoading e
-          carrega o upsell.js que vincula o comportamento ao botão acima. */}
+      {/* Compra do upsell (Greenn one-click) + rastreio de UTM — ver lib/greenn-upsell.ts.
+          Sem token na URL o botão vira link direto pro checkout (data-mff-checkout). */}
       <Script id="greenn-upsell" strategy="afterInteractive">
-        {`window.startLoading = function(button) {
-  const originalHTML = button.innerHTML;
-  button.setAttribute('data-loading', 'true');
-  button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#ffffff" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path fill="#ffffff" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg>';
-  setTimeout(() => {
-    button.setAttribute('data-loading', 'false');
-    button.innerHTML = originalHTML;
-  }, 3000);
-};
-(function (w, d, s, t) {
-  if (w._greennUp) return;
-  w._greennUp = t;
-  var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-  j.async = true;
-  j.src = "https://payfast.greenn.com.br/assets/upsell.js?v=" + t;
-  f.parentNode.insertBefore(j, f);
-})(window, document, "script", Date.now());`}
+        {greennUpsellScript()}
       </Script>
     </main>
   );

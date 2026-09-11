@@ -133,12 +133,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   const urlParamsCapt = new URLSearchParams(window.location.search);
   const urlParamsCaptReferrer = new URLSearchParams(document.referrer.split('?')[1] || '');
+  // Cookie mff_utm: memória das UTMs da sessão (30 dias, 1º domínio). Gravado
+  // quando a pessoa entra com utm_* na URL (anúncio → VSL) e usado como fallback
+  // nas páginas que abrem com URL limpa — em especial a /obg-mmf, pra onde a
+  // Greenn devolve a compradora só com token/s_id (ver lib/greenn-upsell.ts).
+  const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  const UTM_COOKIE = "mff_utm";
+  let salvas = {};
+  try {
+    const m = document.cookie.match(new RegExp("(?:^|; )" + UTM_COOKIE + "=([^;]*)"));
+    if (m) salvas = JSON.parse(decodeURIComponent(m[1])) || {};
+  } catch (e) { salvas = {}; }
+  const daUrl = {};
+  UTM_KEYS.forEach(k => { const v = urlParamsCapt.get(k); if (v) daUrl[k] = v; });
+  // utm_source=direto sozinho é o que a UTMify escreve na URL quando não há
+  // UTM — não é campanha, não grava por cima do cookie.
+  const soDireto = Object.keys(daUrl).length === 1 && daUrl.utm_source === "direto";
+  if (Object.keys(daUrl).length > 0 && !soDireto) {
+    salvas = daUrl;
+    try {
+      document.cookie = UTM_COOKIE + "=" + encodeURIComponent(JSON.stringify(daUrl)) + "; max-age=" + (30 * 24 * 60 * 60) + "; path=/; SameSite=Lax";
+    } catch (e) {}
+  }
   let utms = {};
   parametros.forEach(el => {
     if (el === "utm_source") {
-      utms[el] = urlParamsCapt.get(el) ?? (document.referrer ? (urlParamsCaptReferrer.get(el) ?? new URL(document.referrer).hostname) : "direto");
+      utms[el] = urlParamsCapt.get(el) ?? salvas[el] ?? (document.referrer ? (urlParamsCaptReferrer.get(el) ?? new URL(document.referrer).hostname) : "direto");
     } else {
-      utms[el] = urlParamsCapt.get(el) ?? (urlParamsCaptReferrer.get(el) ?? "");
+      utms[el] = urlParamsCapt.get(el) ?? salvas[el] ?? (urlParamsCaptReferrer.get(el) ?? "");
     }
   });
   let scks = Object.values(utms).filter(value => value !== "");
