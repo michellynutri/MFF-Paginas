@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      // Slug antiga da oferta de e-mail pras alunas (renomeada em 2026-09-11).
+      { source: "/obg-mmf-arquivada-01", destination: "/alunos-metodo-mmf", permanent: false },
+    ]
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

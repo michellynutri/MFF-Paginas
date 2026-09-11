@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: "noindex, nofollow",
 };
 
-// ─── Integração Greenn (one-click / upsell), herdada da /obg-mmf-arquivada-01 ──
+// ─── Integração Greenn (one-click / upsell), herdada da /alunos-metodo-mmf ──
 // O botão fica como HTML cru pra preservar os atributos data-greenn-* e o
 // onclick inline que o upsell.js da Greenn espera encontrar.
 //
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 //   6552 = "MMF 497" → produto 161840 (código g4vfzcf), oferta KMD7EU
 //          ("Método Metabólico Feminino + Mentoria com a Nutri", R$ 497, até 12x)
 //   5872 = "MMF - 297" (oferta 4dJmPN) e 5875 = "MMF - 197" (oferta ZH8FAt) são os
-//          upsells antigos usados na /obg-mmf-arquivada-01 (versão anterior desta página).
+//          os upsells da /alunos-metodo-mmf (oferta de e-mail pras alunas; era esta página).
 const GREENN_UPSELL_ID = "6552";
 // ATENÇÃO: o upsell.js da Greenn injeta um CSS global com `.text-center { margin: 40px 0 }`,
 // que colide com a classe do Tailwind. Por isso esta página usa `[text-align:center]`

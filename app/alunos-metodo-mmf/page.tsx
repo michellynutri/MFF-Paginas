@@ -1,14 +1,26 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import Script from "next/script";
 import { Leaf } from "../sos-canetas-_shared/_components/Leaf";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
+import { greennUpsellScript } from "@/lib/greenn-upsell";
 
-// ARQUIVADA em 2026-09-10: era a /obg-mmf (upsell Greenn com VSL longa, CTA aos 13:00
-// e barra de 30% off aos 14:30). Substituída pela nova /obg-mmf (layout "pedido em
-// processamento" + mini-VSL + downsell em /obg-mmf-down). Mantida só pra consulta.
+// ─── Oferta do MMF pra ALUNAS do S.O.S Canetas (e-mail) ────────────────────
+// Era a /obg-mmf até 2026-09-10 (upsell Greenn com VSL longa, CTA aos 13:00 e
+// barra de 30% off aos 14:30). A /obg-mmf virou a página de upsell de R$ 497;
+// esta continua vendendo a oferta de R$ 297 pra quem chega pelos e-mails.
+//
+// Chega SEM token (link de e-mail), então o one-click da Greenn não existe aqui:
+// o script compartilhado (lib/greenn-upsell.ts) troca os botões por links
+// diretos pro checkout de cada oferta com up_id + UTMs do e-mail.
+//
+// Ofertas (produto 161840, código g4vfzcf):
+//   upsell 5872 = "MMF - 297" → oferta 4dJmPN
+//   upsell 5875 = "MMF - 197" → oferta ZH8FAt (barra de 30% off)
+const CHECKOUT_297_URL = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN";
+const CHECKOUT_197_URL = "https://payfast.greenn.com.br/g4vfzcf/offer/ZH8FAt";
+
 export const metadata: Metadata = {
-  title: "Obrigada — Oferta especial | Michelly Silveira",
+  title: "Oferta especial para alunas | Michelly Silveira",
   robots: "noindex, follow",
 };
 
@@ -19,6 +31,7 @@ const GREENN_BUTTON_HTML = `<button
   data-greenn-one-click="false"
   data-greenn-upsell="5872"
   data-greenn-split="1"
+  data-mff-checkout="${CHECKOUT_297_URL}"
   data-loading="false"
   onclick="startLoading(this)"
   class="inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide transition-all duration-200 ease-out hover:translate-y-[-2px] focus-visible:outline-2 focus-visible:outline-offset-4 bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota"
@@ -30,15 +43,13 @@ const GREENN_BUTTON_30OFF_HTML = `<button
   data-greenn-one-click="false"
   data-greenn-upsell="5875"
   data-greenn-split="1"
+  data-mff-checkout="${CHECKOUT_197_URL}"
   data-loading="false"
   onclick="startLoading(this)"
   class="shrink-0 inline-flex items-center justify-center rounded-full border-0 cursor-pointer font-sans font-semibold tracking-wide bg-sos-terracota text-creme px-5 md:px-8 py-3 md:py-3.5 text-[13px] md:text-[15px] shadow-[0_8px_22px_rgba(197,107,74,0.4)] hover:shadow-[0_12px_28px_rgba(197,107,74,0.5)] transition-all duration-200 hover:translate-y-[-1px]"
 >QUERO COM 30% OFF</button>`;
 
-export default function ObgMmfArquivada01Page() {
-  // ARQUIVADA: redireciona pra /obg-mmf. Os upsells 5872 (R$ 297) e 5875 (R$ 197) continuavam ativos por aqui — em 11/09/2026 saiu uma venda a R$ 297 por esse caminho.
-  // O código abaixo fica só como referência e não é servido.
-  redirect("/obg-mmf");
+export default function AlunosMetodoMmfPage() {
   return (
     <main className="bg-creme relative overflow-hidden min-h-screen flex flex-col">
       {/* Folhagem botânica — assinatura visual da identidade sos-canetas */}
@@ -169,6 +180,24 @@ export default function ObgMmfArquivada01Page() {
                 </svg>
                 <span>Pagamento 100% seguro · Oferta exclusiva desta página</span>
               </div>
+
+              {/* Checkout normal no cartão — link nosso, ganha as UTMs do e-mail
+                  (data-mff-checkout-link). */}
+              <div className="mt-8 md:mt-10 flex justify-center">
+                <div className="w-full max-w-[620px] rounded-2xl border border-[var(--sos-borda-dourada)] bg-white px-5 md:px-6 py-5 text-center font-sans">
+                  <p className="text-[15px] md:text-[16px] leading-[1.5] text-texto">
+                    Prefere garantir no <strong className="font-semibold">cartão de crédito</strong>,
+                    parcelado em até <strong className="font-semibold">12x</strong>?
+                  </p>
+                  <a
+                    data-mff-checkout-link=""
+                    href={CHECKOUT_297_URL}
+                    className="mt-3 inline-flex items-center justify-center rounded-full border-2 border-sos-dourado-esc px-6 py-3 text-[14px] md:text-[15px] font-semibold text-sos-dourado-esc hover:bg-sos-dourado-esc hover:text-creme transition-colors"
+                  >
+                    Clique aqui e garanta no cartão →
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -274,26 +303,10 @@ export default function ObgMmfArquivada01Page() {
 })();`}
       </Script>
 
-      {/* Script de compra (modal) da Greenn — define window.startLoading e
-          carrega o upsell.js que vincula o comportamento ao botão acima. */}
+      {/* Compra (Greenn) + rastreio de UTM — ver lib/greenn-upsell.ts. Sem token
+          os botões viram links diretos pro checkout (data-mff-checkout). */}
       <Script id="greenn-upsell" strategy="afterInteractive">
-        {`window.startLoading = function(button) {
-  const originalHTML = button.innerHTML;
-  button.setAttribute('data-loading', 'true');
-  button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#ffffff" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25"/><path fill="#ffffff" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg>';
-  setTimeout(() => {
-    button.setAttribute('data-loading', 'false');
-    button.innerHTML = originalHTML;
-  }, 3000);
-};
-(function (w, d, s, t) {
-  if (w._greennUp) return;
-  w._greennUp = t;
-  var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-  j.async = true;
-  j.src = "https://payfast.greenn.com.br/assets/upsell.js?v=" + t;
-  f.parentNode.insertBefore(j, f);
-})(window, document, "script", Date.now());`}
+        {greennUpsellScript()}
       </Script>
     </main>
   );

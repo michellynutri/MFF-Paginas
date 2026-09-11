@@ -1,5 +1,5 @@
 // ─── Script de compra do upsell (Greenn) + rastreio de UTM ───────────────────
-// Usado pela /obg-mmf e pela /obg-mmf-down. Devolve o JS que roda na página
+// Usado pela /obg-mmf, /obg-mmf-down e /alunos-metodo-mmf. Devolve o JS que roda na página
 // (inline, afterInteractive). Faz quatro coisas:
 //
 // 1. Descobre as UTMs da sessão: primeiro a URL da página (link de e-mail),
@@ -88,17 +88,16 @@ export function greennUpsellScript() {
 
   if (params.get("greenn_validate") === "1") { loadGreenn(); return; }
 
-  // 3) Sem token: botão vira link direto pro checkout (up_id + UTMs).
+  // 3) Sem token: cada botão vira link direto pro checkout dele (up_id + UTMs).
   if (!token) {
-    var btn = d.querySelector("button[data-greenn-upsell][data-mff-checkout]");
-    if (btn) {
+    d.querySelectorAll("button[data-greenn-upsell][data-mff-checkout]").forEach(function (btn) {
       var a = d.createElement("a");
       a.href = withUtms(btn.getAttribute("data-mff-checkout"), { up_id: btn.getAttribute("data-greenn-upsell") });
       a.className = btn.className;
       a.innerHTML = btn.innerHTML;
       a.setAttribute("data-mff-checkout-link", "");
       btn.parentNode.replaceChild(a, btn);
-    }
+    });
     return;
   }
 
