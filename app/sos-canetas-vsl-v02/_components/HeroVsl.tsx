@@ -1,6 +1,5 @@
 import Script from "next/script";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
-import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
 type HeroVslProps = {
   variant: string;
@@ -8,43 +7,39 @@ type HeroVslProps = {
 
 export function HeroVsl({ variant }: HeroVslProps) {
   return (
-    <section className="bg-texto relative overflow-hidden">
-      <Leaf
-        className="top-[20px] left-[-70px] w-[240px] h-[240px] md:w-[300px] md:h-[300px]"
-        opacity={0.28}
-        rotation={-15}
-      />
-      <Leaf
-        className="top-[200px] right-[-70px] w-[220px] h-[220px] md:w-[280px] md:h-[280px]"
-        opacity={0.28}
-        rotation={160}
-      />
+    <section className="bg-white relative overflow-hidden">
 
       {/* PRIMEIRA DOBRA — headline, vídeo e subheadline cabem inteiros em
           100svh (svh = altura com a barra do navegador visível), pra ninguém
           precisar rolar até o player no mobile. O vídeo é dimensionado pela
           altura que sobra: ver .vsl-player no <style> abaixo. */}
       <div className="relative min-h-[100svh] flex flex-col max-w-[1180px] mx-auto px-5 md:px-20 py-4 md:py-8 animate-fade-up">
-        {/* Rodada 4 (03/09/2026) — copy B (o músculo invisível) em FORMATO
-            ALERTA: fundo escuro, sans bold e a frase de virada em terracota,
-            como nas referências de fundo preto com destaque laranja (Horse
-            Gelatin e concursos). O realce cai só em "E não é gordura", que é
-            o gap da copy. */}
-        <h1 className="shrink-0 font-sans font-bold text-creme text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.12] md:leading-[1.08] tracking-[-0.01em] max-w-[820px] mx-auto">
-          A balança desce e você comemora, mas tem algo indo embora junto que
-          a caneta não te avisa.{" "}
-          <span className="text-sos-terracota">E não é gordura.</span>
+        {/* Rodada 9 (14/09/2026) — copy nova, só headline + "Assista agora"
+            apontando pro player (sem subheadline). Layout limpo: fundo
+            branco, sem folhas nem moldura no player. Sans bold e a frase de
+            virada em terracota; o realce cai na "coisa simples", que é o gap
+            da copy. */}
+        <h1 className="shrink-0 font-sans font-bold text-texto text-center text-[clamp(21px,5.4vw,26px)] md:text-[40px] leading-[1.12] md:leading-[1.08] tracking-[-0.01em] max-w-[820px] mx-auto">
+          Nos próximos 30 dias, a mesma caneta que você já toma pode queimar
+          bem mais gordura,{" "}
+          {/* Laranja mais vivo que o terracota do site (#C56B4A), pedido
+              pra dar mais vibração ao realce no fundo branco. */}
+          <span className="text-[#E8541F]">
+            se você fizer uma coisa simples que quase ninguém te conta
+            enquanto ela age.
+          </span>
         </h1>
 
-        <p className="shrink-0 font-sans text-creme/70 text-center text-[clamp(14px,3.7vw,16.5px)] md:text-[20px] leading-[1.4] max-w-[620px] mx-auto mt-2.5 md:mt-5">
-          Veja o que acontece no seu corpo enquanto você emagrece com a caneta
-          e o ajuste simples que faz você terminar firme, e não murcha, sem
-          reganhar o peso quando ela sair.
+        <p className="shrink-0 font-sans font-bold text-texto text-center text-[clamp(16px,4.2vw,19px)] md:text-[24px] leading-[1.3] mt-3 md:mt-5">
+          Assista agora{" "}
+          <span role="img" aria-label="dedo apontando para baixo">
+            👇
+          </span>
         </p>
 
         {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16. */}
         <div className="vsl-stage my-3 md:my-5">
-          <div className="vsl-player rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
+          <div className="vsl-player rounded-2xl overflow-hidden bg-black">
             {/* @ts-expect-error — custom element do Vturb */}
             <vturb-smartplayer
               id="vid-6a737d98fa966b9f5cd0a63a"
@@ -74,7 +69,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
           QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
         </Cta>
 
-        <div className="flex items-center justify-center gap-2 font-sans text-[13px] text-creme/70 mt-6">
+        <div className="flex items-center justify-center gap-2 font-sans text-[13px] text-texto/70 mt-6">
           <svg
             width="14"
             height="14"
