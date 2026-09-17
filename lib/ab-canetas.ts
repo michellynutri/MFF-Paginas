@@ -68,8 +68,12 @@ export function randomSosVariant(): SosVariant {
 // não recebe tráfego; quem tiver v02 no cookie cai de novo no sorteio na
 // visita seguinte. A v03 ganhou uma cópia sem delay em /sos-canetas-bio
 // (link da bio), fora do sorteio.
+// Rodada 11 (17/09/2026): a v04 sai do sorteio. Fica só a v03 — todo o
+// tráfego da /sos-canetas-vsl vai pra ela. A página da v04 continua de pé na
+// rota dela, só não recebe tráfego; quem tiver v04 no cookie cai na v03 na
+// visita seguinte.
 
-export const SOS_VSL_VERSIONS = ["v03", "v04"] as const;
+export const SOS_VSL_VERSIONS = ["v03"] as const;
 export type SosVslVersion = (typeof SOS_VSL_VERSIONS)[number];
 
 export const SOS_VSL_COOKIE = "sos_canetas_vsl_versao";

@@ -22,10 +22,9 @@ type SearchParams = { [key: string]: string | string[] | undefined };
 //    mesma — trocar de VSL no meio do teste sujaria o resultado e confundiria
 //    quem já começou a assistir.
 //  - Quem chega novo entra no sorteio entre as versões de SOS_VSL_VERSIONS.
-// Desde 16/09/2026 são duas versões na lista — v03 (controle) e v04 — em
-// 50/50. Quem tiver no cookie uma versão que saiu da lista (v01, v02) é
-// re-sorteado entre essas duas. Pôr/tirar versão é mexer em SOS_VSL_VERSIONS
-// (e no matcher do middleware).
+// Desde 17/09/2026 só a v03 está na lista: todo mundo cai nela. Quem tiver no
+// cookie uma versão que saiu da lista (v01, v02, v04) é mandado pra v03.
+// Pôr/tirar versão é mexer em SOS_VSL_VERSIONS (e no matcher do middleware).
 // O link divulgado continua sendo /sos-canetas-vsl; as UTMs da campanha são
 // repassadas inteiras e a versão sorteada vai em ?variante=vsl-vXX.
 export default async function SosCanetasVslRedirector({
