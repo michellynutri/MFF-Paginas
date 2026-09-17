@@ -2,7 +2,16 @@ export const CHECKOUT_URL = "https://payfast.greenn.com.br/kjs6gkt/offer/XPZ4EA?
 // Checkout exclusivo da variante -h (Pagtrust).
 export const CHECKOUT_URL_H = "https://checkout.pagtrust.com.br/ck5868f88e?funnel=fn116a30bf";
 // Checkout da página VSL (oferta R$ 97 ou 12x R$ 9,97 — Greenn).
-export const CHECKOUT_URL_VSL = "https://payfast.greenn.com.br/redirect/299928";
+// Desde 17/09/2026 aponta direto pro checkout final, sem passar pelo
+// /redirect/299928 da Greenn: aquele link virou uma página "Loading..." que
+// resolve o destino por JavaScript (um salto a mais pra perder gente no
+// celular). O destino é o registro fixo do link 299928 na Greenn
+// (apipay.greenn.com.br/api/link/299928). Se a oferta/order bumps mudarem na
+// Greenn, atualizar aqui — a página não segue mais o redirect sozinha.
+export const CHECKOUT_URL_VSL =
+  "https://payfast.greenn.com.br/e3ebqum/offer/onyiLO?ch_id=138907&b_id_1=qzfx7a5&b_offer_1=HtIovc&b_id_2=h76t5zq&b_offer_2=voS1Tu";
+// Redirect antigo da VSL, guardado só pra referência.
+export const CHECKOUT_REDIRECT_VSL = "https://payfast.greenn.com.br/redirect/299928";
 // Checkout das variantes -a e -f (Greenn).
 export const CHECKOUT_URL_AF = "https://payfast.greenn.com.br/redirect/286034";
 export const OFFER_ANCHOR = "#oferta";
