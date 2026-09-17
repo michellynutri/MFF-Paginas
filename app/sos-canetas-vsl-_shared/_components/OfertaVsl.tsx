@@ -403,7 +403,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
       </section>
 
       {/* 7.4 Footer — vive dentro do .vsl-oculto da página, então só aparece
-          quando o player libera o restante do conteúdo (10:08). */}
+          quando o player libera o restante do conteúdo (9:14). */}
       <RodapeInstitucional tema="verde">
         <p className="font-sans text-[13px] leading-[1.7] text-creme/80">
           Manual S.O.S. Canetas — todos os direitos reservados.

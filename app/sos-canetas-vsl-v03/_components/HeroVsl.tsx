@@ -96,7 +96,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
       </div>
 
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o
-          vídeo atinge 10:08 (608s). */}
+          vídeo atinge 9:14 (554s). */}
       <div className="vsl-oculto max-w-[860px] mx-auto text-center px-5 md:px-20 pb-10 md:pb-14">
         <Cta dataCta={`sos-hero-${variant}`}>
           QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
@@ -141,12 +141,12 @@ export function HeroVsl({ variant }: HeroVslProps) {
         strategy="afterInteractive"
       />
 
-      {/* Delay de 10:08 (608s): revela os elementos .vsl-oculto quando o vídeo
+      {/* Delay de 9:14 (554s): revela os elementos .vsl-oculto quando o vídeo
           atinge esse ponto. persist mantém revelado para quem já assistiu. */}
-      <Script id="vsl-delay-608" strategy="afterInteractive">
+      <Script id="vsl-delay-554" strategy="afterInteractive">
         {`
           (function () {
-            var delaySeconds = 608; // 10:08 = 10*60 + 8
+            var delaySeconds = 554; // 9:14 = 9*60 + 14
             var player = document.querySelector("vturb-smartplayer");
             if (!player) return;
             player.addEventListener("player:ready", function () {
