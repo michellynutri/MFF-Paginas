@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 
 const protections = [
   {
@@ -32,9 +33,9 @@ const protections = [
   },
 ];
 
-type Props = { variant: string };
+type Props = { variant: string; checkoutUrl?: string };
 
-export function OManual({ variant }: Props) {
+export function OManual({ variant, checkoutUrl = CHECKOUT_URL_VSL }: Props) {
   return (
     <section className="bg-verde-esc text-creme py-20 md:py-32 px-6 md:px-20 relative overflow-hidden">
       <div className="max-w-[1180px] mx-auto">
@@ -120,7 +121,7 @@ export function OManual({ variant }: Props) {
             </ol>
 
             <div className="mt-12">
-              <Cta dataCta={`sos-bloco-4-${variant}`}>
+              <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-bloco-4-${variant}`}>
                 QUERO O PROTOCOLO COMPLETO
               </Cta>
             </div>

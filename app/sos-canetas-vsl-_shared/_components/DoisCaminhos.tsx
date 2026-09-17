@@ -1,4 +1,5 @@
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 
 const itensSem = [
   "Emagrece, mas perde músculo junto. O corpo que aparece não é o que você imaginou.",
@@ -16,9 +17,9 @@ const itensCom = [
   "Cada real da medicação rendendo o máximo.",
 ];
 
-type Props = { variant: string };
+type Props = { variant: string; checkoutUrl?: string };
 
-export function DoisCaminhos({ variant }: Props) {
+export function DoisCaminhos({ variant, checkoutUrl = CHECKOUT_URL_VSL }: Props) {
   return (
     <section className="bg-sos-creme-soft py-16 md:py-24 px-6 md:px-20">
       <div className="max-w-[1180px] mx-auto">
@@ -97,7 +98,7 @@ export function DoisCaminhos({ variant }: Props) {
         </div>
 
         <div className="flex justify-center mt-12 md:mt-16">
-          <Cta dataCta={`sos-bloco-2-${variant}`}>
+          <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-bloco-2-${variant}`}>
             QUERO SER A MULHER QUE FEZ CERTO
           </Cta>
         </div>

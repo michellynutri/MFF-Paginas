@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
 const imagensAntesDepois = [
@@ -56,9 +57,9 @@ const testimonials = [
   },
 ];
 
-type Props = { variant: string };
+type Props = { variant: string; checkoutUrl?: string };
 
-export function Prova({ variant }: Props) {
+export function Prova({ variant, checkoutUrl = CHECKOUT_URL_VSL }: Props) {
   return (
     <section className="bg-sos-creme-soft py-16 md:py-24 px-6 md:px-20">
       <div className="max-w-[1180px] mx-auto">
@@ -166,7 +167,7 @@ export function Prova({ variant }: Props) {
         </div>
 
         <div className="flex justify-center mt-12 md:mt-16">
-          <Cta dataCta={`sos-bloco-6-${variant}`}>
+          <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-bloco-6-${variant}`}>
             QUERO ESSES RESULTADOS TAMBÉM
           </Cta>
         </div>

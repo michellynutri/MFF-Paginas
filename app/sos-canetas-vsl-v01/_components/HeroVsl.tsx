@@ -1,12 +1,14 @@
 import Script from "next/script";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
 type HeroVslProps = {
   variant: string;
+  checkoutUrl?: string;
 };
 
-export function HeroVsl({ variant }: HeroVslProps) {
+export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProps) {
   return (
     <section className="bg-creme relative overflow-hidden">
       <Leaf
@@ -70,7 +72,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o
           vídeo atinge 9:14 (554s). */}
       <div className="vsl-oculto max-w-[860px] mx-auto text-center px-5 md:px-20 pb-10 md:pb-14">
-        <Cta dataCta={`sos-hero-${variant}`}>
+        <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-hero-${variant}`}>
           QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
         </Cta>
 

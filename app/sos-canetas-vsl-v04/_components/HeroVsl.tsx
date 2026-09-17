@@ -1,8 +1,10 @@
 import Script from "next/script";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 
 type HeroVslProps = {
   variant: string;
+  checkoutUrl?: string;
 };
 
 // A primeira dobra da v04 é lida como MATÉRIA, não como landing: fundo
@@ -14,7 +16,7 @@ const FONTE_NOTICIA = {
   fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
 };
 
-export function HeroVsl({ variant }: HeroVslProps) {
+export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProps) {
   return (
     <section className="bg-white relative">
       {/* PRIMEIRA DOBRA — barra, manchete, vídeo e legenda cabem inteiros em
@@ -117,7 +119,7 @@ export function HeroVsl({ variant }: HeroVslProps) {
         className="vsl-oculto w-full max-w-[760px] mx-auto text-center px-5 pt-6 pb-10 md:pt-8 md:pb-14"
         style={FONTE_NOTICIA}
       >
-        <Cta dataCta={`sos-hero-${variant}`}>
+        <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-hero-${variant}`}>
           QUERO QUE O MEU RESULTADO FIQUE PRA SEMPRE
         </Cta>
 

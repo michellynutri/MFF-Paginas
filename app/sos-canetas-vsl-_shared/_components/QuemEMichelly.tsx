@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
+import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 
 const metricas = [
@@ -8,9 +9,9 @@ const metricas = [
   { number: "5+", label: "pós-graduações e especializações" },
 ];
 
-type Props = { variant: string };
+type Props = { variant: string; checkoutUrl?: string };
 
-export function QuemEMichelly({ variant }: Props) {
+export function QuemEMichelly({ variant, checkoutUrl = CHECKOUT_URL_VSL }: Props) {
   return (
     <section className="bg-creme py-16 md:py-24 px-6 md:px-20 relative overflow-hidden">
       <Leaf
@@ -103,7 +104,7 @@ export function QuemEMichelly({ variant }: Props) {
             </div>
 
             <div className="mt-10">
-              <Cta dataCta={`sos-bloco-5-${variant}`}>
+              <Cta to="checkout" checkoutUrl={checkoutUrl} dataCta={`sos-bloco-5-${variant}`}>
                 QUERO COMEÇAR AGORA
               </Cta>
             </div>
