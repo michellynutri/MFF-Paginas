@@ -27,11 +27,21 @@ const variantStyles: Record<CtaVariant, string> = {
     "bg-sos-terracota text-creme px-10 md:px-16 py-6 md:py-7 text-[18px] md:text-[20px] shadow-[0_12px_40px_rgba(197,107,74,0.4)] hover:shadow-[0_16px_48px_rgba(197,107,74,0.48)] focus-visible:outline-sos-terracota",
 };
 
+// Navega pro checkout NA MESMA ABA, levando as UTMs da página e a variante.
+// Antes abria em aba nova (window.open + preventDefault): quando o navegador
+// bloqueava a aba nova (navegador interno do Instagram/Facebook no Android,
+// bloqueador de popup), o clique morria sem sair do lugar — e o GTM contava
+// InitiateCheckout mesmo assim. Corrigido em 17/09/2026 (61 cliques → 20 no
+// checkout). Se o JS falhar, o href do <a> ainda leva pro checkout (sem UTMs).
 export function handleCheckoutClick(
   e: React.MouseEvent<HTMLAnchorElement>,
   checkoutUrl: string = CHECKOUT_URL,
 ) {
   e.preventDefault();
+  window.location.assign(buildCheckoutUrl(checkoutUrl));
+}
+
+export function buildCheckoutUrl(checkoutUrl: string = CHECKOUT_URL) {
   const url = new URL(checkoutUrl);
   const incoming = new URLSearchParams(window.location.search);
   incoming.forEach((value, key) => url.searchParams.append(key, value));
@@ -44,7 +54,7 @@ export function handleCheckoutClick(
   if (variantMatch) {
     url.searchParams.set("variante", variantMatch[1]);
   }
-  window.open(url.toString(), "_blank", "noopener,noreferrer");
+  return url.toString();
 }
 
 export function Cta({
@@ -61,8 +71,6 @@ export function Cta({
   const href = isCheckout ? resolvedCheckout : OFFER_ANCHOR;
   const externalProps = isCheckout
     ? {
-        target: "_blank",
-        rel: "noopener noreferrer",
         onClick: (e: React.MouseEvent<HTMLAnchorElement>) =>
           handleCheckoutClick(e, resolvedCheckout),
       }

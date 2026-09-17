@@ -14,8 +14,6 @@ export function CheckoutPSLink({ dataCta, checkoutUrl }: Props) {
     <a
       href={resolvedCheckout}
       data-cta={dataCta}
-      target="_blank"
-      rel="noopener noreferrer"
       onClick={(e) => handleCheckoutClick(e, resolvedCheckout)}
       className="inline-flex items-center gap-2 mt-8 text-sos-dourado-esc font-sans text-[15px] hover:underline"
     >
