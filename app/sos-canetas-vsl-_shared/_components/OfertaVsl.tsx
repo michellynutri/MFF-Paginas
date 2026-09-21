@@ -84,11 +84,11 @@ const itens: OfertaItem[] = [
   },
 ];
 
-const bonus: OfertaItem[] = [
+const bonus = (a: AncoragemVsl): OfertaItem[] => [
   {
     title: "Bônus — Calculadora de Proteína",
     desc: "Sua meta ajustada automaticamente conforme o seu peso muda, pra quem quer precisão.",
-    value: "R$ 97",
+    value: a.calculadora,
     isBonus: true,
     icon: (
       <svg
@@ -110,7 +110,7 @@ const bonus: OfertaItem[] = [
   {
     title: "Bônus — Guia de Substituições Inteligentes",
     desc: "Trocas certas para cada alimento do cardápio. Consulta rápida por grupo alimentar.",
-    value: "R$ 49",
+    value: a.substituicoes,
     isBonus: true,
     icon: (
       <svg
@@ -132,7 +132,7 @@ const bonus: OfertaItem[] = [
   {
     title: "Bônus — Lista de Compras Pronta",
     desc: "6 semanas, separadas por categoria, com checklist para marcar no mercado.",
-    value: "R$ 25",
+    value: a.lista,
     isBonus: true,
     icon: (
       <svg
@@ -153,7 +153,41 @@ const bonus: OfertaItem[] = [
   },
 ];
 
-type Props = { variant: string; checkoutUrl?: string };
+export type PrecoVsl = {
+  /** só o número, sem "R$": "97" */
+  valor: string;
+  /** frase das parcelas inteira: "12x de R$ 9,97" */
+  parcelas: string;
+};
+
+export type AncoragemVsl = {
+  /** valores riscados dos bônus, com "R$" */
+  calculadora: string;
+  substituicoes: string;
+  lista: string;
+  /** "O valor real de tudo isso, junto, é <valorReal>" */
+  valorReal: string;
+};
+
+// Ancoragem padrão da VSL (v03). A v05 passa outra, proporcional ao preço de 197.
+export const ANCORAGEM_VSL_97: AncoragemVsl = {
+  calculadora: "R$ 97",
+  substituicoes: "R$ 49",
+  lista: "R$ 25",
+  valorReal: "R$ 497",
+};
+
+// Preço padrão da VSL. A v05 (teste de preço) passa outro via prop.
+export const PRECO_VSL_97: PrecoVsl = { valor: "97", parcelas: "12x de R$ 9,97" };
+
+type Props = {
+  variant: string;
+  checkoutUrl?: string;
+  preco?: PrecoVsl;
+  ancoragem?: AncoragemVsl;
+  /** cartão extra entre os bônus e o bloco de preço (a v05 usa pro bônus-relâmpago) */
+  bonusExtra?: React.ReactNode;
+};
 
 function OfertaCard({ item }: { item: OfertaItem }) {
   return (
@@ -194,7 +228,14 @@ function OfertaCard({ item }: { item: OfertaItem }) {
   );
 }
 
-export function OfertaVsl({ variant, checkoutUrl }: Props) {
+export function OfertaVsl({
+  variant,
+  checkoutUrl,
+  preco = PRECO_VSL_97,
+  ancoragem = ANCORAGEM_VSL_97,
+  bonusExtra,
+}: Props) {
+  const precoTexto = `R$ ${preco.valor}`;
   return (
     <>
       {/* 7.1 Zona Oferta */}
@@ -250,15 +291,17 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
           </div>
 
           <div className="space-y-3">
-            {bonus.map((item, i) => (
+            {bonus(ancoragem).map((item, i) => (
               <OfertaCard key={i} item={item} />
             ))}
           </div>
 
+          {bonusExtra && <div className="mt-6">{bonusExtra}</div>}
+
           {/* Bloco de preço */}
           <div className="text-center my-12">
             <div className="font-sans text-[15px] md:text-[16px] text-marrom">
-              O valor real de tudo isso, junto, é <s>R$ 497</s>.
+              O valor real de tudo isso, junto, é <s>{ancoragem.valorReal}</s>.
             </div>
             <div className="font-sans text-[16px] md:text-[17px] text-texto mt-2 mb-3">
               Hoje, tudo isso por:
@@ -268,11 +311,11 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
                 R$
               </span>
               <span className="font-serif text-[64px] md:text-[96px] font-medium leading-none">
-                97
+                {preco.valor}
               </span>
             </div>
             <div className="font-sans text-[13px] md:text-[14px] text-marrom mt-2">
-              À vista ou em até 12x de R$ 9,97
+              À vista ou em até {preco.parcelas}
             </div>
           </div>
 
@@ -291,7 +334,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
           </div>
 
           <p className="font-sans text-[15px] md:text-[16px] text-texto leading-[1.7] text-center max-w-[560px] mx-auto mt-10">
-            R$ 97 é uma pequena fração de um único mês de caneta. E pode ser a
+            {precoTexto} é uma pequena fração de um único mês de caneta. E pode ser a
             diferença entre o peso ir embora de vez — ou voltar tudo quando você
             parar.
           </p>
@@ -375,7 +418,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
               dataCta={`sos-final-${variant}`}
               checkoutUrl={checkoutUrl}
             >
-              SIM, QUERO QUE O MEU RESULTADO FIQUE — R$ 97
+              SIM, QUERO QUE O MEU RESULTADO FIQUE — {precoTexto}
             </Cta>
             <p className="font-sans text-[13px] text-marrom">
               Acesso imediato · Garantia de 7 dias · Sem risco
@@ -391,7 +434,7 @@ export function OfertaVsl({ variant, checkoutUrl }: Props) {
               Você chegou até aqui porque o que está em jogo importa de verdade.
               Você sabe que a caneta está funcionando. Você sabe que não quer
               perder isso. E agora sabe que o que você come enquanto usa a
-              caneta é o que decide se dessa vez vai ser diferente. Por R$ 97 —
+              caneta é o que decide se dessa vez vai ser diferente. Por {precoTexto} —
               uma fração do que você investe por mês na caneta — você garante que
               cada real gasto no tratamento está construindo um resultado que não
               vai voltar.
