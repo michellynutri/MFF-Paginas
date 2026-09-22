@@ -36,6 +36,16 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith(prefix)) {
     const seen = pathname.slice(prefix.length)
 
+    // Toda versão da VSL precisa chegar com ?variante=vsl-vXX na URL — é daí
+    // que pixel/GA/UTMify leem a variação. Quem vem pelo sorteador
+    // (/sos-canetas-vsl) já chega com ele; quem vem por link direto (v05, fora
+    // do sorteio) não chegava. Aqui completa o parâmetro, mantendo as UTMs.
+    if (/^vsl-v\d+$/.test(seen) && request.nextUrl.searchParams.get("variante") !== seen) {
+      const url = request.nextUrl.clone()
+      url.searchParams.set("variante", seen)
+      return NextResponse.redirect(url)
+    }
+
     // Versões da VSL que estão em circulação (hoje só a v03 —
     // ver SOS_VSL_VERSIONS). Carimba duas coisas: a
     // variante "vsl" (pro resto do funil continuar enxergando essa pessoa como
@@ -80,6 +90,7 @@ export const config = {
     "/sos-canetas-f",
     "/sos-canetas-vsl",
     "/sos-canetas-vsl-v03",
+    "/sos-canetas-vsl-v05",
     "/canetas-do-jeito-certo-a",
     "/canetas-do-jeito-certo-b",
     "/canetas-do-jeito-certo-c",
