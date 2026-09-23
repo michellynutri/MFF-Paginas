@@ -16,9 +16,9 @@ export function isSosVariant(
   return !!value && (SOS_VARIANTS as readonly string[]).includes(value);
 }
 
-export function randomSosVariant(): SosVariant {
-  return SOS_VARIANTS[Math.floor(Math.random() * SOS_VARIANTS.length)];
-}
+// Desde 23/09/2026 a A e a F estão fora de todo sorteio: /sos-canetas e
+// /canetas mandam todo mundo pra VSL v03. A lista acima só serve pro
+// middleware continuar carimbando quem abrir uma dessas rotas direto.
 
 // --- Teste 50/50 dentro da variante "vsl" ----------------------------------
 // /sos-canetas-vsl não renderiza mais página nenhuma: é só um sorteador que
