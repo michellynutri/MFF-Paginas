@@ -1,7 +1,5 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { SOS_COOKIE } from "@/lib/ab-canetas";
 
 export const dynamic = "force-dynamic";
 
@@ -12,25 +10,17 @@ export const metadata: Metadata = {
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-// Roteamento da campanha PAGA da /sos-canetas.
-// Regra de convivência com a campanha da VSL:
-//  - Quem já viu a página da VSL (cookie = "vsl", carimbado pelo middleware
-//    quando entrou pela outra campanha) cai SÓ na VSL.
-//  - Quem nunca viu a VSL entra no sorteio A/F normal.
-const PAID_VARIANTS = ["a", "f"] as const;
-
+// Link da campanha paga (e, na prática, também da bio).
+// Desde 23/09/2026 não sorteia mais nada: a A e a F saíram de todo sorteio e
+// todo mundo vai pra VSL v03, com as UTMs repassadas e ?variante=vsl-v03.
+// As páginas /sos-canetas-a e /sos-canetas-f continuam de pé nas rotas delas,
+// só não recebem mais tráfego daqui.
 export default async function SosCanetasRedirector({
   searchParams,
 }: {
   searchParams: Promise<SearchParams>;
 }) {
   const resolved = await searchParams;
-  const cookieStore = await cookies();
-  const seenVsl = cookieStore.get(SOS_COOKIE)?.value === "vsl";
-
-  const variant = seenVsl
-    ? "vsl"
-    : PAID_VARIANTS[Math.floor(Math.random() * PAID_VARIANTS.length)];
 
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(resolved)) {
@@ -41,7 +31,7 @@ export default async function SosCanetasRedirector({
       for (const v of value) params.append(key, v);
     }
   }
-  params.set("variante", variant);
+  params.set("variante", "vsl-v03");
 
-  redirect(`/sos-canetas-${variant}?${params.toString()}`);
+  redirect(`/sos-canetas-vsl-v03?${params.toString()}`);
 }
