@@ -51,7 +51,7 @@ export default async function Page({
 
   return (
     <main className="bg-creme">
-      <HeroVsl headlineId={headlineId} />
+      <HeroVsl headlineId={headlineId} variante={variante} />
       {/* Tudo abaixo do vídeo só aparece no minuto do preço (ver HeroVsl). */}
       <div className="vsl-oculto">
         <AberturaOferta />

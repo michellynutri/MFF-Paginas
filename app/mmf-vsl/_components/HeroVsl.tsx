@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
-import { PITCH_SECONDS, VTURB_ACCOUNT_ID, VTURB_VIDEO_ID } from "./constants";
+import { Cta, CtaNota } from "./Cta";
+import { PITCH_SECONDS, PRECO, VTURB_ACCOUNT_ID, VTURB_VIDEO_ID } from "./constants";
 
 // Custom element do Vturb (<vturb-smartplayer>), sem tipo no JSX.
 const VturbPlayer = "vturb-smartplayer" as unknown as React.ElementType;
@@ -50,7 +51,13 @@ export const HEADLINES: Record<
   },
 };
 
-export function HeroVsl({ headlineId }: { headlineId: HeadlineId }) {
+export function HeroVsl({
+  headlineId,
+  variante,
+}: {
+  headlineId: HeadlineId;
+  variante: string;
+}) {
   const h = HEADLINES[headlineId];
   const temVideo = VTURB_VIDEO_ID !== "";
 
@@ -109,6 +116,15 @@ export function HeroVsl({ headlineId }: { headlineId: HeadlineId }) {
             )}
           </div>
         </div>
+      </div>
+
+      {/* CTA logo abaixo do vídeo — fora da primeira dobra e, como o resto
+          da página, só aparece no minuto do pitch. */}
+      <div className="vsl-oculto relative max-w-[860px] mx-auto flex flex-col items-center px-5 md:px-20 pt-2 pb-10 md:pb-14">
+        <Cta variante={variante} dataCta={`mmf-hero-${variante}`}>
+          QUERO MEU ACESSO AGORA
+        </Cta>
+        <CtaNota>{PRECO.parcelas} · acesso imediato · 7 dias de garantia</CtaNota>
       </div>
 
       {/* Palco do player: vídeo vertical 9:16 dimensionado pela altura que
