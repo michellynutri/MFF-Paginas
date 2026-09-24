@@ -60,6 +60,8 @@ export function HeroVsl({
 }) {
   const h = HEADLINES[headlineId];
   const temVideo = VTURB_VIDEO_ID !== "";
+  // Só esconde o resto da página quando o segundo do pitch estiver definido.
+  const segurarAtePitch = temVideo && PITCH_SECONDS > 0;
 
   return (
     <section className="bg-creme relative overflow-hidden">
@@ -131,18 +133,20 @@ export function HeroVsl({
           sobra da dobra. Com vídeo configurado, .vsl-oculto esconde tudo
           abaixo até o pitch; sem vídeo, fica tudo visível pra revisão. */}
       <style>{`
-        ${temVideo ? ".vsl-oculto{display:none!important}" : ""}
+        ${segurarAtePitch ? ".vsl-oculto{display:none!important}" : ""}
         .vsl-stage{position:relative;flex:1 1 0;min-height:0}
         .vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * 1.7778));aspect-ratio:9/16}
       `}</style>
 
       {temVideo && (
+        <Script
+          id={`vturb-vid-${VTURB_VIDEO_ID}`}
+          src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${VTURB_VIDEO_ID}/v4/player.js`}
+          strategy="afterInteractive"
+        />
+      )}
+      {segurarAtePitch && (
         <>
-          <Script
-            id={`vturb-vid-${VTURB_VIDEO_ID}`}
-            src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${VTURB_VIDEO_ID}/v4/player.js`}
-            strategy="afterInteractive"
-          />
           {/* Revela os .vsl-oculto no minuto do preço. persist mantém
               revelado pra quem já assistiu. */}
           <Script id="mmf-vsl-delay" strategy="afterInteractive">

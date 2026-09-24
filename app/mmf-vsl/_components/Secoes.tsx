@@ -472,7 +472,7 @@ export function Oferta({ variante }: SecaoProps) {
           </div>
           <div className="font-serif font-medium text-sos-terracota leading-none mt-3">
             <span className="text-[26px] md:text-[32px] mr-2">12x de</span>
-            <span className="text-[68px] md:text-[96px]">R$ 30</span>
+            <span className="text-[60px] md:text-[96px]">{PRECO.parcela}</span>
           </div>
           <div className="font-sans text-[15px] md:text-[16px] text-marrom mt-2">
             ou {PRECO.avista} à vista
