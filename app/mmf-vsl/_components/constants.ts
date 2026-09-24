@@ -7,9 +7,10 @@ export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/g4vfzcf/offer
 // VSL no Vturb (embed recebido em 23/09/2026).
 export const VTURB_VIDEO_ID: string = "6ab468bdcf36dc09b7308e7d";
 export const VTURB_ACCOUNT_ID = "9209a5ac-0a42-43b5-9c1f-7d310e9d3d33";
-// PENDENTE: segundo do pitch (ex.: 9:14 = 554). Enquanto for 0, nada fica
-// escondido — a página inteira aparece desde o início.
-export const PITCH_SECONDS: number = 0;
+// Segundo do pitch: tudo abaixo da VSL abre quando o vídeo chega em 16:59
+// (16*60 + 59 = 1019s de reprodução — conta o tempo do vídeo, não o relógio).
+// 0 = nada fica escondido.
+export const PITCH_SECONDS: number = 1019;
 
 export const PRECO = {
   // Valor da parcela como a Greenn cobra no checkout (juros do 12x).
