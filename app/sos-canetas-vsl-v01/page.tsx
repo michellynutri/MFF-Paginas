@@ -36,7 +36,7 @@ export default function Page() {
   return (
     <main className="bg-creme">
       <HeroVsl variant={VARIANT} />
-      {/* Tudo abaixo do vídeo só aparece após o vídeo atingir 9:14 (554s).
+      {/* Tudo abaixo do vídeo só aparece após o vídeo atingir 10:08 (608s).
           O player revela via displayHiddenElements (ver HeroVsl). */}
       <div className="vsl-oculto">
         <DoisCaminhos variant={VARIANT} />

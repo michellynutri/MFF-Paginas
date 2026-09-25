@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 // Bônus-relâmpago da v05: fica disponível por 5 minutos a partir do momento
 // em que a oferta aparece na tela (a seção fica escondida até o vídeo chegar
-// em 9:14). O início é guardado no localStorage pra recarregar a página não
+// em 10:08). O início é guardado no localStorage pra recarregar a página não
 // zerar o relógio. Ao zerar, o cartão fica marcado como encerrado.
 const DURACAO_MS = 5 * 60 * 1000;
 const STORAGE_KEY = "sos-vsl-v05-bonus-glp1-inicio";

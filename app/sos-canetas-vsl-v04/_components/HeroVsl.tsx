@@ -114,7 +114,7 @@ export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProp
       </div>
 
       {/* CTA + garantia — fica fora da primeira dobra e só aparece quando o
-          vídeo atinge 9:14 (554s). */}
+          vídeo atinge 10:08 (608s). */}
       <div
         className="vsl-oculto w-full max-w-[760px] mx-auto text-center px-5 pt-6 pb-10 md:pt-8 md:pb-14"
         style={FONTE_NOTICIA}
@@ -162,12 +162,12 @@ export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProp
         strategy="afterInteractive"
       />
 
-      {/* Delay de 9:14 (554s): revela os elementos .vsl-oculto quando o vídeo
+      {/* Delay de 10:08 (608s): revela os elementos .vsl-oculto quando o vídeo
           atinge esse ponto. persist mantém revelado para quem já assistiu. */}
-      <Script id="vsl-delay-554" strategy="afterInteractive">
+      <Script id="vsl-delay-608" strategy="afterInteractive">
         {`
           (function () {
-            var delaySeconds = 554; // 9:14 = 9*60 + 14
+            var delaySeconds = 608; // 10:08 do vídeo = preço. Vturb conta a posição do vídeo, não o relógio (em 1.1x isso é 9:13 de relógio)
             var player = document.querySelector("vturb-smartplayer");
             if (!player) return;
             player.addEventListener("player:ready", function () {
