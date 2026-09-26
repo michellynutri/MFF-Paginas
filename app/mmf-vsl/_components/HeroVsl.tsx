@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { VturbCheckoutUtm } from "@/components/vturb-checkout-utm";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 import { Cta, CtaNota } from "./Cta";
 import { PITCH_SECONDS, PRECO, VTURB_ACCOUNT_ID, VTURB_VIDEO_ID } from "./constants";
@@ -145,6 +146,7 @@ export function HeroVsl({
           strategy="afterInteractive"
         />
       )}
+      {temVideo && <VturbCheckoutUtm variante={variante} />}
       {segurarAtePitch && (
         <>
           {/* Revela os .vsl-oculto no minuto do preço. persist mantém
