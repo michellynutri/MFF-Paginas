@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { VturbCheckoutUtm } from "@/components/vturb-checkout-utm";
 import { Cta } from "../../sos-canetas-_shared/_components/Cta";
 import { CHECKOUT_URL_VSL } from "../../sos-canetas-_shared/_components/constants";
 
@@ -109,6 +110,7 @@ export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProp
         src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6a737d98fa966b9f5cd0a63a/v4/player.js"
         strategy="afterInteractive"
       />
+      <VturbCheckoutUtm variante={"vsl-v02"} />
 
       {/* Delay de 10:08 (608s): revela os elementos .vsl-oculto quando o vídeo
           atinge esse ponto. persist mantém revelado para quem já assistiu. */}
