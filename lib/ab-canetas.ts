@@ -138,3 +138,40 @@ export function isCjcVariant(
 export function randomCjcVariant(): CjcVariant {
   return CJC_VARIANTS[Math.floor(Math.random() * CJC_VARIANTS.length)];
 }
+
+// --- Teste A/B/C de headline da /mmf-vsl -----------------------------------
+// Mesma mecânica da VSL do SOS, só que a página é uma rota só: o que muda é
+// a dobra, escolhida por ?h=1|2|3. O middleware faz as duas coisas:
+//  - /mmf-vsl sem ?h= (o link divulgado): devolve a headline que a pessoa já
+//    viu (cookie abaixo) ou sorteia uma entre MMF_VSL_HEADLINES e redireciona
+//    pra /mmf-vsl?h=N&variante=mmf-vsl-hN, mantendo as UTMs.
+//  - /mmf-vsl?h=N sem a variante certa (link direto de anúncio): completa a
+//    variante na URL, que é de onde pixel/GA/UTMify leem a variação.
+// E carimba a headline vista, pra ninguém trocar de dobra no meio do teste.
+// Um ?h= explícito é sempre respeitado, esteja ou não no sorteio.
+// Tirar/pôr headline aqui é o que liga e desliga cada uma no sorteio.
+// Rodada 1 (28/09/2026): h1, h2 e h3, um terço do tráfego pra cada.
+
+export const MMF_VSL_HEADLINES = ["1", "2", "3"] as const;
+export type MmfVslHeadline = (typeof MMF_VSL_HEADLINES)[number];
+
+/** Todas as que a página sabe renderizar (sorteio ou link direto). */
+export const MMF_VSL_HEADLINES_VALIDAS = ["1", "2", "3"] as const;
+
+export const MMF_VSL_COOKIE = "mmf_vsl_headline";
+
+export function isMmfVslHeadlineValida(
+  value: string | undefined | null,
+): value is (typeof MMF_VSL_HEADLINES_VALIDAS)[number] {
+  return !!value && (MMF_VSL_HEADLINES_VALIDAS as readonly string[]).includes(value);
+}
+
+export function isMmfVslHeadlineNoSorteio(
+  value: string | undefined | null,
+): value is MmfVslHeadline {
+  return !!value && (MMF_VSL_HEADLINES as readonly string[]).includes(value);
+}
+
+export function randomMmfVslHeadline(): MmfVslHeadline {
+  return MMF_VSL_HEADLINES[Math.floor(Math.random() * MMF_VSL_HEADLINES.length)];
+}

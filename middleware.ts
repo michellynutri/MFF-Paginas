@@ -2,12 +2,16 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import {
   CJC_COOKIE,
+  MMF_VSL_COOKIE,
   SOS_COOKIE,
   SOS_COOKIE_MAX_AGE,
   SOS_VSL_COOKIE,
   isCjcVariant,
+  isMmfVslHeadlineNoSorteio,
+  isMmfVslHeadlineValida,
   isSosVariant,
   isSosVslVersion,
+  randomMmfVslHeadline,
 } from "@/lib/ab-canetas"
 
 function carimbar(response: NextResponse, request: NextRequest, name: string, value: string) {
@@ -80,12 +84,41 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Teste de headline da /mmf-vsl (ver MMF_VSL_HEADLINES). Sem ?h= válido,
+  // sorteia (ou devolve a do cookie); com ?h= mas sem a variante certa,
+  // completa. Nos dois casos redireciona mantendo as UTMs.
+  if (pathname === "/mmf-vsl") {
+    const params = request.nextUrl.searchParams
+    const pedida = params.get("h")
+    const visto = request.cookies.get(MMF_VSL_COOKIE)?.value
+    const h = isMmfVslHeadlineValida(pedida)
+      ? pedida
+      : isMmfVslHeadlineNoSorteio(visto)
+        ? visto
+        : randomMmfVslHeadline()
+    const variante = `mmf-vsl-h${h}`
+
+    if (pedida !== h || params.get("variante") !== variante) {
+      const url = request.nextUrl.clone()
+      url.searchParams.set("h", h)
+      url.searchParams.set("variante", variante)
+      const response = NextResponse.redirect(url)
+      carimbar(response, request, MMF_VSL_COOKIE, h)
+      return response
+    }
+
+    const response = NextResponse.next()
+    carimbar(response, request, MMF_VSL_COOKIE, h)
+    return response
+  }
+
   return NextResponse.next()
 }
 
 export const config = {
   matcher: [
     "/",
+    "/mmf-vsl",
     "/sos-canetas-a",
     "/sos-canetas-f",
     "/sos-canetas-vsl",

@@ -14,7 +14,9 @@ import {
 } from "./_components/Secoes";
 
 // Funil de VSL vendendo o MMF direto (23/09/2026). Copy do Vinícius.
-// Teste de headline por parâmetro: /mmf-vsl (h1, padrão), ?h=2, ?h=3.
+// Teste de headline por parâmetro: ?h=1|2|3 (sem ?h=, h1). O link divulgado
+// é /mmf-vsl: o middleware sorteia a headline (ou devolve a do cookie) e
+// redireciona com ?h=N&variante=mmf-vsl-hN — ver MMF_VSL_HEADLINES.
 // A variante vai pro checkout como ?variante=mmf-vsl-h1|h2|h3.
 
 export const metadata: Metadata = {
