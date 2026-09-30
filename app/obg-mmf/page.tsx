@@ -44,9 +44,9 @@ const REVEAL_AT_SECONDS = 645;
 // (layout de referência: "ESSA PÁGINA SAIRÁ DO AR EM 15:00").
 const COUNTDOWN_SECONDS = 900;
 
-// Preço da oferta (upsell 6552 = R$ 497, até 12x). O parcelado segue a mesma
-// taxa do downsell (R$ 247 = 12x de R$ 24,70).
-const PRECO_PARCELA = "R$ 49,70";
+// Preço da oferta (upsell 6552 = R$ 497, até 12x). Parcela conferida com o
+// cliente em 2026-09-30 (12x de R$ 51,10 no checkout da Greenn).
+const PRECO_PARCELA = "R$ 51,10";
 const PRECO_AVISTA = "R$ 497";
 // Preço "De:" riscado acima do parcelado. null = não mostra (o MMF de 1 ano é
 // R$ 497 no site também, então não há âncora real hoje).
