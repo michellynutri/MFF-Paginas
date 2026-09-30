@@ -55,14 +55,17 @@ export const HEADLINES: Record<
 export function HeroVsl({
   headlineId,
   variante,
+  pitchSeconds = PITCH_SECONDS,
 }: {
   headlineId: HeadlineId;
   variante: string;
+  /** segundo do vídeo em que o resto da página aparece; 0 = sem delay (/mmf-bio) */
+  pitchSeconds?: number;
 }) {
   const h = HEADLINES[headlineId];
   const temVideo = VTURB_VIDEO_ID !== "";
   // Só esconde o resto da página quando o segundo do pitch estiver definido.
-  const segurarAtePitch = temVideo && PITCH_SECONDS > 0;
+  const segurarAtePitch = temVideo && pitchSeconds > 0;
 
   return (
     <section className="bg-creme relative overflow-hidden">
@@ -161,7 +164,7 @@ export function HeroVsl({
                 var player = document.querySelector("vturb-smartplayer");
                 if (!player) return;
                 player.addEventListener("player:ready", function () {
-                  player.displayHiddenElements(${PITCH_SECONDS}, [".vsl-oculto"], { persist: true });
+                  player.displayHiddenElements(${pitchSeconds}, [".vsl-oculto"], { persist: true });
                 });
               })();
             `}
