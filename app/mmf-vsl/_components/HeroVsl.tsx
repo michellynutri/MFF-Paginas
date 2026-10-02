@@ -2,7 +2,13 @@ import Script from "next/script";
 import { VturbCheckoutUtm } from "@/components/vturb-checkout-utm";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 import { Cta, CtaNota } from "./Cta";
-import { PITCH_SECONDS, PRECO, VTURB_ACCOUNT_ID, VTURB_VIDEO_ID } from "./constants";
+import {
+  PITCH_SECONDS,
+  PITCH_SECONDS_AB_PADRAO,
+  PRECO,
+  VTURB_ACCOUNT_ID,
+  VTURB_VIDEO_ID,
+} from "./constants";
 
 // Custom element do Vturb (<vturb-smartplayer>), sem tipo no JSX.
 const VturbPlayer = "vturb-smartplayer" as unknown as React.ElementType;
@@ -10,7 +16,14 @@ const VturbPlayer = "vturb-smartplayer" as unknown as React.ElementType;
 export type HeadlineId = "h1" | "h2" | "h3";
 
 export type Aspecto = "9:16" | "3:4";
-export type VideoVsl = { id: string; aspecto: Aspecto };
+// Um vídeo fixo, ou um teste A/B da Vturb (ela sorteia o vídeo; a proporção e
+// o segundo do pitch de cada um vêm em `variantes`).
+export type VideoVsl =
+  | { id: string; aspecto: Aspecto }
+  | {
+      abTest: string;
+      variantes: Record<string, { readonly nome: string; readonly aspecto: Aspecto; readonly pitch: number }>;
+    };
 
 // Palco do player por proporção: aspect-ratio e quanto a altura pode crescer
 // a partir da largura disponível (100vw menos o padding lateral de 2.5rem).
@@ -76,8 +89,10 @@ export function HeroVsl({
   video?: VideoVsl;
 }) {
   const h = HEADLINES[headlineId];
-  const temVideo = video.id !== "";
-  const palco = ASPECTOS[video.aspecto];
+  const ab = "abTest" in video ? video : null;
+  const fixo = "abTest" in video ? null : video;
+  const temVideo = ab ? true : fixo!.id !== "";
+  const palco = fixo ? ASPECTOS[fixo.aspecto] : null;
   // Só esconde o resto da página quando o segundo do pitch estiver definido.
   const segurarAtePitch = temVideo && pitchSeconds > 0;
 
@@ -119,9 +134,18 @@ export function HeroVsl({
 
         <div className="vsl-stage mt-2 md:mt-4">
           <div className="vsl-player rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
-            {temVideo ? (
+            {ab ? (
+              /* Teste A/B: o player.js do ab-test troca este id por
+                 vid-<vídeo sorteado> e o script mmf-vsl-ab abaixo dimensiona
+                 o palco pela proporção do sorteado. Sem placeholder, como no
+                 embed da Vturb. */
               <VturbPlayer
-                id={`vid-${video.id}`}
+                id={`ab-${ab.abTest}`}
+                style={{ display: "block", width: "100%", height: "100%" }}
+              />
+            ) : fixo && temVideo ? (
+              <VturbPlayer
+                id={`vid-${fixo.id}`}
                 style={{ display: "block", width: "100%", height: "100%" }}
               >
                 <div
@@ -157,18 +181,82 @@ export function HeroVsl({
       <style>{`
         ${segurarAtePitch ? ".vsl-oculto{display:none!important}" : ""}
         .vsl-stage{position:relative;flex:1 1 0;min-height:0}
-        .vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * ${palco.altura}));aspect-ratio:${palco.ratio}}
+        ${
+          palco
+            ? `.vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * ${palco.altura}));aspect-ratio:${palco.ratio}}`
+            : /* A/B: chute 3:4 (maioria) até o script medir o sorteado. */
+              `.vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * 1.3333));aspect-ratio:3/4}`
+        }
       `}</style>
 
-      {temVideo && (
+      {fixo && temVideo && (
         <Script
-          id={`vturb-vid-${video.id}`}
-          src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${video.id}/v4/player.js`}
+          id={`vturb-vid-${fixo.id}`}
+          src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${fixo.id}/v4/player.js`}
           strategy="afterInteractive"
         />
       )}
+      {ab && (
+        /* Carrega o player.js do ab-test com onload (o ab-test escolhe o
+           vídeo e renomeia o elemento de forma síncrona ao rodar). Depois:
+           1) dimensiona o palco pela proporção do vídeo sorteado (da lista,
+              ou da config que o ab-test deixa em el._setup/el.config);
+           2) revela os .vsl-oculto no pitch daquele vídeo. */
+        <Script id="mmf-vsl-ab" strategy="afterInteractive">
+          {`
+            (function () {
+              var ID = ${JSON.stringify(ab.abTest)};
+              var VARIANTES = ${JSON.stringify(
+                Object.fromEntries(
+                  Object.entries(ab.variantes).map(([id, v]) => [
+                    id,
+                    { r: v.aspecto === "3:4" ? 1.3333 : 1.7778, p: v.pitch },
+                  ]),
+                ),
+              )};
+              var PITCH_PADRAO = ${pitchSeconds > 0 ? PITCH_SECONDS_AB_PADRAO : 0};
+              var el = document.getElementById("ab-" + ID);
+              if (!el) return;
+              var box = el.closest(".vsl-player");
+              var stage = el.closest(".vsl-stage");
+              function sorteado() { return VARIANTES[el.id.replace("vid-", "")]; }
+              function proporcao() {
+                var v = sorteado();
+                if (v) return v.r;
+                var c = el.config || el._setup;
+                var ar = c && c.video && c.video.aspectRatio;
+                return ar || 1.3333;
+              }
+              function ajustar() {
+                if (!box || !stage) return;
+                var r = proporcao();
+                var w = Math.min(stage.clientWidth, stage.clientHeight / r);
+                if (!(w > 0)) return;
+                box.style.width = w + "px";
+                box.style.height = w * r + "px";
+                box.style.aspectRatio = "auto";
+                el.style.maxWidth = "none";
+              }
+              function iniciar() {
+                ajustar();
+                window.addEventListener("resize", ajustar);
+                if (!PITCH_PADRAO) return;
+                el.addEventListener("player:ready", function () {
+                  var v = sorteado();
+                  el.displayHiddenElements(v ? v.p : PITCH_PADRAO, [".vsl-oculto"], { persist: true });
+                });
+              }
+              var s = document.createElement("script");
+              s.src = "https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/ab-test/" + ID + "/player.js";
+              s.async = true;
+              s.onload = iniciar;
+              document.head.appendChild(s);
+            })();
+          `}
+        </Script>
+      )}
       {temVideo && <VturbCheckoutUtm variante={variante} />}
-      {segurarAtePitch && (
+      {!ab && segurarAtePitch && (
         <>
           {/* Revela os .vsl-oculto no minuto do preço. persist mantém
               revelado pra quem já assistiu. */}

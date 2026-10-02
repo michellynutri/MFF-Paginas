@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { VTURB_AB_MMF_VSL } from "./_components/constants";
 import { HeroVsl, type HeadlineId } from "./_components/HeroVsl";
 import {
   AberturaOferta,
@@ -53,7 +54,8 @@ export default async function Page({
 
   return (
     <main className="bg-creme">
-      <HeroVsl headlineId={headlineId} variante={variante} />
+      {/* Desde 02/10/2026 o vídeo vem do teste A/B da Vturb (6 leads). */}
+      <HeroVsl headlineId={headlineId} variante={variante} video={VTURB_AB_MMF_VSL} />
       {/* Tudo abaixo do vídeo só aparece no minuto do preço (ver HeroVsl). */}
       <div className="vsl-oculto">
         <AberturaOferta />
