@@ -73,13 +73,14 @@ export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProp
           </p>
         </div>
 
-        {/* PLAYER VSL — Vturb (Converteai). Vídeo vertical 9:16, dimensionado
+        {/* PLAYER VSL — Vturb (Converteai), vídeo da bio (embed de 02/10/2026,
+            antes era o 6a4ff72c… da v03/v05). Vídeo vertical 9:16, dimensionado
             pela altura que sobra da dobra (a largura deriva do 9:16). */}
         <div className="vsl-stage mt-3 md:mt-5">
           <div className="vsl-player rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
             {/* @ts-expect-error — custom element do Vturb */}
             <vturb-smartplayer
-              id="vid-6a4ff72c245f4ba270b2409b"
+              id="vid-6ac01f38d598b6e7a8612241"
               style={{ display: "block", width: "100%", height: "100%" }}
             >
               {/* Segura o fundo preto até o script fazer o upgrade do
@@ -136,8 +137,8 @@ export function HeroVsl({ variant, checkoutUrl = CHECKOUT_URL_VSL }: HeroVslProp
       {/* Define o custom element <vturb-smartplayer> e faz upgrade do
           elemento já presente no DOM. */}
       <Script
-        id="vturb-vid-6a4ff72c245f4ba270b2409b"
-        src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6a4ff72c245f4ba270b2409b/v4/player.js"
+        id="vturb-vid-6ac01f38d598b6e7a8612241"
+        src="https://scripts.converteai.net/9209a5ac-0a42-43b5-9c1f-7d310e9d3d33/players/6ac01f38d598b6e7a8612241/v4/player.js"
         strategy="afterInteractive"
       />
       <VturbCheckoutUtm variante={"bio"} />
