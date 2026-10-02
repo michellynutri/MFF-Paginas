@@ -113,7 +113,7 @@ export default function ObgMmfPage() {
         <div className="max-w-[760px] mx-auto flex flex-col items-center gap-5 md:gap-7">
           {/* ── HEADLINE ── */}
           <h1 className="animate-fade-up [text-align:center] font-sans font-extrabold text-[24px] md:text-[38px] leading-[1.15] tracking-[-0.01em] text-[#1B1B1B]">
-            Sua compra ainda não está completa…
+            Aguarde aqui, meu time está verificando a sua compra…
           </h1>
 
           {/* ── PASSOS (3 caixas) ── */}
@@ -128,7 +128,7 @@ export default function ObgMmfPage() {
               <span className="block font-bold">
                 <span aria-hidden="true">✅</span> Passo 2:
               </span>
-              <span className="block">Método Metabólico Feminino</span>
+              <span className="block">O que fazer agora? Aperte o play</span>
             </li>
             <li className="bg-[#EBEBEB] px-2 md:px-4 py-3 md:py-5 [text-align:center] text-[12px] md:text-[18px] leading-[1.25]">
               <span className="block font-bold">
