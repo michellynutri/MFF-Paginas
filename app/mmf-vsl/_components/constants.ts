@@ -7,6 +7,9 @@ export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/g4vfzcf/offer
 // VSL no Vturb (embed recebido em 23/09/2026).
 export const VTURB_VIDEO_ID: string = "6ab468bdcf36dc09b7308e7d";
 export const VTURB_ACCOUNT_ID = "9209a5ac-0a42-43b5-9c1f-7d310e9d3d33";
+// VSL da /mmf-bio (embed recebido em 02/10/2026): outro corte, em 3:4
+// (o placeholder do embed tem padding 133,33%), sem delay.
+export const VTURB_VIDEO_BIO = { id: "6abadce08a2b95e5b4ad932f", aspecto: "3:4" } as const;
 // Segundo do pitch: tudo abaixo da VSL abre quando a Michelly fala "297".
 // O Vturb conta a posição do vídeo (currentTime), não o relógio, e a VSL roda
 // em turbo 1.1x: o "297" está em 18:41 do arquivo (1120,96s) = 16:59 de relógio.

@@ -9,6 +9,16 @@ const VturbPlayer = "vturb-smartplayer" as unknown as React.ElementType;
 
 export type HeadlineId = "h1" | "h2" | "h3";
 
+export type Aspecto = "9:16" | "3:4";
+export type VideoVsl = { id: string; aspecto: Aspecto };
+
+// Palco do player por proporção: aspect-ratio e quanto a altura pode crescer
+// a partir da largura disponível (100vw menos o padding lateral de 2.5rem).
+const ASPECTOS: Record<Aspecto, { ratio: string; altura: string }> = {
+  "9:16": { ratio: "9/16", altura: "1.7778" },
+  "3:4": { ratio: "3/4", altura: "1.3333" },
+};
+
 // As três variações de headline da copy (teste A/B por ?h=2 / ?h=3).
 // h1 é a recomendada pra começar e é o padrão.
 export const HEADLINES: Record<
@@ -56,14 +66,18 @@ export function HeroVsl({
   headlineId,
   variante,
   pitchSeconds = PITCH_SECONDS,
+  video = { id: VTURB_VIDEO_ID, aspecto: "9:16" },
 }: {
   headlineId: HeadlineId;
   variante: string;
   /** segundo do vídeo em que o resto da página aparece; 0 = sem delay (/mmf-bio) */
   pitchSeconds?: number;
+  /** vídeo do Vturb desta página; padrão = VSL 9:16 da /mmf-vsl */
+  video?: VideoVsl;
 }) {
   const h = HEADLINES[headlineId];
-  const temVideo = VTURB_VIDEO_ID !== "";
+  const temVideo = video.id !== "";
+  const palco = ASPECTOS[video.aspecto];
   // Só esconde o resto da página quando o segundo do pitch estiver definido.
   const segurarAtePitch = temVideo && pitchSeconds > 0;
 
@@ -107,7 +121,7 @@ export function HeroVsl({
           <div className="vsl-player rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(42,36,24,0.22)] border border-sos-borda-dourada bg-verde-esc">
             {temVideo ? (
               <VturbPlayer
-                id={`vid-${VTURB_VIDEO_ID}`}
+                id={`vid-${video.id}`}
                 style={{ display: "block", width: "100%", height: "100%" }}
               >
                 <div
@@ -137,19 +151,19 @@ export function HeroVsl({
         </div>
       </div>
 
-      {/* Palco do player: vídeo vertical 9:16 dimensionado pela altura que
-          sobra da dobra. Com vídeo configurado, .vsl-oculto esconde tudo
+      {/* Palco do player: vídeo vertical (9:16 ou 3:4) dimensionado pela
+          altura que sobra da dobra. Com vídeo configurado, .vsl-oculto esconde tudo
           abaixo até o pitch; sem vídeo, fica tudo visível pra revisão. */}
       <style>{`
         ${segurarAtePitch ? ".vsl-oculto{display:none!important}" : ""}
         .vsl-stage{position:relative;flex:1 1 0;min-height:0}
-        .vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * 1.7778));aspect-ratio:9/16}
+        .vsl-player{position:absolute;inset:0;margin:auto;width:auto;height:min(100%,calc((100vw - 2.5rem) * ${palco.altura}));aspect-ratio:${palco.ratio}}
       `}</style>
 
       {temVideo && (
         <Script
-          id={`vturb-vid-${VTURB_VIDEO_ID}`}
-          src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${VTURB_VIDEO_ID}/v4/player.js`}
+          id={`vturb-vid-${video.id}`}
+          src={`https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/players/${video.id}/v4/player.js`}
           strategy="afterInteractive"
         />
       )}
