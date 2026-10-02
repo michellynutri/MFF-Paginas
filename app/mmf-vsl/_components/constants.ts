@@ -16,6 +16,27 @@ export const VTURB_VIDEO_BIO = { id: "6abadce08a2b95e5b4ad932f", aspecto: "3:4" 
 // Regra: segundos = tempo de relógio em 1.1x × 1.1. 0 = nada fica escondido.
 export const PITCH_SECONDS: number = 1121;
 
+// Teste A/B da Vturb na /mmf-vsl (embed recebido em 02/10/2026): a Vturb
+// sorteia um dos vídeos abaixo por peso e guarda a escolha 7 dias no
+// localStorage. Cada vídeo é outro arquivo (lead diferente, mesmo corpo),
+// então o segundo do "297" muda — medido com whisper em 02/10: em todos o
+// preço cai 130,4 s antes do fim. O 9:16 é o MESMO arquivo da VSL antiga
+// (6ab46080…, turbo 1.1x); os 3:4 rodam em 1x. Vídeo fora da lista: proporção
+// vem da config do player e o pitch usa PITCH_SECONDS_AB_PADRAO.
+export const VTURB_AB_MMF_VSL = {
+  abTest: "6abb8108139de0738368c6dc",
+  variantes: {
+    "6ac0285d965fbdd35490c96a": { nome: "Lead-01 (cópia, 9:16)", aspecto: "9:16", pitch: 1121 },
+    "6abae7cc5f99ef73c24b871f": { nome: "Lead-02 3:4", aspecto: "3:4", pitch: 1091 },
+    "6abafe8c947a62978aef2677": { nome: "Lead-03 3:4", aspecto: "3:4", pitch: 1080 },
+    "6abb10f2f94ad8ef574942fa": { nome: "Lead-04 3:4", aspecto: "3:4", pitch: 1075 },
+    "6abb08e577ab3553dc5700b8": { nome: "Lead-05 3:4", aspecto: "3:4", pitch: 1078 },
+    "6abb17c3f94ad8ef57494864": { nome: "Lead-06 3:4", aspecto: "3:4", pitch: 1078 },
+  },
+} as const;
+// Menor pitch conhecido: vídeo desconhecido abre cedo, nunca tarde.
+export const PITCH_SECONDS_AB_PADRAO = 1075;
+
 export const PRECO = {
   // Valor da parcela como a Greenn cobra no checkout (juros do 12x).
   parcela: "R$ 30,54",
