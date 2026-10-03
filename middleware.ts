@@ -114,9 +114,23 @@ export function middleware(request: NextRequest) {
       return response
     }
 
-    const response = NextResponse.next()
+    // URL certa: serve o HTML estático de /mmf-vsl/hN (ver app/mmf-vsl/[h])
+    // sem mudar a URL do navegador.
+    const destino = request.nextUrl.clone()
+    destino.pathname = `/mmf-vsl/h${h}`
+    const response = NextResponse.rewrite(destino)
     carimbar(response, request, MMF_VSL_COOKIE, h)
     return response
+  }
+
+  // /mmf-vsl/hN é só o endereço interno do HTML estático: quem chega nele
+  // direto vai pra URL pública equivalente (o bloco acima completa a variante).
+  const hDireto = pathname.match(/^\/mmf-vsl\/h(\d)$/)?.[1]
+  if (hDireto && isMmfVslHeadlineValida(hDireto)) {
+    const url = request.nextUrl.clone()
+    url.pathname = "/mmf-vsl"
+    url.searchParams.set("h", hDireto)
+    return NextResponse.redirect(url)
   }
 
   // Links da bio do Instagram (/mmf-bio, /sos-canetas-bio): quem chega sem
@@ -142,6 +156,7 @@ export const config = {
   matcher: [
     "/",
     "/mmf-vsl",
+    "/mmf-vsl/:h",
     "/mmf-bio",
     "/sos-canetas-bio",
     "/sos-canetas-a",
