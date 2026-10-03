@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { VTURB_VIDEO_BIO } from "../mmf-vsl/_components/constants";
 import { HeroVsl } from "../mmf-vsl/_components/HeroVsl";
 import {
   AberturaOferta,
@@ -18,6 +19,7 @@ import {
 // primeiro segundo. Headline fixa (h1), fora do sorteio do middleware: só
 // recebe quem clica direto nela. O checkout recebe ?variante=mmf-aluno, pra
 // separar na Greenn o que vem por este link.
+// Desde 02/10/2026 roda o mesmo vídeo 3:4 da /mmf-bio (VTURB_VIDEO_BIO).
 const VARIANTE = "mmf-aluno";
 
 export const metadata: Metadata = {
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="bg-creme">
-      <HeroVsl headlineId="h1" variante={VARIANTE} pitchSeconds={0} />
+      <HeroVsl headlineId="h1" variante={VARIANTE} pitchSeconds={0} video={VTURB_VIDEO_BIO} />
       {/* Sem delay: tudo abaixo do vídeo já aparece no carregamento. */}
       <AberturaOferta />
       <Jornada variante={VARIANTE} />
