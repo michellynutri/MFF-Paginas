@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { preconnect } from "react-dom";
 import { VturbCheckoutUtm } from "@/components/vturb-checkout-utm";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 import { Cta, CtaNota } from "./Cta";
@@ -80,6 +81,7 @@ export function HeroVsl({
   variante,
   pitchSeconds = PITCH_SECONDS,
   video = { id: VTURB_VIDEO_ID, aspecto: "9:16" },
+  poster,
 }: {
   headlineId: HeadlineId;
   variante: string;
@@ -87,8 +89,26 @@ export function HeroVsl({
   pitchSeconds?: number;
   /** vídeo do Vturb desta página; padrão = VSL 9:16 da /mmf-vsl */
   video?: VideoVsl;
+  /**
+   * Capa estática POR CIMA do player (só no teste A/B): um frame da própria
+   * VSL embutido como data URI (ver poster.ts). Pinta junto com o HTML e vira
+   * o elemento do LCP; some quando o vídeo começa a rodar (ou 6 s depois do
+   * player.js carregar, se nada acontecer). Sem ela: (1) o primeiro frame do vídeo é
+   * o LCP e só chega depois de player.js → smartplayer.js → m3u8 → segmento
+   * (~9 s no Lighthouse mobile); (2) a tela de carregamento preta da Vturb
+   * (com a porcentagem) ocupa o palco por ~3 s e derruba o Speed Index. O
+   * vídeo pinta dentro da borda de 1 px do palco, 2 px menor que a capa em
+   * cada eixo, então nunca vira um candidato maior de LCP.
+   */
+  poster?: string;
 }) {
   const h = HEADLINES[headlineId];
+  // Handshake antecipado com as origens do player (script e segmentos do
+  // vídeo): sem isto o DNS + TLS de cada uma entra no caminho até o vídeo
+  // aparecer. São as únicas origens que a página chama antes do GTM (que é
+  // adiado até a primeira interação — ver layout.tsx).
+  preconnect("https://scripts.converteai.net");
+  preconnect("https://cdn.converteai.net");
   const ab = "abTest" in video ? video : null;
   const fixo = "abTest" in video ? null : video;
   const temVideo = ab ? true : fixo!.id !== "";
@@ -120,7 +140,9 @@ export function HeroVsl({
           </div>
         </div>
 
-        <div className="shrink-0 max-w-[900px] w-full mx-auto text-center animate-fade-up">
+        {/* Sem animate-fade-up: o bloco nascia com opacity 0 e o h1 (elemento
+            do LCP) só contava como pintado no fim da animação, ~0,9 s depois. */}
+        <div className="shrink-0 max-w-[900px] w-full mx-auto text-center">
           <h1 className="font-serif text-[clamp(21px,5.5vw,27px)] md:text-[44px] leading-[1.14] md:leading-[1.08] font-medium text-texto mb-2.5 md:mb-4">
             {h.headline}
           </h1>
@@ -137,12 +159,33 @@ export function HeroVsl({
             {ab ? (
               /* Teste A/B: o player.js do ab-test troca este id por
                  vid-<vídeo sorteado> e o script mmf-vsl-ab abaixo dimensiona
-                 o palco pela proporção do sorteado. Sem placeholder, como no
-                 embed da Vturb. */
-              <VturbPlayer
-                id={`ab-${ab.abTest}`}
-                style={{ display: "block", width: "100%", height: "100%" }}
-              />
+                 o palco pela proporção do sorteado. Sem placeholder dentro do
+                 elemento, como no embed da Vturb; a capa (poster) é irmã,
+                 por cima, e sai quando o vídeo roda. */
+              <>
+                <VturbPlayer
+                  id={`ab-${ab.abTest}`}
+                  style={{ display: "block", width: "100%", height: "100%" }}
+                />
+                {poster && (
+                  // eslint-disable-next-line @next/next/no-img-element -- data URI, sem otimizador
+                  <img
+                    src={poster}
+                    alt=""
+                    decoding="sync"
+                    data-vsl-poster=""
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      zIndex: 2,
+                      pointerEvents: "none",
+                    }}
+                  />
+                )}
+              </>
             ) : fixo && temVideo ? (
               <VturbPlayer
                 id={`vid-${fixo.id}`}
@@ -237,11 +280,40 @@ export function HeroVsl({
                 box.style.aspectRatio = "auto";
                 el.style.maxWidth = "none";
               }
+              // Capa estática sai quando o vídeo começa a rodar de verdade
+              // (currentTime > 0), não no player:ready: entre o ready e o play
+              // a Vturb mostra a tela preta de carregamento com porcentagem.
+              // O vídeo fica numa shadow root fechada, então a posição vem do
+              // getter currentTime do próprio elemento, lido a cada 150 ms.
+              // Se nada acontecer, a capa sai sozinha 6 s depois do player.js
+              // carregar (ela não bloqueia toques: pointer-events none), e na
+              // hora se o player.js falhar.
+              var capaFora = false;
+              function tirarCapa() {
+                if (capaFora) return;
+                capaFora = true;
+                var poster = box && box.querySelector("[data-vsl-poster]");
+                if (poster) poster.remove();
+              }
+              function vigiarPlay() {
+                // Só quando a posição anda de verdade (> 0,2 s desde a primeira
+                // leitura): logo que a mídia é anexada o currentTime já pode
+                // ser > 0 com o vídeo ainda carregando.
+                var primeira = -1;
+                var t = setInterval(function () {
+                  var pos = 0;
+                  try { pos = Number(el.currentTime) || 0; } catch (e) {}
+                  if (pos > 0 && primeira < 0) primeira = pos;
+                  if (capaFora || (primeira >= 0 && pos - primeira > 0.2)) { clearInterval(t); tirarCapa(); }
+                }, 150);
+              }
               function iniciar() {
                 ajustar();
                 window.addEventListener("resize", ajustar);
-                if (!PITCH_PADRAO) return;
+                setTimeout(tirarCapa, 6000);
                 el.addEventListener("player:ready", function () {
+                  vigiarPlay();
+                  if (!PITCH_PADRAO) return;
                   var v = sorteado();
                   el.displayHiddenElements(v ? v.p : PITCH_PADRAO, [".vsl-oculto"], { persist: true });
                 });
@@ -250,6 +322,7 @@ export function HeroVsl({
               s.src = "https://scripts.converteai.net/${VTURB_ACCOUNT_ID}/ab-test/" + ID + "/player.js";
               s.async = true;
               s.onload = iniciar;
+              s.onerror = tirarCapa;
               document.head.appendChild(s);
             })();
           `}

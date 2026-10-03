@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Leaf } from "../../sos-canetas-_shared/_components/Leaf";
 import { RodapeInstitucional } from "@/components/rodape-institucional";
 import { Cta, CtaNota } from "./Cta";
+import { VideoProva } from "./VideoProva";
 import { PRECO } from "./constants";
 
 type SecaoProps = { variante: string };
@@ -380,6 +381,9 @@ const videos = [
   { src: "/images/sos-canetas/before-after-5.mp4", poster: "/images/sos-canetas/before-after-5-poster.jpg", ratio: "aspect-[16/9]" },
 ];
 
+// Cada vídeo é um VideoProva: capa em background, MP4 só no play. Antes, com
+// <video poster preload="metadata">, o Chrome baixava os dois MP4 inteiros
+// (20 MB) e os posters já na abertura da página, com a seção escondida.
 export function ProvaVideos({ variante }: SecaoProps) {
   return (
     <section className="bg-creme py-16 md:py-24 px-6 md:px-20">
@@ -393,11 +397,7 @@ export function ProvaVideos({ variante }: SecaoProps) {
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,320px)_1fr] gap-5 md:gap-6 items-center justify-center">
           {videos.map((v) => (
             <div key={v.src} className={`rounded-2xl overflow-hidden shadow-card ${v.ratio === "aspect-[9/16]" ? "max-w-[320px] mx-auto w-full" : ""}`}>
-              <div className={`relative ${v.ratio}`}>
-                <video controls preload="metadata" playsInline poster={v.poster} className="w-full h-full object-cover">
-                  <source src={v.src} type="video/mp4" />
-                </video>
-              </div>
+              <VideoProva src={v.src} poster={v.poster} className={v.ratio} />
             </div>
           ))}
         </div>
