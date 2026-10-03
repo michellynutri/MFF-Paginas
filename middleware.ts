@@ -23,6 +23,13 @@ function carimbar(response: NextResponse, request: NextRequest, name: string, va
   })
 }
 
+// UTMs que o link da bio ganha quando chega "limpo" (ver bloco no fim do
+// middleware). Pra trocar a campanha, basta editar aqui.
+const UTM_PADRAO_BIO: Record<string, Record<string, string>> = {
+  "/mmf-bio": { utm_source: "instagram", utm_medium: "bio", utm_campaign: "mmf" },
+  "/sos-canetas-bio": { utm_source: "instagram", utm_medium: "bio", utm_campaign: "sos" },
+}
+
 export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl
 
@@ -112,6 +119,22 @@ export function middleware(request: NextRequest) {
     return response
   }
 
+  // Links da bio do Instagram (/mmf-bio, /sos-canetas-bio): quem chega sem
+  // nenhuma utm_* na URL é mandado pra mesma página com as UTMs padrão da bio,
+  // pra chegar no checkout (e na UTMify) como instagram/bio em vez de "direto".
+  // Com qualquer UTM já na URL (anúncio apontando pra bio, link encurtado com
+  // campanha), não mexe. Outros parâmetros (fbclid etc.) são mantidos.
+  const utmBio = UTM_PADRAO_BIO[pathname]
+  if (utmBio) {
+    const params = request.nextUrl.searchParams
+    const temUtm = Array.from(params.keys()).some((k) => k.startsWith("utm_"))
+    if (!temUtm) {
+      const url = request.nextUrl.clone()
+      Object.entries(utmBio).forEach(([k, v]) => url.searchParams.set(k, v))
+      return NextResponse.redirect(url)
+    }
+  }
+
   return NextResponse.next()
 }
 
@@ -119,6 +142,8 @@ export const config = {
   matcher: [
     "/",
     "/mmf-vsl",
+    "/mmf-bio",
+    "/sos-canetas-bio",
     "/sos-canetas-a",
     "/sos-canetas-f",
     "/sos-canetas-vsl",
