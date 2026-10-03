@@ -17,12 +17,19 @@ const stixTwoText = STIX_Two_Text({
   preload: false,
 })
 
-// A fonte de corpo de todo o site — esta sim vale o preload em toda rota.
+// A fonte de corpo de todo o site. Também SEM preload desde 03/10/2026: com
+// <link rel=preload as=font> o Chrome segura o primeiro commit da página até
+// a fonte chegar e, quando ela chega dentro do período de bloqueio do
+// font-display, só libera por timeout (~1,45 s em branco — medido no ar na
+// /mmf-vsl com Lighthouse 13.5; sem o preload o primeiro paint sai junto com
+// o DOMContentLoaded). O CSS é inline no <head>, então a fonte é descoberta
+// quase tão cedo quanto com o preload e o texto aparece na reserva até lá.
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-sans',
   display: 'swap',
+  preload: false,
 })
 
 const playfairDisplay = Playfair_Display({
