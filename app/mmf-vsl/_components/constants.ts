@@ -19,7 +19,10 @@ export const VTURB_VIDEO_BIO = { id: "6abadce08a2b95e5b4ad932f", aspecto: "3:4" 
 // Regra: segundos = tempo de relógio em 1.1x × 1.1. 0 = nada fica escondido.
 export const PITCH_SECONDS: number = 1160;
 
-// Teste A/B da Vturb na /mmf-vsl (embed recebido em 02/10/2026): a Vturb
+// Teste A/B da Vturb na /mmf-vsl (embed recebido em 02/10/2026). DESLIGADO
+// em 04/10/2026 a pedido do Vinícius: a página voltou ao vídeo 9:16 fixo
+// (VTURB_VIDEO_ID). Fica aqui pra religar (ver app/mmf-vsl/[h]/page.tsx).
+// Como funciona: a Vturb
 // sorteia um dos vídeos abaixo por peso e guarda a escolha 7 dias no
 // localStorage. Cada vídeo é outro arquivo (lead diferente, mesmo corpo),
 // então o segundo do pitch muda — medido com whisper em 02/10: pitch = 1 s

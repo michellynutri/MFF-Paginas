@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { VTURB_AB_MMF_VSL } from "../_components/constants";
+import { VTURB_VIDEO_ID } from "../_components/constants";
 import { HeroVsl, type HeadlineId } from "../_components/HeroVsl";
 import { stixHero } from "../_components/fonts";
 import { POSTER_VSL_DATA_URI } from "../_components/poster";
@@ -62,11 +62,13 @@ export default async function Page({ params }: { params: Promise<{ h: string }> 
 
   return (
     <main className={`bg-creme ${stixHero.variable}`}>
-      {/* Desde 02/10/2026 o vídeo vem do teste A/B da Vturb (6 leads). */}
+      {/* Um vídeo só, a VSL 9:16 original (VTURB_VIDEO_ID). Entre 02 e
+          04/10/2026 rodou o teste A/B da Vturb com 6 leads (VTURB_AB_MMF_VSL);
+          pra religar, trocar `video` por VTURB_AB_MMF_VSL. */}
       <HeroVsl
         headlineId={headlineId}
         variante={variante}
-        video={VTURB_AB_MMF_VSL}
+        video={{ id: VTURB_VIDEO_ID, aspecto: "9:16" }}
         poster={POSTER_VSL_DATA_URI}
       />
       {/* Tudo abaixo do vídeo só aparece no minuto do preço (ver HeroVsl). */}
