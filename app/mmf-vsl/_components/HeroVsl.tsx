@@ -90,8 +90,8 @@ export function HeroVsl({
   /** vídeo do Vturb desta página; padrão = VSL 9:16 da /mmf-vsl */
   video?: VideoVsl;
   /**
-   * Capa estática POR CIMA do player (só no teste A/B): um frame da própria
-   * VSL embutido como data URI (ver poster.ts). Pinta junto com o HTML e vira
+   * Capa estática POR CIMA do player (vídeo fixo ou teste A/B): um frame da
+   * própria VSL embutido como data URI (ver poster.ts). Pinta junto com o HTML e vira
    * o elemento do LCP; some quando o vídeo começa a rodar (ou 6 s depois do
    * player.js carregar, se nada acontecer). Sem ela: (1) o primeiro frame do vídeo é
    * o LCP e só chega depois de player.js → smartplayer.js → m3u8 → segmento
@@ -187,15 +187,35 @@ export function HeroVsl({
                 )}
               </>
             ) : fixo && temVideo ? (
-              <VturbPlayer
-                id={`vid-${fixo.id}`}
-                style={{ display: "block", width: "100%", height: "100%" }}
-              >
-                <div
-                  className="vturb-player-placeholder"
-                  style={{ position: "absolute", inset: 0, zIndex: 0, backgroundColor: "black" }}
-                />
-              </VturbPlayer>
+              <>
+                <VturbPlayer
+                  id={`vid-${fixo.id}`}
+                  style={{ display: "block", width: "100%", height: "100%" }}
+                >
+                  <div
+                    className="vturb-player-placeholder"
+                    style={{ position: "absolute", inset: 0, zIndex: 0, backgroundColor: "black" }}
+                  />
+                </VturbPlayer>
+                {poster && (
+                  // eslint-disable-next-line @next/next/no-img-element -- data URI, sem otimizador
+                  <img
+                    src={poster}
+                    alt=""
+                    decoding="sync"
+                    data-vsl-poster=""
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      zIndex: 2,
+                      pointerEvents: "none",
+                    }}
+                  />
+                )}
+              </>
             ) : (
               <div className="w-full h-full flex items-center justify-center p-6 text-center font-sans text-[14px] text-creme/70">
                 Vídeo do Vturb entra aqui
@@ -329,22 +349,42 @@ export function HeroVsl({
         </Script>
       )}
       {temVideo && <VturbCheckoutUtm variante={variante} />}
-      {!ab && segurarAtePitch && (
-        <>
-          {/* Revela os .vsl-oculto no minuto do preço. persist mantém
-              revelado pra quem já assistiu. */}
-          <Script id="mmf-vsl-delay" strategy="afterInteractive">
-            {`
-              (function () {
-                var player = document.querySelector("vturb-smartplayer");
-                if (!player) return;
-                player.addEventListener("player:ready", function () {
-                  player.displayHiddenElements(${pitchSeconds}, [".vsl-oculto"], { persist: true });
-                });
-              })();
-            `}
-          </Script>
-        </>
+      {fixo && temVideo && (segurarAtePitch || poster) && (
+        /* Vídeo fixo: 1) revela os .vsl-oculto no segundo do pitch (persist
+           mantém revelado pra quem já assistiu); 2) tira a capa estática
+           quando o vídeo começa a rodar de verdade — mesma lógica do script
+           do A/B acima (posição lida a cada 150 ms; 6 s de teto). */
+        <Script id="mmf-vsl-delay" strategy="afterInteractive">
+          {`
+            (function () {
+              var PITCH = ${segurarAtePitch ? pitchSeconds : 0};
+              var el = document.getElementById("vid-${fixo.id}");
+              if (!el) return;
+              var box = el.closest(".vsl-player");
+              var capaFora = false;
+              function tirarCapa() {
+                if (capaFora) return;
+                capaFora = true;
+                var poster = box && box.querySelector("[data-vsl-poster]");
+                if (poster) poster.remove();
+              }
+              function vigiarPlay() {
+                var primeira = -1;
+                var t = setInterval(function () {
+                  var pos = 0;
+                  try { pos = Number(el.currentTime) || 0; } catch (e) {}
+                  if (pos > 0 && primeira < 0) primeira = pos;
+                  if (capaFora || (primeira >= 0 && pos - primeira > 0.2)) { clearInterval(t); tirarCapa(); }
+                }, 150);
+              }
+              setTimeout(tirarCapa, 6000);
+              el.addEventListener("player:ready", function () {
+                vigiarPlay();
+                if (PITCH > 0) el.displayHiddenElements(PITCH, [".vsl-oculto"], { persist: true });
+              });
+            })();
+          `}
+        </Script>
       )}
     </section>
   );
