@@ -10,14 +10,15 @@ export const VTURB_ACCOUNT_ID = "9209a5ac-0a42-43b5-9c1f-7d310e9d3d33";
 // VSL da /mmf-bio (embed recebido em 02/10/2026): outro corte, em 3:4
 // (o placeholder do embed tem padding 133,33%), sem delay.
 export const VTURB_VIDEO_BIO = { id: "6abadce08a2b95e5b4ad932f", aspecto: "3:4" } as const;
-// Segundo do pitch: tudo abaixo da VSL abre quando a Michelly manda clicar
-// ("Então, é só clicar no botão e ir para a página de pagamento segura"),
-// 1 s antes do "clicar" pra o botão já estar lá. Antes (23/09–02/10) abria
-// no "297", 40 s mais cedo; o Vinícius pediu o botão em 02/10/2026.
+// Segundo do pitch: tudo abaixo da VSL abre quando a Michelly fala "297".
 // O Vturb conta a posição do vídeo (currentTime), não o relógio, e a VSL 9:16
-// roda em turbo 1.1x: o "clicar" está em 1161,1 s do arquivo (17:35 de relógio).
+// roda em turbo 1.1x: o "297" está em 18:41 do arquivo (1120,96 s) = 16:59 de
+// relógio. Histórico: 23/09–02/10 abria no "297" (1121); 02/10–05/10 abria no
+// "clicar no botão" (1160, 17:35 de relógio, 40 s mais tarde) — as vendas da
+// /mmf-vsl pararam a partir de 03/10 e o Vinícius pediu de volta pro "297" em
+// 05/10/2026. O "clicar" fica em 1161,1 s se precisar religar.
 // Regra: segundos = tempo de relógio em 1.1x × 1.1. 0 = nada fica escondido.
-export const PITCH_SECONDS: number = 1160;
+export const PITCH_SECONDS: number = 1121;
 
 // Teste A/B da Vturb na /mmf-vsl (embed recebido em 02/10/2026). DESLIGADO
 // em 04/10/2026 a pedido do Vinícius: a página voltou ao vídeo 9:16 fixo
