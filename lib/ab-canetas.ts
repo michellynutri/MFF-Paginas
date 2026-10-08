@@ -151,12 +151,15 @@ export function randomCjcVariant(): CjcVariant {
 // Um ?h= explícito é sempre respeitado, esteja ou não no sorteio.
 // Tirar/pôr headline aqui é o que liga e desliga cada uma no sorteio.
 // Rodada 1 (28/09/2026): h1, h2 e h3, um terço do tráfego pra cada.
+// 08/10/2026: só a h3, a pedido do Vinícius. Ela também é a única válida,
+// então ?h=1|2 e cookies antigos de h1/h2 caem na h3 (mantendo as UTMs).
+// Pra religar outra headline, pôr de volta nas duas listas.
 
-export const MMF_VSL_HEADLINES = ["1", "2", "3"] as const;
+export const MMF_VSL_HEADLINES = ["3"] as const;
 export type MmfVslHeadline = (typeof MMF_VSL_HEADLINES)[number];
 
 /** Todas as que a página sabe renderizar (sorteio ou link direto). */
-export const MMF_VSL_HEADLINES_VALIDAS = ["1", "2", "3"] as const;
+export const MMF_VSL_HEADLINES_VALIDAS = ["3"] as const;
 
 export const MMF_VSL_COOKIE = "mmf_vsl_headline";
 

@@ -126,7 +126,7 @@ export function middleware(request: NextRequest) {
   // /mmf-vsl/hN é só o endereço interno do HTML estático: quem chega nele
   // direto vai pra URL pública equivalente (o bloco acima completa a variante).
   const hDireto = pathname.match(/^\/mmf-vsl\/h(\d)$/)?.[1]
-  if (hDireto && isMmfVslHeadlineValida(hDireto)) {
+  if (hDireto) {
     const url = request.nextUrl.clone()
     url.pathname = "/mmf-vsl"
     url.searchParams.set("h", hDireto)
