@@ -2,7 +2,11 @@
 // da oferta 4dJmPN como veio do Vinícius em 23/09/2026. É a mesma oferta
 // "MMF - 297" da /alunos-metodo-mmf e do upsell da /obg-mmf: na Greenn as
 // vendas se misturam — quem veio daqui chega com ?variante=mmf-vsl-hN.
-export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN";
+// /mmf-bio e /mmf-aluno seguem no link sem ch_id.
+export const CHECKOUT_URL_MMF_BIO = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN";
+// Só a /mmf-vsl (variante mmf-vsl-hN): mesma oferta 4dJmPN com ch_id=144292,
+// link enviado pelo Vinícius em 08/10/2026.
+export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN?ch_id=144292";
 
 // VSL no Vturb (embed recebido em 23/09/2026).
 export const VTURB_VIDEO_ID: string = "6ab468bdcf36dc09b7308e7d";
