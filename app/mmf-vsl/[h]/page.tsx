@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VTURB_VIDEO_ID } from "../_components/constants";
+import { BarraPitch } from "../_components/BarraPitch";
 import { HeroVsl, type HeadlineId } from "../_components/HeroVsl";
 import { stixHero } from "../_components/fonts";
 import { POSTER_VSL_DATA_URI } from "../_components/poster";
@@ -84,6 +85,8 @@ export default async function Page({ params }: { params: Promise<{ h: string }> 
         <DoisCaminhos variante={variante} />
         <Faq variante={variante} />
       </div>
+      {/* Celular: barra de compra fixa que sobe no pitch (ver BarraPitch). */}
+      <BarraPitch variante={variante} />
     </main>
   );
 }
