@@ -19,26 +19,28 @@ export function PlayerMia() {
 
   return (
     <section className="px-0 md:px-5 pt-4 pb-10 md:pt-6 md:pb-14">
-      <div className="mia-player mx-auto bg-black md:rounded-xl md:overflow-hidden">
+      {/* Embed da Vturb como ela manda (e como está na página da Thaize):
+          largura total até 400 px, e o placeholder com padding 177,78% dá o
+          9:16 — a altura é da própria Vturb. Fixar a altura do palco por fora
+          (como o HeroVsl da /mmf-vsl) deixava barras pretas em volta do vídeo,
+          porque o player limita a largura a 400 px e se dimensiona sozinho. */}
+      <div className="mia-player mx-auto w-full md:max-w-[400px]">
         {temVideo ? (
-          <VturbPlayer id={`vid-${VTURB_VIDEO_MIA}`} style={{ display: "block", width: "100%", height: "100%" }}>
+          <VturbPlayer
+            id={`vid-${VTURB_VIDEO_MIA}`}
+            style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: "400px" }}
+          >
             <div
               className="vturb-player-placeholder"
-              style={{ position: "absolute", inset: 0, zIndex: 0, backgroundColor: "black" }}
+              style={{ position: "relative", width: "100%", padding: "177.77777777777777% 0 0", zIndex: 0, backgroundColor: "black" }}
             />
           </VturbPlayer>
         ) : (
-          <div className="w-full h-full flex items-center justify-center p-6 text-center font-sans text-[14px] text-white/70">
+          <div className="w-full aspect-[9/16] bg-black flex items-center justify-center p-6 text-center font-sans text-[14px] text-white/70">
             Vídeo do Vturb entra aqui (VTURB_VIDEO_MIA em constants.ts)
           </div>
         )}
       </div>
-      {/* 9:16 com largura total; no desktop limita pela altura da tela
-          (100svh menos faixa e respiros), como o palco das VSLs do MMF. */}
-      <style>{`
-        .mia-player{position:relative;width:100%;aspect-ratio:9/16;max-width:calc((100svh - 140px) * 0.5625)}
-        @media (max-width:767px){.mia-player{max-width:none}}
-      `}</style>
       {temVideo && (
         <Script
           id={`vturb-vid-${VTURB_VIDEO_MIA}`}
