@@ -4,8 +4,8 @@
 // o botão de compra é configurado DENTRO do vídeo, no painel da Vturb.
 
 // VSL MMF+MIA (edição v5, 45:11, entregue 20/10/2026). Preencher com o id do
-// player (embed recebido em 21/10/2026, 9:16). Vazio = palco com aviso (revisão).
-export const VTURB_VIDEO_MIA: string = "6ad7b963fad15688135d5c40";
+// player (embed 9:16; trocado em 21/10/2026: 6ad7b963… → 6ad91d58…). Vazio = palco com aviso.
+export const VTURB_VIDEO_MIA: string = "6ad91d580c4799227ea266e4";
 export const VTURB_ACCOUNT_ID = "9209a5ac-0a42-43b5-9c1f-7d310e9d3d33";
 
 // Vai pro checkout como ?variante=mia-vsl (botão da Vturb passa pelo
