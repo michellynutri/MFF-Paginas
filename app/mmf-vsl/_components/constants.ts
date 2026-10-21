@@ -4,9 +4,12 @@
 // vendas se misturam — quem veio daqui chega com ?variante=mmf-vsl-hN.
 // /mmf-bio e /mmf-aluno seguem no link sem ch_id.
 export const CHECKOUT_URL_MMF_BIO = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN";
-// Só a /mmf-vsl (variante mmf-vsl-hN): mesma oferta 4dJmPN com ch_id=144292,
-// link enviado pelo Vinícius em 08/10/2026.
-export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN?ch_id=144292";
+// Só a /mmf-vsl (variante mmf-vsl-hN): desde 21/10/2026 vai pra oferta
+// "MIA + Método Metabólico Feminino" (conta Greenn 161840, R$ 297 / 12x),
+// a mesma do botão da Vturb na /mia-vsl — link enviado pelo Vinícius.
+// Histórico: 08/10–21/10 era a 4dJmPN com ch_id=144292
+// (https://payfast.greenn.com.br/g4vfzcf/offer/4dJmPN?ch_id=144292).
+export const CHECKOUT_URL_MMF_VSL = "https://payfast.greenn.com.br/161840/offer/s939DB";
 
 // VSL no Vturb (embed recebido em 23/09/2026).
 export const VTURB_VIDEO_ID: string = "6ab468bdcf36dc09b7308e7d";
