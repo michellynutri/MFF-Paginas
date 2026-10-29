@@ -28,6 +28,7 @@ function carimbar(response: NextResponse, request: NextRequest, name: string, va
 const UTM_PADRAO_BIO: Record<string, Record<string, string>> = {
   "/mmf-bio": { utm_source: "instagram", utm_medium: "bio", utm_campaign: "mmf" },
   "/sos-canetas-bio": { utm_source: "instagram", utm_medium: "bio", utm_campaign: "sos" },
+  "/bio": { utm_source: "instagram", utm_medium: "bio", utm_campaign: "mia" },
 }
 
 export function middleware(request: NextRequest) {
@@ -133,7 +134,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Links da bio do Instagram (/mmf-bio, /sos-canetas-bio): quem chega sem
+  // Links da bio do Instagram (/mmf-bio, /sos-canetas-bio, /bio): quem chega sem
   // nenhuma utm_* na URL é mandado pra mesma página com as UTMs padrão da bio,
   // pra chegar no checkout (e na UTMify) como instagram/bio em vez de "direto".
   // Com qualquer UTM já na URL (anúncio apontando pra bio, link encurtado com
@@ -159,6 +160,7 @@ export const config = {
     "/mmf-vsl/:h",
     "/mmf-bio",
     "/sos-canetas-bio",
+    "/bio",
     "/sos-canetas-a",
     "/sos-canetas-f",
     "/sos-canetas-vsl",

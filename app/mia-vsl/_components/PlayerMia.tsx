@@ -9,8 +9,9 @@ const VturbPlayer = "vturb-smartplayer" as unknown as React.ElementType;
 // Só o player, centralizado, como na página da Thaize: largura total no
 // celular; no desktop o 9:16 fica com a altura que cabe abaixo da faixa.
 // O botão de compra é o da Vturb (dentro do vídeo); o VturbCheckoutUtm pega o
-// clique dele e manda pro checkout na mesma aba com UTMs + ?variante=mia-vsl.
-export function PlayerMia() {
+// clique dele e manda pro checkout na mesma aba com UTMs + ?variante=mia-vsl
+// (a /bio passa a própria variante).
+export function PlayerMia({ variante = VARIANTE }: { variante?: string } = {}) {
   const temVideo = VTURB_VIDEO_MIA !== "";
   if (temVideo) {
     preconnect("https://scripts.converteai.net");
@@ -48,7 +49,7 @@ export function PlayerMia() {
           strategy="afterInteractive"
         />
       )}
-      {temVideo && <VturbCheckoutUtm variante={VARIANTE} />}
+      {temVideo && <VturbCheckoutUtm variante={variante} />}
     </section>
   );
 }
