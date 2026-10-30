@@ -18,6 +18,55 @@ const UTM_COOKIE = "mff_utm";
 // antes do handler da Vturb (que dá stopPropagation), e vai pro checkout NA
 // MESMA ABA com o mesmo pacote dos botões da página. Não para a propagação:
 // a Vturb continua contando o clique (ExitedClick).
+//
+// Rastreamento: o InitiateCheckout do Pixel e o begin_checkout do GA4 são
+// disparados pelo GTM (GTM-WPJMPTWV) num gatilho "clique em link" com URL
+// contendo payfast.greenn.com.br. Esse gatilho escuta o clique no document, na
+// fase de borbulha — e o handler do <a> da Vturb dá stopPropagation, então o
+// clique no botão do vídeo NUNCA chegava lá (conferido no ar em 30/10/2026:
+// clique real gerou só gtm.click, nenhum gtm.linkClick, nenhum fbq
+// InitiateCheckout — em todas as páginas com botão da Vturb). Por isso o
+// avisarGtm abaixo dá um clique sintético num link-sombra fora do player, com
+// a URL final do checkout: ele sobe até o document, o GTM registra o
+// gtm.linkClick e dispara as tags; o preventDefault segura a navegação do
+// link-sombra. A navegação de verdade espera o GTM terminar (eventCallback)
+// ou no máximo ESPERA_GTM_MS, pra requisição do Pixel sair antes de a página
+// descarregar.
+const ESPERA_GTM_MS = 300;
+
+type DataLayer = Array<Record<string, unknown>>;
+
+function avisarGtm(destino: string) {
+  const sombra = document.createElement("a");
+  sombra.href = destino;
+  sombra.setAttribute("aria-hidden", "true");
+  sombra.tabIndex = -1;
+  sombra.style.display = "none";
+  sombra.addEventListener("click", (ev) => ev.preventDefault());
+  document.body.appendChild(sombra);
+  try {
+    sombra.click();
+  } finally {
+    sombra.remove();
+  }
+}
+
+function navegar(destino: string) {
+  let foi = false;
+  const ir = () => {
+    if (foi) return;
+    foi = true;
+    window.location.assign(destino);
+  };
+  const w = window as unknown as { dataLayer?: DataLayer };
+  try {
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: "checkout_navegar", eventCallback: ir, eventTimeout: ESPERA_GTM_MS });
+  } catch {
+    // sem dataLayer: vai pelo timer abaixo
+  }
+  setTimeout(ir, ESPERA_GTM_MS);
+}
 function montarUrl(href: string, variante: string) {
   const url = new URL(href);
   const daPagina = new URLSearchParams(window.location.search);
@@ -64,7 +113,13 @@ export function VturbCheckoutUtm({ variante }: Props) {
       if (!link || !link.closest("vturb-smartplayer, vturb-anchor-button, vturb-custom-html")) return;
       if (!/(^|\.)greenn\.com\.br$/.test(link.hostname)) return;
       e.preventDefault();
-      window.location.assign(montarUrl(link.href, variante));
+      const destino = montarUrl(link.href, variante);
+      try {
+        avisarGtm(destino);
+      } catch {
+        // rastreamento nunca pode segurar a compra
+      }
+      navegar(destino);
     }
     window.addEventListener("click", aoClicar, true);
     return () => window.removeEventListener("click", aoClicar, true);
