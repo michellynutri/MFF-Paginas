@@ -19,13 +19,18 @@ export function PlayerMia({ variante = VARIANTE }: { variante?: string } = {}) {
   }
 
   return (
-    <section className="px-0 md:px-5 pt-4 pb-10 md:pt-6 md:pb-14">
+    <section className="px-0 md:px-5 pt-0 pb-10 md:pb-14">
       {/* Embed da Vturb como ela manda (e como está na página da Thaize):
           largura total até 400 px, e o placeholder com padding 177,78% dá o
           9:16 — a altura é da própria Vturb. Fixar a altura do palco por fora
           (como o HeroVsl da /mmf-vsl) deixava barras pretas em volta do vídeo,
-          porque o player limita a largura a 400 px e se dimensiona sozinho. */}
-      <div className="mia-player mx-auto w-full md:max-w-[400px]">
+          porque o player limita a largura a 400 px e se dimensiona sozinho.
+          O vídeo fica colado na faixa e a LARGURA é limitada para que o 9:16
+          inteiro caiba na tela (100svh menos a faixa: 46 px no celular, 54 px
+          no desktop): o botão da Vturb fica no rodapé do vídeo e, com o vídeo
+          na largura toda do celular (693 px de altura), ficava abaixo da dobra
+          no pitch (visto no ar 30/10). */}
+      <div className="mia-player mx-auto w-full max-w-[calc((100svh-46px)*9/16)] md:max-w-[min(400px,calc((100svh-54px)*9/16))]">
         {temVideo ? (
           <VturbPlayer
             id={`vid-${VTURB_VIDEO_MIA}`}
