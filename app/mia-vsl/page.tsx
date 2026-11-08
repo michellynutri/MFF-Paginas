@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FaixaBlackFriday } from "./_components/FaixaBlackFriday";
 import { FaixaSaiDoAr } from "./_components/FaixaSaiDoAr";
 import { PlayerMia } from "./_components/PlayerMia";
 
@@ -26,6 +27,8 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="min-h-[100svh] bg-[#F9F9F9] text-texto">
+      {/* troca a faixa preta pela de Black Friday quando o botão da Vturb abre */}
+      <FaixaBlackFriday />
       <FaixaSaiDoAr />
       <PlayerMia />
     </main>
