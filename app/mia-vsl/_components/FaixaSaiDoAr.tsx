@@ -4,9 +4,11 @@
 // de pintar, então nunca aparece a data do build nem um espaço vazio. A página
 // é estática: o servidor deixa o texto sem data e o cliente completa (por isso
 // o suppressHydrationWarning).
+// Quando o botão da Vturb abre, a FaixaBlackFriday põe a classe `bf-aberta`
+// no <html> e esta faixa some (regra de CSS lá), ficando a amarela no lugar.
 export function FaixaSaiDoAr() {
   return (
-    <div className="bg-black text-white">
+    <div className="faixa-sai-do-ar bg-black text-white">
       <p
         id="mia-sai-do-ar"
         suppressHydrationWarning
