@@ -98,9 +98,12 @@ export function FaixaBlackFriday() {
     <div role="status" className="bf-faixa bg-[#FFE600] text-black">
       {/* Mesmo padding e mesma altura de linha da FaixaSaiDoAr (21,25 px no
           celular, 25 px no desktop) = mesma altura, o vídeo não se mexe. A
-          fonte é menor no celular (clamp até 15 px) porque o texto é mais
-          comprido que o da preta e a 17 px quebrava em duas linhas a 390 px. */}
-      <p className="mx-auto max-w-[1180px] px-4 py-3 md:py-3.5 text-center font-sans font-bold uppercase text-[clamp(12px,3.9vw,15px)] md:text-[20px] leading-[21.25px] md:leading-[25px] tracking-[0.01em] whitespace-nowrap">
+          fonte é menor no celular porque o texto é mais comprido que o da
+          preta: acompanha a largura da tela ((100vw - 34px) / 26,6, medido
+          em DM Sans bold caixa alta para "Último dia condição especial de
+          Black Friday" = 26,3 px de largura por px de fonte), até 15 px. Se
+          o texto mudar de tamanho, medir de novo. */}
+      <p className="mx-auto max-w-[1180px] px-4 py-3 md:py-3.5 text-center font-sans font-bold uppercase text-[clamp(10px,calc((100vw_-_34px)/26.6),15px)] md:text-[20px] leading-[21.25px] md:leading-[25px] tracking-[0.01em] whitespace-nowrap">
         <span aria-hidden className="mr-1.5">🔥</span>
         {BF_FAIXA_TEXTO}
       </p>

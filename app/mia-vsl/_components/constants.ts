@@ -18,5 +18,5 @@ export const VARIANTE = "mia-vsl";
 // BF_PITCH_SECONDS é só a RESERVA, caso a faixa não enxergue o botão no DOM:
 // tem que ser o mesmo segundo do botão no painel da Vturb (hoje 1968, lido do
 // player.js em 08/11). Mudou no painel → mudar aqui. 0 desliga a reserva.
-export const BF_FAIXA_TEXTO = "Condição Especial de Black Friday";
+export const BF_FAIXA_TEXTO = "Último dia condição especial de Black Friday";
 export const BF_PITCH_SECONDS = 1968;
