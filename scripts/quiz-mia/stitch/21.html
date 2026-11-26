@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>V4 · 21 Copenhague</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      width: 390px;
+      min-height: 844px;
+      margin: 0 auto;
+      background-color: #F9FAF7;
+      color: #203E35;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      padding: 16px 20px 12px;
+      position: sticky;
+      top: 0;
+      background-color: #F9FAF7;
+      z-index: 20;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 36px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .back-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #203E35;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .sphere-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #7DA490 0%, #4D7661 45%, #2B4E3E 85%, #183327 100%);
+      box-shadow: 0 2px 6px rgba(32, 62, 53, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .progress-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .progress-segment {
+      flex: 1;
+      height: 4px;
+      background-color: #E2E6DF;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #D9A441;
+      border-radius: 2px;
+    }
+    .header-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #56654D;
+      font-weight: 500;
+    }
+    .alertas-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .alert-dots {
+      display: flex;
+      gap: 3px;
+      margin-left: 2px;
+    }
+    .alert-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #A1312A;
+    }
+    .content {
+      padding: 12px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      color: #8A6418;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+    .headline {
+      font-family: 'EB Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      color: #203E35;
+      letter-spacing: -0.01em;
+    }
+    .body-text {
+      font-size: 16px;
+      line-height: 1.45;
+      color: #56654D;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #ECEEEA;
+      box-shadow: 0 2px 8px rgba(32, 62, 53, 0.04);
+      padding: 18px 16px;
+    }
+    .chart-container {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #ECEEEA;
+      box-shadow: 0 2px 8px rgba(32, 62, 53, 0.04);
+      padding: 18px 16px 14px;
+    }
+    .chart-svg {
+      width: 100%;
+      height: 165px;
+      display: block;
+    }
+    .chart-caption {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #56654D;
+      margin-top: 8px;
+    }
+    .stats-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #ECEEEA;
+      box-shadow: 0 2px 8px rgba(32, 62, 53, 0.04);
+      padding: 4px 16px;
+    }
+    .stat-row {
+      padding: 14px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .stat-row + .stat-row {
+      border-top: 1px solid #F0F2ED;
+    }
+    .stat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .stat-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .stat-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #203E35;
+      line-height: 1.3;
+    }
+    .stat-desc {
+      font-size: 14px;
+      color: #56654D;
+      line-height: 1.35;
+    }
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #203E35;
+      margin-top: 4px;
+    }
+    .triad-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .triad-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1px solid #ECEEEA;
+      box-shadow: 0 1px 4px rgba(32, 62, 53, 0.03);
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .triad-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #F3F6F3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #426B56;
+      flex-shrink: 0;
+    }
+    .triad-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .triad-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #203E35;
+    }
+    .triad-desc {
+      font-size: 14px;
+      color: #56654D;
+      line-height: 1.4;
+    }
+    .conclusion-p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #203E35;
+      line-height: 1.45;
+    }
+    .small-note {
+      font-size: 13px;
+      color: #56654D;
+      line-height: 1.3;
+      margin-top: -6px;
+    }
+    .bottom-cta-container {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 390px;
+      padding: 16px 20px 24px;
+      background: linear-gradient(180deg, rgba(249, 250, 247, 0) 0%, rgba(249, 250, 247, 0.95) 24%, #F9FAF7 100%);
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .primary-btn {
+      width: 100%;
+      height: 52px;
+      background-color: #203E35;
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Geist', sans-serif;
+      border: none;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(32, 62, 53, 0.22);
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+    .primary-btn:active {
+      transform: scale(0.985);
+      background-color: #183327;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <button class="back-btn" aria-label="Voltar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <div class="sphere-logo" aria-hidden="true"></div>
+      <div style="width: 36px;"></div>
+    </div>
+    
+    <!-- 4-segment progress bar: 3 full gold, 4th 15% -->
+    <div class="progress-bar">
+      <div class="progress-segment"><div class="progress-fill" style="width: 100%;"></div></div>
+      <div class="progress-segment"><div class="progress-fill" style="width: 100%;"></div></div>
+      <div class="progress-segment"><div class="progress-fill" style="width: 100%;"></div></div>
+      <div class="progress-segment"><div class="progress-fill" style="width: 15%;"></div></div>
+    </div>
+
+    <!-- Meta labels -->
+    <div class="header-meta" style="display: flex; justify-content: space-between; align-items: center; font-family: Geist, sans-serif; font-size: 12px; color: rgb(86, 101, 77); font-weight: 500;">
+      <span>O seu plano</span>
+      <div class="alertas-group">
+        <span>alertas</span>
+        <div class="alert-dots">
+          <span class="alert-dot"></span>
+          <span class="alert-dot"></span>
+          <span class="alert-dot"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Content -->
+  <main class="content">
+    
+    <div class="eyebrow" style="font-family: Geist, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgb(138, 100, 24); line-height: 1.35;">DÁ PARA PARAR A CANETA E O PESO FICAR? A CIÊNCIA MOSTROU QUE SIM</div>
+
+    <h1 class="headline" style="font-family: &quot;EB Garamond&quot;, serif; font-size: 28px; font-weight: 600; line-height: 1.2; color: rgb(32, 62, 53); letter-spacing: -0.01em;">Na Dinamarca, onde a caneta foi criada, um grupo parou e segurou o peso.</h1>
+
+    <p class="body-text">Mesma caneta, mesma dose. A diferença estava no que cada grupo fez junto com ela. Estudo da Universidade de Copenhague.</p>
+
+    <!-- Chart Card -->
+    <div class="chart-container" style="height: 180px; padding: 16px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+      <svg class="chart-svg" viewBox="0 0 326 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+        <!-- Vertical dashed line at 'parou a caneta' (x=163) -->
+        <line x1="163" y1="10" x2="163" y2="115" stroke="#CCD2C7" stroke-dasharray="3 3" stroke-width="1.2"></line>
+
+        <!-- Line A: só a caneta (red curve) -->
+        <path d="M 25 32 C 75 38, 120 86, 163 90 C 205 94, 248 58, 290 42" fill="none" stroke="#A1312A" stroke-width="2" stroke-linecap="round"></path>
+        <circle cx="290" cy="42" r="3.5" fill="#A1312A"></circle>
+
+        <!-- Line B: caneta com tratamento junto (green curve) -->
+        <path d="M 25 32 C 75 42, 120 94, 163 100 C 205 103, 248 103, 290 103" fill="none" stroke="#2F6B45" stroke-width="2.8" stroke-linecap="round"></path>
+        <circle cx="290" cy="103" r="4" fill="#2F6B45"></circle>
+
+        <!-- X Axis Labels with generous vertical clearance -->
+        <text x="25" y="140" fill="#56654D" font-family="'Geist', sans-serif" font-size="11" font-weight="400" text-anchor="start">início</text>
+        <text x="163" y="140" fill="#56654D" font-family="'Geist', sans-serif" font-size="11" font-weight="500" text-anchor="middle">parou a caneta</text>
+        <text x="290" y="140" fill="#56654D" font-family="'Geist', sans-serif" font-size="11" font-weight="400" text-anchor="end">1 ano depois</text>
+      </svg>
+      
+    </div>
+
+    <!-- Comparison Card with hairline divider -->
+    <div class="stats-card">
+      <div class="stat-row">
+        <span class="stat-dot" style="background-color: #A1312A;"></span>
+        <div class="stat-content">
+          <span class="stat-title">Só a caneta</span>
+          <span class="stat-desc">quase 70% do peso de volta em um ano</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-dot" style="background-color: #2F6B45;"></span>
+        <div class="stat-content">
+          <span class="stat-title">Caneta com tratamento junto</span>
+          <span class="stat-desc">quase o dobro de gordura perdida e menos peso de volta</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Title -->
+    <div class="section-title">As 3 partes do tratamento</div>
+
+    <!-- Triad Cards -->
+    <div class="triad-list">
+      <!-- 1. Caneta -->
+      <div class="triad-card">
+        <div class="triad-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 2 4 4-12 12H6v-4L18 2z"></path>
+            <path d="m14 6 4 4"></path>
+            <path d="M2 22l4-4"></path>
+          </svg>
+        </div>
+        <div class="triad-body">
+          <span class="triad-title">Caneta</span>
+          <span class="triad-desc">desliga a fome.</span>
+        </div>
+      </div>
+
+      <!-- 2. Alimentação -->
+      <div class="triad-card">
+        <div class="triad-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <circle cx="12" cy="12" r="4.5"></circle>
+            <path d="M3 12h3"></path>
+            <path d="M18 12h3"></path>
+          </svg>
+        </div>
+        <div class="triad-body">
+          <span class="triad-title">Alimentação</span>
+          <span class="triad-desc">repõe os nutrientes e alimenta o músculo. É a maior parte do tratamento.</span>
+        </div>
+      </div>
+
+      <!-- 3. Movimento -->
+      <div class="triad-card">
+        <div class="triad-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 4v6l4 2"></path>
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M10 20l2-4 3 2"></path>
+          </svg>
+        </div>
+        <div class="triad-body">
+          <span class="triad-title">Movimento</span>
+          <span class="triad-desc">17 minutos por dia, em casa, para o músculo ficar.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conclusion Paragraphs -->
+    <p class="conclusion-p">Quem fica só na caneta deixa duas partes de fora. O seu plano junta as três.</p>
+
+    <p class="small-note">Seu plano está quase pronto.</p>
+
+  </main>
+
+  <!-- Pinned Bottom CTA -->
+  <div class="bottom-cta-container">
+    <button class="primary-btn">Montar o meu plano</button>
+  </div>
+
+
+
+
+
+
+
+</body></html>

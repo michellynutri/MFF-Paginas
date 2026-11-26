@@ -1,0 +1,8 @@
+{
+ "cod": "11",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {},
+ "cssHead": "\n    body {\n      font-family: 'Geist', sans-serif;\n      background-color: #F9FAF7;\n      color: #1A2E26;\n      -webkit-font-smoothing: antialiased;\n    }\n  ",
+ "cssBody": ""
+}

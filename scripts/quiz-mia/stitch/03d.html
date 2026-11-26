@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>V4 · 03d Hora certa (perto da meta)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#203E35',
+            'brand-dark': '#183029',
+            gold: '#D9A441',
+            'gold-text': '#8A6418',
+            sage: '#7F9A86',
+            body: '#56654D',
+            'body-icon': '#426B56',
+            cream: '#FBF1DC',
+            card: '#FFFFFF',
+            border: '#DDE3DA',
+            surface: '#F6F7F4'
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            serif: ['"EB Garamond"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F6F7F4;
+      font-family: 'Geist', sans-serif;
+      color: #203E35;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+    .orb-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 32% 28%, #A8C2AF 0%, #7F9A86 45%, #58735F 80%, #3B5242 100%);
+      box-shadow: 
+        inset 1px 1px 2px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 5px rgba(217, 164, 65, 0.45),
+        0 2px 6px rgba(32, 62, 53, 0.15);
+      position: relative;
+    }
+    .top-tint {
+      background: radial-gradient(50% 120px at 50% 0%, #FBF1DC 0%, rgba(251, 241, 220, 0) 100%);
+    }
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"></head>
+<body class="min-h-screen flex flex-col justify-between bg-surface relative select-none">
+<!-- Soft top tint -->
+<div class="absolute top-0 left-0 right-0 h-44 top-tint pointer-events-none z-0"></div>
+<!-- Main Scrollable Container -->
+<main class="w-full max-w-[390px] mx-auto flex-1 flex flex-col z-10 px-5 pt-3 pb-28">
+<!-- Header -->
+<header class="w-full flex flex-col mb-6">
+<div class="w-full flex items-center justify-between relative py-2">
+<!-- Back chevron at left -->
+<button aria-label="Voltar" class="text-brand p-1 -ml-1 focus:outline-none cursor-pointer" type="button">
+<svg fill="none" height="22" stroke="#203E35" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="22">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<!-- MIA Sphere logo centered (28px orb with highlight & warm glow, no text) -->
+<div class="absolute left-1/2 -translate-x-1/2">
+<div class="orb-logo"></div>
+</div>
+<!-- Spacer for symmetrical balance -->
+<div class="w-6 h-6"></div>
+</div>
+<!-- 4-segment Progress Bar (first segment 45% gold) -->
+<div class="grid grid-cols-4 gap-2 mt-2 w-full">
+<!-- Segment 1: 45% gold -->
+<div class="h-1 bg-[#E4E8E2] rounded-full overflow-hidden">
+<div class="h-full bg-gold rounded-full" style="width: 45%;"></div>
+</div>
+<!-- Segment 2 -->
+<div class="h-1 bg-[#E4E8E2] rounded-full"></div>
+<!-- Segment 3 -->
+<div class="h-1 bg-[#E4E8E2] rounded-full"></div>
+<!-- Segment 4 -->
+<div class="h-1 bg-[#E4E8E2] rounded-full"></div>
+</div>
+<!-- Chapter name under progress bar -->
+<p class="text-[12px] text-body mt-2 font-normal">O seu momento na caneta</p>
+</header>
+<!-- Eyebrow -->
+<div class="text-[12px] font-semibold text-gold-text tracking-wider uppercase mb-2 font-sans">
+      VOCÊ CHEGOU NA HORA CERTA
+    </div>
+<!-- Serif headline -->
+<h1 class="font-serif text-[28px] leading-[1.18] font-semibold text-brand mb-3 tracking-[-0.01em]" style="font-family: &quot;EB Garamond&quot;, serif; color: rgb(32, 62, 53);">Você está quase lá. Agora o trabalho é fazer esse peso ficar.</h1>
+<!-- Body text -->
+<p class="text-[16px] leading-[1.45] text-body font-normal mb-6">Nos últimos quilos, o foco passa a ser construir um corpo firme, com músculo, que esteja pronto para o dia de parar. Você precisa disso, se não quiser voltar para o peso de antes.</p>
+<!-- Authority Card -->
+<section class="w-full bg-card rounded-[16px] border border-border/80 shadow-[0_4px_20px_rgba(32,62,53,0.06)] p-5 mb-4">
+<!-- Card small caption -->
+<div class="text-[11px] font-semibold text-gold-text tracking-wider uppercase mb-3.5">
+        QUEM CRIOU ESTE DIAGNÓSTICO
+      </div>
+<!-- Professional row with 64px round photo -->
+<div class="flex items-center gap-3.5 pb-4">
+<img alt="Dra. Michelly Silveira" class="w-16 h-16 rounded-full object-cover border border-[#DDE3DA] shadow-sm flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ALJJyrDpqbtygiA60y8RATsZ-67LxwK0HL5V0gcBKJBaEvY5zRhB7coKdIL_RGjRWRwslUZ3-rIBKMbl5mAOxG8h_91rlZ9KB53YzTZjusOCEJF-pjYYGMJN8gRm19tSmk05i-fVOy4P_d7gCtvktsKdEn9pAUhIpDMT1S9yEW0704SUIyNY7KImPFMd6rNoWu3s3VhYf5OPyu4OHPZiog9BxWi3-RmqZdNBaRRREV17zZSJ">
+<div class="flex flex-col">
+<h2 class="text-[18px] font-semibold text-brand leading-snug">Dra. Michelly Silveira</h2>
+<span class="text-[13px] text-body font-normal">nutricionista</span>
+</div>
+</div>
+<!-- Three rows separated by hairlines -->
+<div class="divide-y divide-[#EDF0EB] border-t border-[#EDF0EB]"><div class="flex items-center gap-3 py-3"><div class="w-5 h-5 flex items-center justify-center flex-shrink-0 text-body-icon"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300; color: #426B56;">school</span></div><span class="text-[14px] text-brand leading-tight">Especialista em bioquímica e fisiologia do exercício pela Unicamp</span></div><div class="flex items-center gap-3 py-3"><div class="w-5 h-5 flex items-center justify-center flex-shrink-0 text-body-icon"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300; color: #426B56;">biotech</span></div><span class="text-[14px] text-brand leading-tight">Pós-graduada em nutrição ortomolecular</span></div><div class="flex items-center gap-3 py-3"><div class="w-5 h-5 flex items-center justify-center flex-shrink-0 text-body-icon"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300; color: #426B56;">female</span></div><span class="text-[14px] text-brand leading-tight">Especialista em intestino e nos hormônios da mulher</span></div><div class="flex items-center gap-3 py-3"><div class="w-5 h-5 flex items-center justify-center flex-shrink-0 text-body-icon"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300; color: #426B56;">groups</span></div><span class="text-[14px] text-brand leading-tight">Mais de 4 mil mulheres satisfeitas</span></div><div class="flex items-center gap-3 py-3"><div class="w-5 h-5 flex items-center justify-center flex-shrink-0 text-body-icon"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 300; color: #426B56;">assignment</span></div><span class="text-[14px] text-brand leading-tight">Este diagnóstico é a base da primeira consulta da Dra. Michelly</span></div></div>
+</section>
+<!-- Time remaining note -->
+<div class="flex items-start gap-2 px-1">
+<div class="w-4 h-4 mt-0.5 flex-shrink-0 text-body">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+</div>
+<p class="text-[13px] text-body leading-normal">
+        Faltam menos de 2 minutos. No fim, você recebe o seu resultado personalizado.
+      </p>
+</div>
+</main>
+<!-- Pinned bottom CTA -->
+<div class="fixed bottom-0 left-0 right-0 z-30 p-4 bg-gradient-to-t from-surface via-surface to-transparent flex justify-center pointer-events-none">
+<div class="w-full max-w-[390px] pointer-events-auto">
+<button class="w-full h-[52px] bg-brand hover:bg-brand-dark active:scale-[0.99] transition-all text-white font-medium text-[16px] rounded-[14px] shadow-[0_4px_16px_rgba(32,62,53,0.2)] flex items-center justify-center cursor-pointer" type="button">
+        Continuar
+      </button>
+</div>
+</div>
+
+
+
+</body></html>

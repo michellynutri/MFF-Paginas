@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V4 · 27 Contato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #f9faf7;
+      color: #203e35;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif {
+      font-family: 'EB Garamond', serif;
+    }
+    /* MIA 3D Sphere Logo */
+    .mia-sphere {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #5d8a77 0%, #305649 45%, #183129 85%, #0e1e19 100%);
+      box-shadow: 0 4px 10px rgba(32, 62, 53, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-[#f9faf7] min-h-screen flex flex-col justify-between text-[#203e35] max-w-[390px] mx-auto relative select-none">
+
+  <!-- Top App Bar / Header -->
+  <header class="pt-6 pb-2 px-6 flex items-center justify-between relative w-full">
+    <button type="button" aria-label="Voltar" class="w-10 h-10 -ml-2 flex items-center justify-center text-[#203e35] hover:opacity-75 transition-opacity">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+    
+    <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+      <div class="mia-sphere"></div>
+    </div>
+
+    <!-- Right spacer for balance -->
+    <div class="w-10 h-10"></div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 px-6 pt-4 pb-28 flex flex-col">
+    <!-- Small Status Pill -->
+    <div class="mb-4">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5F1E8] text-[#2F6B45] text-[12px] font-semibold tracking-tight">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        O seu diagnóstico está pronto
+      </span>
+    </div>
+
+    <!-- Serif Headline -->
+    <h1 class="font-serif text-[28px] font-semibold leading-[1.18] text-[#203e35] mb-2 tracking-tight">
+      Ana, para qual e-mail vai a sua cópia?
+    </h1>
+
+    <!-- Caption -->
+    <p class="text-[15px] leading-relaxed text-[#56654D] mb-6">
+      O resultado aparece na próxima tela. A cópia fica no seu e-mail.
+    </p>
+
+    <!-- Email Field ONLY (with label) -->
+    <div class="mb-5">
+      <label class="block text-[13px] font-medium text-[#56654D] mb-1.5">
+        E-mail
+      </label>
+      <div class="relative">
+        <input 
+          type="email" 
+          value="ana@email.com" 
+          readonly
+          class="w-full h-[52px] bg-white rounded-[12px] px-4 text-[16px] text-[#203e35] border border-[#DDE3DA] ring-2 ring-[#426B56] outline-none shadow-sm transition-all"
+        />
+        <!-- Subtle cursor indication -->
+        <span class="absolute left-[134px] top-1/2 -translate-y-1/2 w-[1.5px] h-5 bg-[#426B56] animate-pulse"></span>
+      </div>
+    </div>
+
+    <!-- Checkbox Row -->
+    <div class="flex items-start gap-3 mb-6">
+      <div class="w-5 h-5 rounded-[4px] bg-[#203e35] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <p class="text-[13px] leading-[1.45] text-[#56654D]">
+        Aceito receber o meu diagnóstico e mensagens da MIA. Posso sair quando quiser.
+      </p>
+    </div>
+
+    <!-- Teaser Card behind soft veil -->
+    <div class="mt-auto relative rounded-2xl border border-[#E2E7DF] bg-white/70 p-4 shadow-sm overflow-hidden backdrop-blur-md">
+      <!-- Background Teaser Content (Blurred) -->
+      <div class="filter blur-[5px] opacity-45 pointer-events-none select-none flex flex-col gap-2.5">
+        <div class="flex items-center gap-2">
+          <div class="h-6 w-20 rounded-full bg-[#E5F1E8]"></div>
+          <div class="h-6 w-24 rounded-full bg-[#FBF1DC]"></div>
+          <div class="h-6 w-16 rounded-full bg-[#FDE8E7]"></div>
+        </div>
+        <div class="h-3 w-4/5 rounded bg-[#DDE3DA]"></div>
+        <div class="h-3 w-2/3 rounded bg-[#DDE3DA]"></div>
+      </div>
+
+      <!-- Foreground Centered Lock Pill -->
+      <div class="absolute inset-0 flex items-center justify-center bg-white/40">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/95 border border-[#D9A441]/40 shadow-sm text-[#203e35]">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span class="text-[13px] font-medium text-[#203e35]">Seu resultado</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pinned Bottom CTA -->
+  <footer class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto p-5 bg-gradient-to-t from-[#f9faf7] via-[#f9faf7] to-[#f9faf7]/0 pointer-events-auto">
+    <button type="button" class="w-full h-[52px] rounded-full bg-[#203e35] text-white text-[16px] font-semibold flex items-center justify-center shadow-[0_4px_16px_rgba(32,62,53,0.22)] active:scale-[0.99] transition-transform">
+      Ver o meu resultado
+    </button>
+  </footer>
+
+</body>
+</html>

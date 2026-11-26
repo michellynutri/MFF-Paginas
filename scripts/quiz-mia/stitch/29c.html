@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V4 · 29c Raspadinha (revelada)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#203E35',
+            'brand-dark': '#152923',
+            'brand-muted': '#56654D',
+            'brand-green': '#2F6B45',
+            'gold-main': '#D9A441',
+            'gold-text': '#8A6418',
+            'gold-light': '#FBF1DC',
+            surface: '#F9FAF7'
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            sans: ['Geist', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F9FAF7;
+      font-family: 'Geist', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mia-sphere {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #a8c7b8 0%, #4f8069 45%, #203e35 85%, #12241f 100%);
+      box-shadow: 0 4px 14px rgba(32, 62, 53, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.45);
+    }
+  </style>
+</head>
+<body class="bg-[#F9FAF7] text-[#203E35] flex justify-center min-h-screen">
+  <div class="w-full max-w-[390px] min-h-screen bg-[#F9FAF7] flex flex-col justify-between px-6 pt-10 pb-8 relative">
+    
+    <!-- Top & Main Content -->
+    <div class="flex flex-col items-center w-full">
+      
+      <!-- Top Sphere Logo centered -->
+      <div class="flex justify-center mb-9">
+        <div class="mia-sphere"></div>
+      </div>
+
+      <!-- Headline & Caption -->
+      <div class="text-center w-full max-w-[340px] mb-8">
+        <h1 class="font-serif text-[28px] leading-[1.2] font-semibold text-[#203E35] mb-2 tracking-tight">
+          Ana, quem chega até aqui libera um desconto.
+        </h1>
+        <p class="text-[15px] text-[#56654D] font-normal leading-relaxed">
+          Raspe para ver o seu.
+        </p>
+      </div>
+
+      <!-- Scratch Card: Fully Revealed (White card 330x200, 20px radius) -->
+      <div class="w-[330px] h-[200px] rounded-[20px] bg-white border border-[#203E35]/[0.06] shadow-[0_10px_30px_rgba(32,62,53,0.08)] flex flex-col items-center justify-center text-center px-6 relative mb-6">
+        <span class="text-[14px] text-[#56654D] font-normal mb-1.5">
+          Você liberou
+        </span>
+        <h2 class="font-sans font-semibold text-[34px] leading-tight text-[#203E35] tracking-tight mb-1.5">
+          até 62% de desconto
+        </h2>
+        <span class="text-[14px] text-[#56654D] font-normal">
+          no seu plano da MIA
+        </span>
+      </div>
+
+      <!-- Coupon Pill: 1.5px dashed #D9A441 border, #FBF1DC fill, mono 600 13px #8A6418 -->
+      <div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#FBF1DC] border-[1.5px] border-dashed border-[#D9A441]">
+        <span class="font-mono font-semibold text-[13px] text-[#8A6418] tracking-wide">
+          cupom ANA62 aplicado
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Pinned Primary Button at Bottom -->
+    <div class="w-full pt-8">
+      <button class="w-full h-[52px] bg-[#203E35] hover:bg-[#18312a] active:scale-[0.99] transition-all text-white font-sans font-semibold text-[16px] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(32,62,53,0.2)]">
+        Ver o meu plano com desconto
+      </button>
+    </div>
+
+  </div>
+</body>
+</html>

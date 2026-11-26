@@ -1,0 +1,36 @@
+{
+ "cod": "03a",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {
+  "theme": {
+   "extend": {
+    "colors": {
+     "brand": "#203E35",
+     "brand-dark": "#183029",
+     "gold": "#D9A441",
+     "gold-text": "#8A6418",
+     "sage": "#7F9A86",
+     "body": "#56654D",
+     "body-icon": "#426B56",
+     "cream": "#FBF1DC",
+     "card": "#FFFFFF",
+     "border": "#DDE3DA",
+     "surface": "#F6F7F4"
+    },
+    "fontFamily": {
+     "sans": [
+      "Geist",
+      "sans-serif"
+     ],
+     "serif": [
+      "\"EB Garamond\"",
+      "serif"
+     ]
+    }
+   }
+  }
+ },
+ "cssHead": "\n    body {\n      background-color: #F6F7F4;\n      font-family: 'Geist', sans-serif;\n      color: #203E35;\n      -webkit-font-smoothing: antialiased;\n      margin: 0;\n      padding: 0;\n    }\n    .orb-logo {\n      width: 28px;\n      height: 28px;\n      border-radius: 9999px;\n      background: radial-gradient(circle at 32% 28%, #A8C2AF 0%, #7F9A86 45%, #58735F 80%, #3B5242 100%);\n      box-shadow: \n        inset 1px 1px 2px rgba(255, 255, 255, 0.6),\n        inset -2px -2px 5px rgba(217, 164, 65, 0.45),\n        0 2px 6px rgba(32, 62, 53, 0.15);\n      position: relative;\n    }\n    .top-tint {\n      background: radial-gradient(50% 120px at 50% 0%, #FBF1DC 0%, rgba(251, 241, 220, 0) 100%);\n    }\n  ",
+ "cssBody": ""
+}

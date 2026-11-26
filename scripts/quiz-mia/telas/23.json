@@ -1,0 +1,8 @@
+{
+ "cod": "23",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {},
+ "cssHead": "\n    body {\n      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;\n      background-color: #F9FAF7;\n      color: #203E35;\n      -webkit-font-smoothing: antialiased;\n    }\n    .font-serif {\n      font-family: 'EB Garamond', Georgia, serif;\n    }\n  ",
+ "cssBody": ""
+}

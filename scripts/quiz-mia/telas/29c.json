@@ -1,0 +1,37 @@
+{
+ "cod": "29c",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {
+  "theme": {
+   "extend": {
+    "colors": {
+     "brand": "#203E35",
+     "brand-dark": "#152923",
+     "brand-muted": "#56654D",
+     "brand-green": "#2F6B45",
+     "gold-main": "#D9A441",
+     "gold-text": "#8A6418",
+     "gold-light": "#FBF1DC",
+     "surface": "#F9FAF7"
+    },
+    "fontFamily": {
+     "serif": [
+      "\"EB Garamond\"",
+      "serif"
+     ],
+     "sans": [
+      "Geist",
+      "sans-serif"
+     ],
+     "mono": [
+      "\"Geist Mono\"",
+      "monospace"
+     ]
+    }
+   }
+  }
+ },
+ "cssHead": "\n    body {\n      background-color: #F9FAF7;\n      font-family: 'Geist', sans-serif;\n      -webkit-font-smoothing: antialiased;\n    }\n    .mia-sphere {\n      width: 34px;\n      height: 34px;\n      border-radius: 50%;\n      background: radial-gradient(circle at 35% 30%, #a8c7b8 0%, #4f8069 45%, #203e35 85%, #12241f 100%);\n      box-shadow: 0 4px 14px rgba(32, 62, 53, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.45);\n    }\n  ",
+ "cssBody": ""
+}

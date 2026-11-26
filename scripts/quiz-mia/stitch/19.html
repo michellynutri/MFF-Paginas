@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>V4 · 18 17 minutos</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Geist Sans and EB Garamond -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #F9FAF7;
+      color: #203E35;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style data-purpose="sphere-graphic">
+    /* 3D Sage Green Glossy Sphere Logo */
+    .glossy-sphere {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #92b8a7, #4b7361 65%, #2a473b 100%);
+      box-shadow: 0 3px 6px -1px rgba(32, 62, 53, 0.28), inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+    }
+  </style>
+<meta content="mobile_stack" name="shell-type"><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex justify-center items-start bg-[#F9FAF7]">
+<!-- BEGIN: MobileDeviceContainer -->
+<main class="w-[390px] min-h-[844px] bg-[#F9FAF7] flex flex-col px-5 pt-3 pb-12 select-none relative" data-purpose="app-artboard"><div class="flex flex-col w-full">
+<!-- Top Navigation Row -->
+<header class="flex items-center justify-between w-full mb-5">
+<button aria-label="Voltar" class="flex items-center justify-center w-8 h-8 rounded-full text-primary-container hover:bg-surface-container active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div aria-hidden="true" class="glossy-sphere flex-shrink-0"></div>
+<div aria-hidden="true" class="w-8 h-8 pointer-events-none"></div>
+</header>
+<!-- Segmented Progress Bar (4 segments) -->
+<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" class="w-full flex items-center gap-[6px] mb-2.5" role="progressbar"><div class="flex-1 h-1 rounded-full bg-[#D9A441] overflow-hidden"></div><div class="flex-1 h-1 rounded-full bg-[#D9A441] overflow-hidden"></div><div class="flex-1 h-1 rounded-full bg-[#DDE3DA] overflow-hidden flex"><div class="h-full bg-[#D9A441] w-[70%] rounded-l-full"></div><div class="h-full bg-[#DDE3DA] w-[30%]"></div></div><div class="flex-1 h-1 rounded-full bg-[#DDE3DA]"></div></div>
+<!-- Metadata Subheader -->
+<div class="flex items-center justify-between w-full mb-8"><span class="font-sans text-[12px] text-[#56654D] font-medium tracking-normal">O que cabe no seu dia</span><div class="flex items-center gap-2"><span class="font-sans text-[12px] text-[#56654D] font-medium lowercase tracking-normal">alertas</span><div class="flex items-center gap-1.5"><span aria-hidden="true" class="w-2 h-2 rounded-full bg-[#A1312A]"></span><span aria-hidden="true" class="w-2 h-2 rounded-full bg-[#A1312A]"></span><span aria-hidden="true" class="w-2 h-2 rounded-full bg-[#A1312A]"></span></div></div></div>
+<!-- Question Prompt -->
+<section class="flex flex-col w-full mb-6">
+<h1 class="font-question-lg text-[24px] leading-[30px] font-semibold text-primary-container tracking-tight">
+      Quanta água você bebe por dia?
+    </h1>
+</section>
+<!-- Single Choice Options -->
+<div class="flex flex-col items-center w-full flex-1 justify-between pt-2" id="water-bottle-control"><div class="flex flex-col items-center w-full"><div class="relative flex items-center justify-center mb-6 pl-12"><div class="flex flex-col items-center"><div class="w-8 h-3.5 bg-[#426B56] rounded-t-[6px] mb-[1px]"></div><div class="relative w-[120px] h-[220px] bg-white rounded-t-[28px] rounded-b-[32px] border-2 border-[#426B56] overflow-hidden flex flex-col justify-end shadow-sm"><div class="w-full h-[60%] bg-[#82C1CF] transition-all duration-300"></div></div></div><div class="flex flex-col justify-between h-[220px] ml-4 py-2"><div class="flex items-center gap-1.5"><div class="w-2.5 h-[1.5px] bg-[#56654D]"></div><span class="text-[11px] leading-none text-[#56654D] font-medium font-sans">2,5 L</span></div><div class="flex items-center gap-1.5"><div class="w-2.5 h-[1.5px] bg-[#56654D]"></div><span class="text-[11px] leading-none text-[#56654D] font-medium font-sans">2 L</span></div><div class="flex items-center gap-1.5"><div class="w-2.5 h-[1.5px] bg-[#56654D]"></div><span class="text-[11px] leading-none text-[#56654D] font-medium font-sans">1,5 L</span></div><div class="flex items-center gap-1.5"><div class="w-2.5 h-[1.5px] bg-[#56654D]"></div><span class="text-[11px] leading-none text-[#56654D] font-medium font-sans">1 L</span></div><div class="flex items-center gap-1.5"><div class="w-2.5 h-[1.5px] bg-[#56654D]"></div><span class="text-[11px] leading-none text-[#56654D] font-medium font-sans">0,5 L</span></div></div></div><div class="flex flex-col items-center mb-6"><span class="text-[32px] font-semibold leading-[38px] text-[#203E35] font-sans">1,5 L</span><span class="text-[13px] leading-tight text-[#56654D] font-sans">por dia</span></div><div class="flex items-center justify-center gap-3 w-full mb-5"><button type="button" class="flex-1 h-12 bg-white border border-[#DDE3DA] rounded-2xl text-[15px] font-semibold text-[#203E35] flex items-center justify-center active:scale-95 transition-transform font-sans shadow-sm">− 250 ml</button><button type="button" class="flex-1 h-12 bg-white border border-[#DDE3DA] rounded-2xl text-[15px] font-semibold text-[#203E35] flex items-center justify-center active:scale-95 transition-transform font-sans shadow-sm">+ 250 ml</button></div><button type="button" class="text-[14px] text-[#426B56] underline font-sans hover:opacity-80 transition-opacity">Não faço ideia</button></div></div>
+</div>
+<script>
+  (function() {
+    const container = document.getElementById('water-options');
+    if (!container) return;
+    const buttons = container.querySelectorAll('button[role="radio"]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.setAttribute('aria-checked', 'false');
+          b.classList.remove('bg-surface-container-low');
+          const indicator = b.querySelector('span[aria-hidden="true"]');
+          if (indicator) {
+            indicator.className = 'flex-shrink-0 w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center p-[2px] transition-colors';
+            const inner = indicator.querySelector('span');
+            if (inner) inner.className = 'w-full h-full rounded-full bg-surface-container-lowest transition-transform';
+          }
+        });
+
+        btn.setAttribute('aria-checked', 'true');
+        btn.classList.add('bg-surface-container-low');
+        const activeIndicator = btn.querySelector('span[aria-hidden="true"]');
+        if (activeIndicator) {
+          activeIndicator.className = 'flex-shrink-0 w-5 h-5 rounded-full bg-primary-container flex items-center justify-center p-[4px] transition-colors';
+          const inner = activeIndicator.querySelector('span');
+          if (inner) inner.className = 'w-full h-full rounded-full bg-surface-container-lowest transition-transform scale-100';
+        }
+      });
+    });
+  })();
+</script><div class="sticky bottom-5 left-0 right-0 w-full pt-4 mt-auto"><button type="button" class="w-full h-[54px] bg-[#203E35] text-white rounded-2xl font-semibold text-[16px] flex items-center justify-center active:scale-[0.99] transition-transform font-sans shadow-sm">Continuar</button></div></main>
+<!-- END: MobileDeviceContainer -->
+
+
+</body></html>

@@ -1,0 +1,8 @@
+{
+ "cod": "27",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {},
+ "cssHead": "\n    body {\n      font-family: 'Geist', sans-serif;\n      background-color: #f9faf7;\n      color: #203e35;\n      margin: 0;\n      padding: 0;\n      -webkit-font-smoothing: antialiased;\n    }\n    .font-serif {\n      font-family: 'EB Garamond', serif;\n    }\n    /* MIA 3D Sphere Logo */\n    .mia-sphere {\n      width: 30px;\n      height: 30px;\n      border-radius: 50%;\n      background: radial-gradient(circle at 35% 30%, #5d8a77 0%, #305649 45%, #183129 85%, #0e1e19 100%);\n      box-shadow: 0 4px 10px rgba(32, 62, 53, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.4);\n      display: inline-block;\n    }\n  ",
+ "cssBody": ""
+}

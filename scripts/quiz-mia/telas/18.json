@@ -1,0 +1,11 @@
+{
+ "cod": "18",
+ "temTailwind": true,
+ "plugins": [
+  "forms",
+  "container-queries"
+ ],
+ "config": {},
+ "cssHead": "\n    body {\n      font-family: 'Geist', sans-serif;\n      background-color: #F9FAF7;\n      color: #203E35;\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n    }\n  \n\n    /* 3D Sage Green Glossy Sphere Logo */\n    .glossy-sphere {\n      width: 28px;\n      height: 28px;\n      border-radius: 50%;\n      background: radial-gradient(circle at 35% 35%, #92b8a7, #4b7361 65%, #2a473b 100%);\n      box-shadow: 0 3px 6px -1px rgba(32, 62, 53, 0.28), inset 0 -2px 4px rgba(0, 0, 0, 0.25);\n    }\n  ",
+ "cssBody": ""
+}

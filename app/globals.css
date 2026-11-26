@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+/* O /quiz-mia traz o CSS próprio de cada tela (Tailwind v3 do Stitch, gerado em scripts/quiz-mia).
+   Se o v4 também varrer esses arquivos, utilitários como space-y-* entram duas vezes. */
+@source not "./quiz-mia";
+@source not "../scripts/quiz-mia";
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));

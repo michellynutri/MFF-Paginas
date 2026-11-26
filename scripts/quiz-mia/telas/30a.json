@@ -1,0 +1,43 @@
+{
+ "cod": "30a",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {
+  "theme": {
+   "extend": {
+    "fontFamily": {
+     "serif": [
+      "\"EB Garamond\"",
+      "serif"
+     ],
+     "sans": [
+      "Geist",
+      "sans-serif"
+     ],
+     "mono": [
+      "\"Geist Mono\"",
+      "monospace"
+     ]
+    },
+    "colors": {
+     "brand": {
+      "dark": "#203E35",
+      "muted": "#56654D",
+      "surface": "#F9FAF7",
+      "pillDark": "#2F5447",
+      "gold": "#D9A441",
+      "goldDark": "#8A6418",
+      "goldBg": "#FBF1DC",
+      "greenBadge": "#2F6B45",
+      "greenBadgeBg": "#E5F1E8",
+      "checkGreen": "#426B56",
+      "border": "#DDE3DA",
+      "testimonialBg": "#EDF0E9"
+     }
+    }
+   }
+  }
+ },
+ "cssHead": "\n    body {\n      background-color: #F9FAF7;\n      color: #203E35;\n      font-family: 'Geist', sans-serif;\n      -webkit-font-smoothing: antialiased;\n    }\n    .sphere-logo {\n      width: 32px;\n      height: 32px;\n      border-radius: 9999px;\n      background: radial-gradient(circle at 35% 30%, #a8c7b8 0%, #467362 50%, #203e35 90%);\n      box-shadow: 0 4px 10px rgba(32, 62, 53, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.6);\n    }\n  ",
+ "cssBody": ""
+}

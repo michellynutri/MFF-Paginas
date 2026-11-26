@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Geist+Mono:wght@400;500;600&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#c8eadd", "on-primary-container": "#89a99d", "on-tertiary-fixed": "#002113", "inverse-on-surface": "#f0f1ee", "on-surface": "#191c1b", "surface-tint": "#46645a", "outline-variant": "#c1c8c4", "inverse-primary": "#adcec1", "secondary": "#7d5700", "on-error": "#ffffff", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "on-tertiary": "#ffffff", "surface-container-low": "#f3f4f1", "surface": "#f9faf7", "on-primary-fixed": "#012019", "surface-container-highest": "#e2e3e0", "error": "#ba1a1a", "secondary-fixed-dim": "#f5bd58", "primary-fixed-dim": "#adcec1", "on-secondary-fixed-variant": "#5f4100", "secondary-container": "#ffc55f", "surface-container": "#edeeeb", "error-container": "#ffdad6", "tertiary-fixed-dim": "#a4d0b7", "surface-variant": "#e2e3e0", "primary-container": "#203e35", "tertiary-fixed": "#c0edd2", "surface-bright": "#f9faf7", "tertiary": "#00291a", "background": "#f9faf7", "surface-dim": "#d9dad7", "inverse-surface": "#2e312f", "on-primary-fixed-variant": "#2f4d43", "primary": "#082820", "on-surface-variant": "#414845", "on-tertiary-container": "#81ac94", "on-error-container": "#93000a", "surface-container-high": "#e7e8e6", "on-secondary-container": "#755100", "outline": "#727975", "on-secondary-fixed": "#271900", "on-primary": "#ffffff", "tertiary-container": "#16402e", "on-background": "#191c1b", "on-tertiary-fixed-variant": "#264e3b", "secondary-fixed": "#ffdeaa" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "margin": "1.25rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter": "0.75rem" }, fontFamily: { "caption": ["Geist"], "mono-sm": ["Geist Mono"], "button-label": ["Geist"], "headline-lg": ["EB Garamond"], "display-lg": ["EB Garamond"], "display-lg-mobile": ["EB Garamond"], "body-md": ["Geist"], "headline-md": ["EB Garamond"], "option-label": ["Geist"], "question-lg": ["Geist"], "body-lg": ["Geist"] }, fontSize: { "caption": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "mono-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "button-label": ["15px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "option-label": ["15px", { "lineHeight": "21px", "fontWeight": "500" }], "question-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-full flex flex-col"><main class="flex-1 flex flex-col relative w-full bg-surface pt-safe pb-safe"><div class="flex flex-col w-full max-w-[390px] mx-auto select-none">
+<!-- 1. TOP BAR -->
+<div class="w-full h-[44px] bg-[#56654D] text-white px-4 flex items-center justify-between">
+<span class="text-[14px] text-white font-medium">A sua promoção terminou</span>
+<span class="bg-[#45523E] px-2.5 py-0.5 rounded-full font-mono font-semibold text-white text-[12px] tracking-wide">00:00</span>
+</div>
+<!-- 2. LOGO -->
+<div class="flex justify-center mt-6 mb-4">
+<div class="w-8 h-8 rounded-full relative shadow-[0_2px_8px_rgba(32,62,53,0.35)]" style="background: radial-gradient(circle at 35% 30%, #5d8f76 0%, #305745 55%, #162c25 100%);">
+<div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.45) 0%, transparent 45%);"></div>
+</div>
+</div>
+<!-- 3. HEADLINE -->
+<div class="px-5 text-center">
+<h1 class="font-headline-lg text-display-lg-mobile font-semibold leading-tight text-primary-container">
+      Ana, o seu plano está pronto. Escolha por quanto tempo.
+    </h1>
+</div>
+<!-- 4. THREE PLAN CARDS -->
+<div class="flex flex-col gap-3 px-4 mt-5" id="plan-selector">
+<!-- Card 1: 4 semanas -->
+<div class="plan-card bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-4 flex items-center justify-between relative cursor-pointer shadow-sm transition-all" onclick="selectPlan(this, '4 semanas', 'R$ 129 a cada 4 semanas')">
+<div class="flex items-center">
+<span class="radio-indicator w-5 h-5 rounded-full border border-[#CBD5E1] mr-3 inline-block flex-shrink-0 transition-all"></span>
+<div class="flex flex-col text-left">
+<span class="font-option-label text-[16px] font-semibold text-[#1F2937]">4 semanas</span>
+<span class="text-[13px] font-semibold text-primary-container">R$ 129 por mês</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-body-md font-semibold text-[22px] leading-tight text-[#1F2937]">R$ 4,61</span>
+<span class="font-caption text-[12px] text-[#56654D]">por dia</span>
+</div>
+</div>
+<!-- Card 2: 8 semanas -->
+<div class="plan-card bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-4 flex items-center justify-between relative cursor-pointer shadow-sm transition-all" onclick="selectPlan(this, '8 semanas', 'R$ 258 a cada 8 semanas')">
+<div class="flex items-center">
+<span class="radio-indicator w-5 h-5 rounded-full border border-[#CBD5E1] mr-3 inline-block flex-shrink-0 transition-all"></span>
+<div class="flex flex-col text-left">
+<span class="font-option-label text-[16px] font-semibold text-[#1F2937]">8 semanas</span>
+<span class="text-[13px] font-semibold text-primary-container">R$ 129 por mês</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-body-md font-semibold text-[22px] leading-tight text-[#1F2937]">R$ 4,61</span>
+<span class="font-caption text-[12px] text-[#56654D]">por dia</span>
+</div>
+</div>
+<!-- Card 3: 12 semanas (Selected) -->
+<div class="plan-card is-selected bg-[#FDF9F0] rounded-2xl border-2 border-primary-container p-4 flex items-center justify-between relative cursor-pointer shadow-sm transition-all" onclick="selectPlan(this, '12 semanas', 'R$ 387 a cada 12 semanas')">
+<div class="badge-pill bg-[#D9A441] text-white font-semibold text-[11px] px-2.5 py-0.5 rounded-full -top-2.5 left-4 absolute shadow-xs">
+        Mais escolhido
+      </div>
+<div class="flex items-center">
+<span class="radio-indicator w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center mr-3 flex-shrink-0 transition-all">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container block"></span>
+</span>
+<div class="flex flex-col text-left">
+<span class="font-option-label text-[16px] font-semibold text-[#1F2937]">12 semanas</span>
+<span class="text-[13px] font-semibold text-primary-container">R$ 129 por mês</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-body-md font-semibold text-[22px] leading-tight text-[#1F2937]">R$ 4,61</span>
+<span class="font-caption text-[12px] text-[#56654D]">por dia</span>
+</div>
+</div>
+</div>
+<!-- 5. NOTE CARD -->
+<div class="bg-[#FBF1DC] text-[#8A6418] p-3.5 rounded-xl mx-4 mt-4 text-[13px] leading-relaxed">
+    Você investe de R$ 500 a R$ 1.000 por mês na caneta. Por R$ 4,61 por dia, esse dinheiro não vai embora junto com o peso no dia em que você parar.
+  </div>
+<!-- 6. PRIMARY BUTTON & FOOTER -->
+<div class="mt-6 px-4 pb-6 flex flex-col items-center">
+<button class="w-full py-3.5 rounded-full bg-primary-container active:bg-[#1a332b] text-on-primary font-button-label text-[16px] shadow-md flex items-center justify-center transition-colors" type="button">
+      Começar o meu plano
+    </button>
+<p class="text-[13px] text-[#56654D] mt-3 text-center leading-normal" id="billing-text">
+      Cobrança de R$ 387 a cada 12 semanas. Renova a cada ciclo; cancele quando quiser.
+    </p>
+</div>
+</div>
+<script>
+  function selectPlan(cardEl, planName, billingSummary) {
+    const allCards = document.querySelectorAll('.plan-card');
+    allCards.forEach(c => {
+      c.classList.remove('is-selected', 'bg-[#FDF9F0]', 'border-2', 'border-primary-container');
+      c.classList.add('bg-surface-container-lowest', 'border', 'border-outline-variant/60');
+      
+      const radio = c.querySelector('.radio-indicator');
+      radio.className = 'radio-indicator w-5 h-5 rounded-full border border-[#CBD5E1] mr-3 inline-block flex-shrink-0 transition-all';
+      radio.innerHTML = '';
+
+      const badge = c.querySelector('.badge-pill');
+      if (badge) badge.classList.add('hidden');
+    });
+
+    cardEl.classList.remove('bg-surface-container-lowest', 'border', 'border-outline-variant/60');
+    cardEl.classList.add('is-selected', 'bg-[#FDF9F0]', 'border-2', 'border-primary-container');
+
+    const badge = cardEl.querySelector('.badge-pill');
+    if (badge) badge.classList.remove('hidden');
+
+    const activeRadio = cardEl.querySelector('.radio-indicator');
+    activeRadio.className = 'radio-indicator w-5 h-5 rounded-full border-2 border-primary-container flex items-center justify-center mr-3 flex-shrink-0 transition-all';
+    activeRadio.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-primary-container block"></span>';
+
+    const billingNotice = document.getElementById('billing-text');
+    if (billingNotice) {
+      billingNotice.textContent = 'Cobrança de ' + billingSummary + '. Renova a cada ciclo; cancele quando quiser.';
+    }
+  }
+</script></main></body></html>

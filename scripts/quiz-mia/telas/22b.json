@@ -1,0 +1,8 @@
+{
+ "cod": "22b",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {},
+ "cssHead": "\n    body {\n      font-family: 'Geist', sans-serif;\n      background-color: #F6F7F4;\n      color: #203E35;\n      margin: 0;\n      padding: 0;\n      -webkit-font-smoothing: antialiased;\n    }\n    .sphere-logo {\n      width: 28px;\n      height: 28px;\n      border-radius: 50%;\n      background: radial-gradient(circle at 35% 30%, #689D82 0%, #355C4A 55%, #183329 100%);\n      box-shadow: 0 0 12px rgba(217, 164, 65, 0.35), inset -2px -2px 5px rgba(0, 0, 0, 0.45), inset 2px 2px 4px rgba(255, 255, 255, 0.35);\n    }\n  ",
+ "cssBody": ""
+}

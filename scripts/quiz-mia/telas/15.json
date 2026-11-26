@@ -1,0 +1,33 @@
+{
+ "cod": "15",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {
+  "theme": {
+   "extend": {
+    "colors": {
+     "brand": {
+      "dark": "#203E35",
+      "muted": "#56654D",
+      "gold": "#D9A441",
+      "red": "#A1312A",
+      "border": "#DDE3DA",
+      "bg": "#F9FAF7"
+     }
+    },
+    "fontFamily": {
+     "sans": [
+      "Geist",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Roboto",
+      "sans-serif"
+     ]
+    }
+   }
+  }
+ },
+ "cssHead": "\n    body {\n      background-color: #F9FAF7;\n      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\n      color: #203E35;\n      -webkit-font-smoothing: antialiased;\n    }\n    .sphere-orb {\n      width: 28px;\n      height: 28px;\n      border-radius: 50%;\n      background: radial-gradient(circle at 35% 30%, #A9C2B0 0%, #708F79 50%, #4D6D56 85%, #344C3B 100%);\n      box-shadow: 0 2px 6px rgba(32, 62, 53, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.45);\n    }\n  ",
+ "cssBody": ""
+}

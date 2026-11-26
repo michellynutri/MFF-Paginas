@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V4 · 23 Investimento na caneta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F9FAF7;
+      color: #203E35;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif {
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+  </style>
+</head>
+<body class="bg-[#F9FAF7] text-[#203E35] min-h-screen flex justify-center">
+  <main class="w-full max-w-[390px] min-h-screen flex flex-col justify-between px-6 pt-6 pb-12">
+    <!-- Top & Content Area -->
+    <div class="w-full">
+      
+      <!-- Header V4 -->
+      <header class="w-full mb-8">
+        <div class="relative flex items-center justify-between mb-5 h-8">
+          <!-- Back Chevron -->
+          <button type="button" aria-label="Voltar" class="p-1 -ml-1 text-[#203E35] hover:opacity-70 transition-opacity">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <!-- 3D Sphere Logo centered (28px) -->
+          <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+            <div class="w-7 h-7 rounded-full shadow-[inset_-3px_-3px_6px_rgba(0,0,0,0.35),inset_2px_2px_5px_rgba(255,255,255,0.65),0_3px_8px_rgba(32,62,53,0.2)] bg-gradient-to-br from-[#749D85] via-[#466B57] to-[#1A332B]"></div>
+          </div>
+
+          <!-- Empty placeholder to balance header flex -->
+          <div class="w-6 h-6"></div>
+        </div>
+
+        <!-- 4-Segment Progress Bar -->
+        <div class="grid grid-cols-4 gap-2 mb-2">
+          <!-- Segment 1: 100% full gold -->
+          <div class="h-1 bg-[#D9A441] rounded-full"></div>
+          <!-- Segment 2: 100% full gold -->
+          <div class="h-1 bg-[#D9A441] rounded-full"></div>
+          <!-- Segment 3: 100% full gold -->
+          <div class="h-1 bg-[#D9A441] rounded-full"></div>
+          <!-- Segment 4: 50% gold, 50% inactive -->
+          <div class="h-1 bg-[#EDEEEB] rounded-full overflow-hidden">
+            <div class="h-full bg-[#D9A441] rounded-full" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <!-- Meta under progress bar: "O seu plano" & "alertas" with 3 red dots -->
+        <div class="flex items-center justify-between text-[12px] text-[#56654D]">
+          <span>O seu plano</span>
+          <div class="flex items-center gap-1.5">
+            <span>alertas</span>
+            <div class="flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#A1312A]"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#A1312A]"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#A1312A]"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Question Title -->
+      <div class="mb-8">
+        <h1 class="text-[24px] leading-[1.25] font-semibold text-[#203E35] tracking-tight">
+          Quanto você investe na caneta por mês?
+        </h1>
+      </div>
+
+      <!-- Single Choice Option Cards (None Selected) -->
+      <div class="flex flex-col gap-3">
+        <!-- Option 1: Até R$ 500 -->
+        <div class="group flex items-center justify-between p-4 bg-white border border-[#E4E7E1] rounded-2xl shadow-sm hover:border-[#CBD3C6] transition-all cursor-pointer">
+          <span class="text-[16px] font-medium text-[#203E35]">Até R$ 500</span>
+          <div class="w-6 h-6 rounded-full border-2 border-[#D7DDD2] flex items-center justify-center group-hover:border-[#A4B39F] transition-colors"></div>
+        </div>
+
+        <!-- Option 2: De R$ 500 a R$ 1.000 -->
+        <div class="group flex items-center justify-between p-4 bg-white border border-[#E4E7E1] rounded-2xl shadow-sm hover:border-[#CBD3C6] transition-all cursor-pointer">
+          <span class="text-[16px] font-medium text-[#203E35]">De R$ 500 a R$ 1.000</span>
+          <div class="w-6 h-6 rounded-full border-2 border-[#D7DDD2] flex items-center justify-center group-hover:border-[#A4B39F] transition-colors"></div>
+        </div>
+
+        <!-- Option 3: De R$ 1.000 a R$ 2.000 -->
+        <div class="group flex items-center justify-between p-4 bg-white border border-[#E4E7E1] rounded-2xl shadow-sm hover:border-[#CBD3C6] transition-all cursor-pointer">
+          <span class="text-[16px] font-medium text-[#203E35]">De R$ 1.000 a R$ 2.000</span>
+          <div class="w-6 h-6 rounded-full border-2 border-[#D7DDD2] flex items-center justify-center group-hover:border-[#A4B39F] transition-colors"></div>
+        </div>
+
+        <!-- Option 4: Mais de R$ 2.000 -->
+        <div class="group flex items-center justify-between p-4 bg-white border border-[#E4E7E1] rounded-2xl shadow-sm hover:border-[#CBD3C6] transition-all cursor-pointer">
+          <span class="text-[16px] font-medium text-[#203E35]">Mais de R$ 2.000</span>
+          <div class="w-6 h-6 rounded-full border-2 border-[#D7DDD2] flex items-center justify-center group-hover:border-[#A4B39F] transition-colors"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Calm empty space below (No primary button as specified) -->
+    <div></div>
+  </main>
+</body>
+</html>
