@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V4 · 11 Proteína ontem</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #F9FAF7;
+      color: #1A2E26;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#F9FAF7] flex justify-center selection:bg-[#D9A441]/20">
+  <div class="w-full max-w-[390px] min-h-screen flex flex-col px-6 pt-5 pb-8 relative">
+
+    <!-- Top App Bar / Header -->
+    <header class="w-full mb-6">
+      <div class="relative flex items-center justify-between h-9 mb-4">
+        <!-- Back chevron -->
+        <button type="button" aria-label="Voltar" class="text-[#203E35] p-1 -ml-1 active:scale-95 transition-transform">
+          <svg class="w-6 h-6 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+        </button>
+
+        <!-- MIA Sphere / Orb Logo centered (28px sage green orb with gold glow, no text) -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+          <div class="w-7 h-7 rounded-full shadow-[0_2px_8px_rgba(32,62,53,0.15)] relative overflow-hidden flex items-center justify-center"
+               style="background: radial-gradient(circle at 35% 30%, #A8C3B5 0%, #7E9E8F 55%, #4F6D60 100%);">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-[#D9A441]/25 via-transparent to-white/40 pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Right spacer to balance back button -->
+        <div class="w-6 h-6"></div>
+      </div>
+
+      <!-- 4-segment progress bar (first segment full gold, second 62%) -->
+      <div class="grid grid-cols-4 gap-2 mb-2">
+        <!-- Segment 1: 100% gold -->
+        <div class="h-1 bg-[#DDE3DA] rounded-full overflow-hidden">
+          <div class="h-full bg-[#D9A441] rounded-full w-full"></div>
+        </div>
+        <!-- Segment 2: 62% gold -->
+        <div class="h-1 bg-[#DDE3DA] rounded-full overflow-hidden">
+          <div class="h-full bg-[#D9A441] rounded-full" style="width: 62%;"></div>
+        </div>
+        <!-- Segment 3: empty -->
+        <div class="h-1 bg-[#DDE3DA] rounded-full overflow-hidden">
+          <div class="h-full bg-[#D9A441] rounded-full w-0"></div>
+        </div>
+        <!-- Segment 4: empty -->
+        <div class="h-1 bg-[#DDE3DA] rounded-full overflow-hidden">
+          <div class="h-full bg-[#D9A441] rounded-full w-0"></div>
+        </div>
+      </div>
+
+      <!-- Sub-header metadata -->
+      <div class="flex items-center justify-between text-[12px] font-medium tracking-tight text-[#56654D]">
+        <span>Os avisos do seu corpo</span>
+        <div class="flex items-center gap-1.5">
+          <span>alertas</span>
+          <div class="flex items-center gap-1 ml-0.5">
+            <!-- First dot: #A1312A -->
+            <span class="w-2 h-2 rounded-full bg-[#A1312A]"></span>
+            <!-- Second dot: #A1312A -->
+            <span class="w-2 h-2 rounded-full bg-[#A1312A]"></span>
+            <!-- Third dot: #DDE3DA -->
+            <span class="w-2 h-2 rounded-full bg-[#DDE3DA]"></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col">
+      <!-- Title -->
+      <h1 class="text-[24px] leading-[1.25] font-semibold text-[#203E35] tracking-tight mb-7">
+        Ontem, em quantas refeições você comeu carne, frango, peixe, ovo ou queijo?
+      </h1>
+
+      <!-- Four single-choice option cards -->
+      <div class="flex flex-col gap-3">
+        <!-- Option 1: Nenhuma -->
+        <button type="button" class="w-full bg-white rounded-2xl p-4 min-h-[64px] border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex items-center justify-between text-left hover:border-[#DDE3DA] active:scale-[0.99] transition-all group">
+          <span class="text-[16px] font-medium text-[#203E35]">Nenhuma</span>
+          <span class="w-5 h-5 rounded-full bg-[#EEF2EC] flex-shrink-0 group-hover:bg-[#E3E8E0] transition-colors"></span>
+        </button>
+
+        <!-- Option 2: Uma -->
+        <button type="button" class="w-full bg-white rounded-2xl p-4 min-h-[64px] border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex items-center justify-between text-left hover:border-[#DDE3DA] active:scale-[0.99] transition-all group">
+          <span class="text-[16px] font-medium text-[#203E35]">Uma</span>
+          <span class="w-5 h-5 rounded-full bg-[#EEF2EC] flex-shrink-0 group-hover:bg-[#E3E8E0] transition-colors"></span>
+        </button>
+
+        <!-- Option 3: Duas -->
+        <button type="button" class="w-full bg-white rounded-2xl p-4 min-h-[64px] border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex items-center justify-between text-left hover:border-[#DDE3DA] active:scale-[0.99] transition-all group">
+          <span class="text-[16px] font-medium text-[#203E35]">Duas</span>
+          <span class="w-5 h-5 rounded-full bg-[#EEF2EC] flex-shrink-0 group-hover:bg-[#E3E8E0] transition-colors"></span>
+        </button>
+
+        <!-- Option 4: Três ou mais -->
+        <button type="button" class="w-full bg-white rounded-2xl p-4 min-h-[64px] border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex items-center justify-between text-left hover:border-[#DDE3DA] active:scale-[0.99] transition-all group">
+          <span class="text-[16px] font-medium text-[#203E35]">Três ou mais</span>
+          <span class="w-5 h-5 rounded-full bg-[#EEF2EC] flex-shrink-0 group-hover:bg-[#E3E8E0] transition-colors"></span>
+        </button>
+      </div>
+
+      <!-- Calm empty space below (No primary button as specified) -->
+      <div class="flex-1"></div>
+    </main>
+
+  </div>
+</body>
+</html>

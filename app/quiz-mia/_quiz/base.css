@@ -1,0 +1,86 @@
+/* Cada tela do quiz é um "documento" à parte, como era no Stitch.
+   1) O contêiner [data-tela] faz o papel do <html>: nada herdado do <body> do site (DM Sans, cor, line-height).
+   2) Dentro dele, os estilos de base do Tailwind v4 do site (camada base) são desfeitos com revert-layer;
+      o CSS de cada tela (telas.css, fora de camada) vem por cima, exatamente como no Stitch. */
+@layer base {
+  [data-tela] {
+    color: initial; font: initial; line-height: initial; letter-spacing: initial; text-align: initial;
+    text-transform: initial; word-spacing: initial; white-space: initial;
+    -webkit-font-smoothing: auto; -moz-osx-font-smoothing: auto;
+  }
+  [data-tela] *,
+  [data-tela] ::before,
+  [data-tela] ::after,
+  [data-tela] ::placeholder {
+    all: revert-layer;
+  }
+}
+
+/* No Stitch, "h-full" no <html> valia a altura da tela; aqui o <html>/<body> reais repassam essa altura ao contêiner. */
+html:has([data-tela]),
+body:has([data-tela]) {
+  height: 100%;
+}
+
+/* troca de tela: só opacidade (transform quebraria os elementos "fixed" das telas durante a animação) */
+.quiz-entra {
+  height: 100%;
+  animation: quiz-entra 260ms ease-out;
+}
+@keyframes quiz-entra {
+  from { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quiz-entra { animation: none; }
+}
+
+/* tela 07a: ilustração do teste do braço, dois quadros que se alternam */
+[data-tela] .quiz-braco {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f4eed9; /* mesma cor do fundo da ilustração */
+  box-shadow: inset 0 0 0 1px rgba(32, 62, 53, 0.06);
+}
+[data-tela] .quiz-braco img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.45s ease;
+}
+[data-tela] .quiz-braco-pulso {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 9999px;
+  border: 2px solid #d9a441;
+  animation: quiz-pulso 1.05s ease-out infinite;
+}
+@keyframes quiz-pulso {
+  from { transform: scale(0.55); opacity: 1; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+/* tela 26: depoimento que troca enquanto o diagnóstico é montado */
+[data-tela] .quiz-depo {
+  animation: quiz-depo 0.5s ease-out;
+}
+@keyframes quiz-depo {
+  from { opacity: 0; transform: translateY(6px); }
+}
+
+/* tela 27: prévia do resultado, levemente desfocada */
+[data-tela] .quiz-previa-res {
+  filter: blur(2.2px);
+  user-select: none;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-tela] .quiz-braco-pulso,
+  [data-tela] .quiz-depo { animation: none; }
+}

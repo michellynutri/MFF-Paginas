@@ -1,0 +1,30 @@
+{
+ "cod": "05",
+ "temTailwind": true,
+ "plugins": [],
+ "config": {
+  "theme": {
+   "extend": {
+    "colors": {
+     "brand": {
+      "ink": "#203E35",
+      "subtle": "#56654D",
+      "accent": "#D9A441",
+      "border": "#DDE3DA",
+      "bg": "#F6F7F4",
+      "cardBg": "#FFFFFF",
+      "barTrack": "#E5E8E2"
+     }
+    },
+    "fontFamily": {
+     "sans": [
+      "Geist",
+      "sans-serif"
+     ]
+    }
+   }
+  }
+ },
+ "cssHead": "\n    body {\n      font-family: 'Geist', sans-serif;\n      background-color: #F6F7F4;\n      color: #203E35;\n      margin: 0;\n      padding: 0;\n      -webkit-font-smoothing: antialiased;\n    }\n    .orb-logo {\n      width: 28px;\n      height: 28px;\n      border-radius: 9999px;\n      background: radial-gradient(circle at 35% 30%, #A2BCA9 0%, #7F9A86 55%, #597360 100%);\n      box-shadow: 2px 3px 6px -1px rgba(217, 164, 65, 0.45), 0 1px 3px rgba(32, 62, 53, 0.15);\n      position: relative;\n    }\n    .orb-logo::after {\n      content: '';\n      position: absolute;\n      bottom: 2px;\n      right: 2px;\n      width: 11px;\n      height: 11px;\n      border-radius: 9999px;\n      background: radial-gradient(circle, rgba(217, 164, 65, 0.7) 0%, transparent 70%);\n      filter: blur(1px);\n    }\n  \n\n    body {\n      min-height: max(884px, 100dvh);\n    }\n  ",
+ "cssBody": ""
+}

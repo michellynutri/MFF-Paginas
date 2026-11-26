@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V4 · 02 Qual caneta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ink: '#203E35',
+              subtle: '#56654D',
+              accent: '#D9A441',
+              border: '#DDE3DA',
+              bg: '#F6F7F4',
+              cardBg: '#FFFFFF',
+              barTrack: '#E5E8E2'
+            }
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #F6F7F4;
+      color: #203E35;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .orb-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 35% 30%, #A2BCA9 0%, #7F9A86 55%, #597360 100%);
+      box-shadow: 2px 3px 6px -1px rgba(217, 164, 65, 0.45), 0 1px 3px rgba(32, 62, 53, 0.15);
+      position: relative;
+    }
+    .orb-logo::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 11px;
+      height: 11px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(217, 164, 65, 0.7) 0%, transparent 70%);
+      filter: blur(1px);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#F6F7F4] flex justify-center text-[#203E35]">
+  <main class="w-[390px] min-h-screen bg-[#F6F7F4] flex flex-col px-5 pt-3 pb-8 box-border">
+
+    <!-- Top Navigation / Header -->
+    <header class="w-full mb-6">
+      <div class="h-11 flex items-center justify-between relative mb-2">
+        <!-- Back chevron -->
+        <button type="button" aria-label="Voltar" class="p-1 -ml-1 text-[#203E35] hover:opacity-75 transition-opacity">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- MIA Sphere Logo centered -->
+        <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+          <div class="orb-logo" aria-label="MIA Logo"></div>
+        </div>
+
+        <!-- Empty right balance item (no avatar, no icon) -->
+        <div class="w-[22px] h-[22px]" aria-hidden="true"></div>
+      </div>
+
+      <!-- 4-segment progress bar (first segment 30% gold) -->
+      <div class="grid grid-cols-4 gap-2 mb-2">
+        <div class="h-1 bg-[#E5E8E2] rounded-full overflow-hidden">
+          <div class="h-full bg-[#D9A441] rounded-full" style="width: 30%;"></div>
+        </div>
+        <div class="h-1 bg-[#E5E8E2] rounded-full"></div>
+        <div class="h-1 bg-[#E5E8E2] rounded-full"></div>
+        <div class="h-1 bg-[#E5E8E2] rounded-full"></div>
+      </div>
+
+      <!-- Chapter name -->
+      <p class="text-[12px] text-[#56654D] tracking-normal font-normal">
+        O seu momento na caneta
+      </p>
+    </header>
+
+    <!-- Question Title -->
+    <section class="mt-2 mb-6">
+      <h1 class="text-[24px] leading-[1.25] font-semibold text-[#203E35] tracking-tight">
+        Qual caneta você usa?
+      </h1>
+    </section>
+
+    <!-- Option Cards -->
+    <section class="flex flex-col gap-3">
+      <!-- Option 1: Ozempic ou Wegovy -->
+      <div class="w-full bg-white rounded-[14px] border border-[#DDE3DA] px-4 py-4 flex items-center justify-between cursor-pointer hover:border-[#C4CCC0] transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+        <span class="text-[16px] font-medium text-[#203E35]">Ozempic ou Wegovy</span>
+        <div class="w-5 h-5 rounded-full border border-[#DDE3DA] bg-transparent flex-shrink-0"></div>
+      </div>
+
+      <!-- Option 2: Mounjaro -->
+      <div class="w-full bg-white rounded-[14px] border border-[#DDE3DA] px-4 py-4 flex items-center justify-between cursor-pointer hover:border-[#C4CCC0] transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+        <span class="text-[16px] font-medium text-[#203E35]">Mounjaro</span>
+        <div class="w-5 h-5 rounded-full border border-[#DDE3DA] bg-transparent flex-shrink-0"></div>
+      </div>
+
+      <!-- Option 3: Manipulada -->
+      <div class="w-full bg-white rounded-[14px] border border-[#DDE3DA] px-4 py-4 flex items-center justify-between cursor-pointer hover:border-[#C4CCC0] transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+        <span class="text-[16px] font-medium text-[#203E35]">Manipulada</span>
+        <div class="w-5 h-5 rounded-full border border-[#DDE3DA] bg-transparent flex-shrink-0"></div>
+      </div>
+
+      <!-- Option 4: Outra -->
+      <div class="w-full bg-white rounded-[14px] border border-[#DDE3DA] px-4 py-4 flex items-center justify-between cursor-pointer hover:border-[#C4CCC0] transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+        <span class="text-[16px] font-medium text-[#203E35]">Outra</span>
+        <div class="w-5 h-5 rounded-full border border-[#DDE3DA] bg-transparent flex-shrink-0"></div>
+      </div>
+    </section>
+
+    <!-- Calm empty space below; no button, no footer text -->
+    <div class="flex-1 min-h-[120px]"></div>
+
+  </main>
+</body>
+</html>

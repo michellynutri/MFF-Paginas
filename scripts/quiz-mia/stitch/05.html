@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>V4 · 04 O que você mais quer</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ink: '#203E35',
+              subtle: '#56654D',
+              accent: '#D9A441',
+              border: '#DDE3DA',
+              bg: '#F6F7F4',
+              cardBg: '#FFFFFF',
+              barTrack: '#E5E8E2'
+            }
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #F6F7F4;
+      color: #203E35;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .orb-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 35% 30%, #A2BCA9 0%, #7F9A86 55%, #597360 100%);
+      box-shadow: 2px 3px 6px -1px rgba(217, 164, 65, 0.45), 0 1px 3px rgba(32, 62, 53, 0.15);
+      position: relative;
+    }
+    .orb-logo::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 11px;
+      height: 11px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(217, 164, 65, 0.7) 0%, transparent 70%);
+      filter: blur(1px);
+    }
+  </style>
+<meta content="mobile_stack" name="shell-type"/><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen bg-[#F6F7F4] flex justify-center text-[#203E35]">
+<main class="w-[390px] min-h-screen bg-[#F6F7F4] flex flex-col px-5 pt-3 pb-8 box-border"><div class="flex flex-col w-full">
+<!-- Header Bar -->
+<div class="flex items-center justify-between w-full h-11 mb-2">
+<button aria-label="Voltar" class="flex items-center justify-center w-9 h-9 -ml-1 text-[#203E35] focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div class="orb-logo"></div>
+<div class="w-9 h-9"></div>
+</div>
+<!-- 4-Segment Progress Bar -->
+<div class="grid grid-cols-4 gap-1.5 w-full mt-1 mb-2">
+<div class="h-1 w-full bg-[#E5E8E2] rounded-full overflow-hidden">
+<div class="h-full bg-[#D9A441] rounded-full" style="width: 78%;"></div>
+</div>
+<div class="h-1 w-full bg-[#E5E8E2] rounded-full"></div>
+<div class="h-1 w-full bg-[#E5E8E2] rounded-full"></div>
+<div class="h-1 w-full bg-[#E5E8E2] rounded-full"></div>
+</div>
+<!-- Chapter Name -->
+<div class="w-full mb-6">
+<span class="text-[12px] leading-[16px] font-medium text-[#56654D] tracking-normal font-sans">
+      O seu momento na caneta
+    </span>
+</div>
+<!-- Screen Title -->
+<h1 class="text-[24px] leading-[32px] font-semibold text-[#203E35] tracking-tight font-sans mb-7">
+    Você já se pegou pensando: “e quando eu parar?”
+  </h1>
+<!-- Options Stack -->
+<div class="flex flex-col gap-3 w-full mb-4">
+<!-- Option 1 (Selected) -->
+<div class="flex items-center justify-between w-full p-4 rounded-[14px] bg-[#FBF1DC] shadow-sm cursor-pointer select-none" style="outline: 2px solid #203E35;">
+<span class="text-[15px] leading-[21px] font-medium text-[#203E35] font-sans">
+        Quase todo dia
+      </span>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-[#D9A441] flex-shrink-0">
+<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</div>
+</div>
+<!-- Option 2 (Unselected) -->
+<div class="flex items-center justify-between w-full p-4 rounded-[14px] bg-[#FFFFFF] shadow-sm cursor-pointer select-none" style="outline: 1px solid #DDE3DA;">
+<span class="text-[15px] leading-[21px] font-medium text-[#203E35] font-sans">
+        Às vezes, e dá um frio na barriga
+      </span>
+<div class="w-6 h-6 rounded-full flex-shrink-0" style="outline: 1.5px solid #DDE3DA;"></div>
+</div>
+<!-- Option 3 (Unselected) -->
+<div class="flex items-center justify-between w-full p-4 rounded-[14px] bg-[#FFFFFF] shadow-sm cursor-pointer select-none" style="outline: 1px solid #DDE3DA;">
+<span class="text-[15px] leading-[21px] font-medium text-[#203E35] font-sans">
+        Prefiro nem pensar nisso
+      </span>
+<div class="w-6 h-6 rounded-full flex-shrink-0" style="outline: 1.5px solid #DDE3DA;"></div>
+</div>
+<!-- Option 4 (Unselected) -->
+<div class="flex items-center justify-between w-full p-4 rounded-[14px] bg-[#FFFFFF] shadow-sm cursor-pointer select-none" style="outline: 1px solid #DDE3DA;">
+<span class="text-[15px] leading-[21px] font-medium text-[#203E35] font-sans">
+        Já parei, e o peso está voltando
+      </span>
+<div class="w-6 h-6 rounded-full flex-shrink-0" style="outline: 1.5px solid #DDE3DA;"></div>
+</div>
+</div>
+<!-- Validation Note -->
+<div class="w-full rounded-[12px] bg-[#E5F1E8] px-4 py-[14px] mt-1">
+<p class="text-[14px] leading-[20px] font-medium text-[#2F6B45] font-sans m-0">
+      É a dúvida mais comum de quem usa caneta. A resposta está na próxima tela.
+    </p>
+</div>
+</div></main>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>V4 · 18 17 minutos</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Geist Sans and EB Garamond -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #F9FAF7;
+      color: #203E35;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style data-purpose="sphere-graphic">
+    /* 3D Sage Green Glossy Sphere Logo */
+    .glossy-sphere {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #92b8a7, #4b7361 65%, #2a473b 100%);
+      box-shadow: 0 3px 6px -1px rgba(32, 62, 53, 0.28), inset 0 -2px 4px rgba(0, 0, 0, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex justify-center items-start bg-[#F9FAF7]">
+<!-- BEGIN: MobileDeviceContainer -->
+<main class="w-[390px] min-h-[844px] bg-[#F9FAF7] flex flex-col px-5 pt-3 pb-12 select-none" data-purpose="app-artboard">
+<!-- BEGIN: HeaderSection -->
+<header class="w-full flex flex-col gap-4 pt-2" data-purpose="screen-header">
+<!-- Top Bar: Back Button, 3D Sphere, Empty Balance Placeholder -->
+<div class="flex items-center justify-between h-9">
+<!-- Back Navigation Button -->
+<button aria-label="Voltar" class="p-1 -ml-1 text-[#203E35] active:opacity-60 transition-opacity" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7"></path>
+</svg>
+</button>
+<!-- Center 3D Logo Sphere -->
+<div aria-label="Logo Esfera Verde" class="glossy-sphere" role="img"></div>
+<!-- Right Placeholder to balance center alignment -->
+<div class="w-5 h-5"></div>
+</div>
+<!-- Segmented Progress Bar -->
+<div class="grid grid-cols-4 gap-1 w-full" data-purpose="progress-bar">
+<!-- Segment 1: 100% gold -->
+<div class="h-1 w-full bg-[#E5E9E2] rounded-full overflow-hidden">
+<div class="h-full w-full bg-[#D9A441] rounded-full"></div>
+</div>
+<!-- Segment 2: 100% gold -->
+<div class="h-1 w-full bg-[#E5E9E2] rounded-full overflow-hidden">
+<div class="h-full w-full bg-[#D9A441] rounded-full"></div>
+</div>
+<!-- Segment 3: 64% gold -->
+<div class="h-1 w-full bg-[#E5E9E2] rounded-full overflow-hidden">
+<div class="h-full w-[64%] bg-[#D9A441] rounded-full"></div>
+</div>
+<!-- Segment 4: 0% gold (empty) -->
+<div class="h-1 w-full bg-[#E5E9E2] rounded-full overflow-hidden">
+<div class="h-full w-0 bg-[#D9A441] rounded-full"></div>
+</div>
+</div>
+<!-- Subheader Info: Phase title and Alert indicators -->
+<div class="flex items-center justify-between text-xs text-[#56654D] -mt-1 font-normal tracking-tight">
+<span>O que cabe no seu dia</span>
+<div class="flex items-center gap-1.5" data-purpose="alert-status">
+<span class="text-xs">alertas</span>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#A1312A] inline-block"></span>
+<span class="w-2 h-2 rounded-full bg-[#A1312A] inline-block"></span>
+<span class="w-2 h-2 rounded-full bg-[#A1312A] inline-block"></span>
+</div>
+</div>
+</div>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: MainContent -->
+<section class="flex flex-col mt-7" data-purpose="interactive-question">
+<!-- Heading & Caption -->
+<h1 class="text-[24px] font-semibold text-[#203E35] leading-[1.25] tracking-tight">
+        Você consegue separar 17 minutos do seu dia, em casa?
+      </h1>
+<p class="text-[15px] text-[#56654D] mt-2 mb-6 font-normal">
+        Sem academia. Dá para fazer na sala.
+      </p>
+<!-- Option Cards Stack -->
+<div aria-label="Disponibilidade de tempo" class="flex flex-col gap-3" role="radiogroup">
+<!-- Card 1: Unselected -->
+<div aria-checked="false" class="bg-white border border-[#EBECE8] rounded-2xl px-5 py-[18px] flex items-center justify-between cursor-pointer transition-all hover:border-[#D1D5CB]" data-purpose="option-card" role="radio" tabindex="0">
+<span class="text-base font-medium text-[#203E35]">Consigo</span>
+<div class="w-[22px] h-[22px] rounded-full border border-[#E0E2DC] flex items-center justify-center"></div>
+</div>
+<!-- Card 2: Unselected -->
+<div aria-checked="false" class="bg-white border border-[#EBECE8] rounded-2xl px-5 py-[18px] flex items-center justify-between cursor-pointer transition-all hover:border-[#D1D5CB]" data-purpose="option-card" role="radio" tabindex="0">
+<span class="text-base font-medium text-[#203E35]">Em alguns dias</span>
+<div class="w-[22px] h-[22px] rounded-full border border-[#E0E2DC] flex items-center justify-center"></div>
+</div>
+<!-- Card 3: Selected State -->
+<div aria-checked="true" class="bg-[#FBF1DC] border-2 border-[#203E35] rounded-2xl px-5 py-[18px] flex items-center justify-between cursor-pointer transition-all" data-purpose="option-card" role="radio" tabindex="0">
+<span class="text-base font-medium text-[#203E35]">Hoje não faço nada</span>
+<div class="w-[22px] h-[22px] rounded-full bg-[#D9A441] flex items-center justify-center flex-shrink-0">
+<svg class="w-3.5 h-3.5 text-white stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Validation Informative Note -->
+<div class="mt-5 bg-[#E5F1E8] rounded-[14px] p-3.5 px-4 flex items-center gap-2.5" data-purpose="validation-feedback">
+<!-- Shield Check Icon -->
+<svg class="w-4 h-4 text-[#2F6B45] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-sm text-[#2F6B45] font-normal leading-snug">
+          Tudo bem. O plano começa de onde você está.
+        </span>
+</div>
+</section>
+<!-- END: MainContent -->
+</main>
+<!-- END: MobileDeviceContainer -->
+</body></html>
