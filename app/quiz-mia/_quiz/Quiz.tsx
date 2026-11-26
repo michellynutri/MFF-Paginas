@@ -16,8 +16,6 @@ export const ORDEM = [
 const CHAVE = "quiz-mia:v1";
 const CHAVE_PROMO = "quiz-mia:promo-fim";
 const SEM_VOLTAR = new Set(["01", "26", "28", "29", "30"]);
-/** telas que mandam o estado para o banco ao chegar (além da saída da aba e do clique no checkout) */
-const MARCOS = new Set(["02", "10", "20", "25", "28", "30"]);
 
 const ler = <T,>(k: string, area: "session" | "local"): T | null => {
   try {
@@ -160,7 +158,7 @@ export function Quiz({ previa }: { previa?: { tela: string; r: Partial<Respostas
     return { ativa: resta > 0, relogio: `${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}` };
   }, [previa, fimPromo, agora]);
 
-  // ----- coleta: marcos, saída da aba e checkout (nunca na prévia) -----
+  // ----- coleta: cada tela (alcance por tela no painel), saída da aba e checkout (nunca na prévia) -----
   const atual = useRef({ st, promo: promo.ativa });
   atual.current = { st, promo: promo.ativa };
   const envia = useCallback((evento: "marco" | "saida" | "checkout") => {
@@ -169,8 +167,8 @@ export function Quiz({ previa }: { previa?: { tela: string; r: Partial<Respostas
     enviaQuiz(evento, { sid: e.sid, tela: e.tela, passo: ORDEM.indexOf(e.tela) + 1, r: e.r, promo: e.tela === "30" ? p : undefined });
   }, [previa]);
   useEffect(() => {
-    if (pronto && MARCOS.has(st.tela)) envia("marco");
-  }, [st.tela, pronto, envia]);
+    if (pronto && st.sid) envia("marco");
+  }, [st.tela, st.sid, pronto, envia]);
   useEffect(() => {
     if (previa) return;
     const oculta = () => { if (document.visibilityState === "hidden") envia("saida"); };
@@ -191,8 +189,11 @@ export function Quiz({ previa }: { previa?: { tela: string; r: Partial<Respostas
     const u = new URL(alvo);
     const aqui = new URLSearchParams(window.location.search);
     aqui.forEach((v, k) => { if (k.startsWith("utm_") || k === "src" || k === "sck") u.searchParams.set(k, v); });
+    // a Greenn guarda essas chaves na venda: o painel liga a compra a esta sessão do quiz (atribuição exata)
+    u.searchParams.set("variante", "quiz-mia");
+    if (st.sid) u.searchParams.set("quiz", st.sid);
     window.location.href = u.toString();
-  }, [promo.ativa, st.r, envia]);
+  }, [promo.ativa, st.r, st.sid, envia]);
 
   const alertas = useMemo(() => calculaAlertas(st.r), [st.r]);
   const q: QuizApi = {
